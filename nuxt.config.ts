@@ -8,4 +8,11 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  modules: ["@nuxtjs/i18n", "@pinia/nuxt"],
+  pinia: {
+    autoImports: ["defineStore"],
+  },
+  i18n: {
+    vueI18n: "./i18n.config.ts",
+  },
 });
