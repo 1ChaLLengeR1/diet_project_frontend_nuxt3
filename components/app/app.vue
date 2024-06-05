@@ -1,18 +1,20 @@
 <template>
-  <div class="w-full h-full">
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
-    <v-btn rounded="sm" size="x-large" block>Rounded sm</v-btn>
+  <v-app>
+    <MenuSidebar />
     <!-- <main class="w-full flex justify-center">
         <NuxtPage />
       </main> -->
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import MenuSidebar from "./../Sidebars/MainMenu/Sidebar.vue";
 
 export default defineComponent({
-  components: {},
+  components: {
+    MenuSidebar,
+  },
   setup() {
     return {};
   },
