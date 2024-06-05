@@ -3,6 +3,11 @@
     "language": {
       "title": "Sprache wählen"
     },
-    "projectTitle": "Diätprojekt."
+    "projectTitle": "Diätprojekt.",
+    "siderbarMenu": {
+      "home": "Heim",
+      "projects": "Projekte",
+      "login": "Anmeldung"
+    }
   }
 }

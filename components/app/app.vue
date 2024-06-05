@@ -1,10 +1,10 @@
 <template>
-  <v-app>
+  <main class="w-full flex">
     <MenuSidebar />
-    <!-- <main class="w-full flex justify-center">
-        <NuxtPage />
-      </main> -->
-  </v-app>
+    <main class="w-full">
+      <NuxtPage />
+    </main>
+  </main>
 </template>
 
 <script lang="ts">

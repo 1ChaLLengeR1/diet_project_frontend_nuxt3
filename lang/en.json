@@ -3,6 +3,11 @@
     "language": {
       "title": "Choose Language"
     },
-    "projectTitle": "Diet Project."
+    "projectTitle": "Diet Project.",
+    "siderbarMenu": {
+      "home": "Home",
+      "projects": "Projects",
+      "login": "Login"
+    }
   }
 }
