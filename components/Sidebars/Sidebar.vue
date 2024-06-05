@@ -1,19 +1,15 @@
 <template>
-  <ClientOnly>
-    <App />
-  </ClientOnly>
+  <div></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import App from "./components/App/App.vue";
 
 export default defineComponent({
-  components: {
-    App,
-  },
   setup() {
     return {};
   },
 });
 </script>
+
+<style scoped></style>

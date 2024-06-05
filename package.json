@@ -11,12 +11,16 @@
     "test:cypress-dev": "yarn cypress open"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "@nuxtjs/i18n": "^8.3.1",
     "@pinia/nuxt": "^0.5.1",
     "nuxt": "^3.11.2",
     "pinia": "^2.1.7",
+    "sass": "^1.77.4",
     "vue": "^3.4.27",
-    "vue-router": "^4.3.2"
+    "vue-router": "^4.3.2",
+    "vuetify": "^3.6.0-beta.0.0",
+    "vuetify-nuxt-module": "^0.14.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
