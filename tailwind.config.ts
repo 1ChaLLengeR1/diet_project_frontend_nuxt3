@@ -13,6 +13,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors: {
+      main: "#FF7200",
+    },
+    fontFamily: {
+      titleSidebar: ["Panic"],
+    },
   },
   plugins: [require("@vueform/vueform/tailwind")],
 };

@@ -1,1 +1,8 @@
-{}
+{
+  "sidebar": {
+    "language": {
+      "title": "Sprache wählen"
+    },
+    "projectTitle": "Diätprojekt."
+  }
+}
