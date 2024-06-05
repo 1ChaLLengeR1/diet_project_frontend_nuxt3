@@ -15,7 +15,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@nuxtjs/i18n", "@pinia/nuxt"],
+  modules: ["@nuxtjs/i18n", "@pinia/nuxt", "@vueform/nuxt"],
   pinia: {
     autoImports: ["defineStore"],
   },

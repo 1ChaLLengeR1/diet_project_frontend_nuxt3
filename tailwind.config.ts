@@ -7,9 +7,12 @@ module.exports = {
     "./plugins/**/*.{js,ts}",
     "./app.vue",
     "./error.vue",
+    "./vueform.config.ts",
+    "./node_modules/@vueform/vueform/themes/tailwind/**/*.vue",
+    "./node_modules/@vueform/vueform/themes/tailwind/**/*.js",
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@vueform/vueform/tailwind")],
 };
