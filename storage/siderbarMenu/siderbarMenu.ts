@@ -1,9 +1,18 @@
+// general vue
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import type { siderBarMenu } from "./../../data/types/storage/siderbarMenu/types";
 import { paths } from "./../../utils/paths";
 
+//types
+import type { siderBarMenu } from "./../../data/types/storage/siderbarMenu/types";
+
+//stores
+import { AuthStore } from "./../auth/auth";
+
 export const SiderbarMenu = defineStore("siderbarMenu", () => {
+  const authStore = AuthStore();
+  const localStorageActiveLink = ref<string>("activeLink");
+
   const menuList = ref<siderBarMenu[]>([
     {
       name: "sidebar.siderbarMenu.home",
@@ -33,8 +42,28 @@ export const SiderbarMenu = defineStore("siderbarMenu", () => {
     const findLink = menuList.value.find((item) => item.name === name);
     if (findLink !== undefined) {
       findLink.active = true;
+      localStorage.setItem(localStorageActiveLink.value, findLink.name);
     }
   };
 
-  return { menuList, activeLink };
+  const changeButtonLogin = (name: string) => {
+    if (name === "sidebar.siderbarMenu.login") {
+      if (authStore.paramsAuth0?.nickname !== "") {
+        return "sidebar.siderbarMenu.logout";
+      }
+    }
+    return name;
+  };
+
+  const loadActivelink = () => {
+    const loadLink = localStorage.getItem(
+      localStorageActiveLink.value
+    ) as string;
+    if (loadLink !== null) {
+      activeLink(loadLink);
+    }
+  };
+  loadActivelink();
+
+  return { menuList, activeLink, changeButtonLogin };
 });

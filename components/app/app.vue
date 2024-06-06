@@ -8,14 +8,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import MenuSidebar from "./../Sidebars/MainMenu/Sidebar.vue";
+import { AuthStore } from "./../../storage/auth/auth";
 
 export default defineComponent({
   components: {
     MenuSidebar,
   },
   setup() {
+    const authStore = AuthStore();
+
+    onMounted(async () => {
+      await authStore.populateDataUser();
+    });
+
     return {};
   },
 });

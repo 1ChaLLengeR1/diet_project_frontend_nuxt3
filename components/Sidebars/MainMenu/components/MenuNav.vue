@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full">
+  <header class="w-full mt-24">
     <ul class="w-full flex flex-col gap-3 px-7">
       <ItemMenu
         v-for="(item, index) in siderbarMenuStore.menuList"

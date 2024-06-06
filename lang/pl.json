@@ -7,7 +7,8 @@
     "siderbarMenu": {
       "home": "Strona główna",
       "projects": "Projekty",
-      "login": "Logowanie"
+      "login": "Logowanie",
+      "logout": "Wyloguj się"
     }
   }
 }

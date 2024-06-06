@@ -9,7 +9,7 @@
       class="leading-4 cursor-pointer text-xl from-left"
       :class="[{ activeLink: active }]"
     >
-      {{ $t(`${name}`) }}
+      {{ $t(`${changeButtonLogin(name)}`) }}
     </NuxtLink>
   </li>
 </template>
@@ -17,6 +17,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { SiderbarMenu } from "./../../../../storage/siderbarMenu/siderbarMenu";
+import { AuthStore } from "./../../../../storage/auth/auth";
 
 export default defineComponent({
   props: {
@@ -38,18 +39,19 @@ export default defineComponent({
     },
   },
   setup() {
-    const siderbarMenuStore = SiderbarMenu();
+    const authStore = AuthStore();
+    const { activeLink, changeButtonLogin } = SiderbarMenu();
 
-    const handlerLinks = (type: string, name: string) => {
+    const handlerLinks = async (type: string, name: string) => {
       if (type === "login") {
-        console.log("login");
+        await authStore.singIn();
         return;
       }
 
-      siderbarMenuStore.activeLink(name);
+      activeLink(name);
     };
 
-    return { handlerLinks };
+    return { handlerLinks, changeButtonLogin };
   },
 });
 </script>
