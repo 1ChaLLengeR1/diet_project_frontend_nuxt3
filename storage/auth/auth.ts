@@ -4,7 +4,10 @@ import { ref } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 
 //types
-import type { ParamsAuth0, UserData } from "./../../data/types/auth/types";
+import type {
+  ParamsAuth0,
+  UserData,
+} from "../../data/types/storage/auth/types";
 
 export const AuthStore = defineStore("auth", () => {
   const { isAuthenticated, idTokenClaims, logout, loginWithRedirect } =
@@ -81,7 +84,7 @@ export const AuthStore = defineStore("auth", () => {
     }
 
     if (!isAuthenticated.value && lvl < 3) {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       await populateDataUser(lvl + 1);
       return;
     }

@@ -1,9 +1,14 @@
+// variables
 const DEBUG_USER_TOKEN = false;
 const DEBUG_LANG = false;
+
+// types
 import type {
   ResponseFetch,
   OmitHeaders,
 } from "./../../data/types/api/common/types";
+
+import type { FetchOptions } from "ohmyfetch";
 
 export async function apiGet(
   urlPath: string,
@@ -17,28 +22,28 @@ export async function apiGet(
   const environment = useRuntimeConfig();
   const urlApi: string = environment.public.apiServer;
   const url: string = `${urlApi}${urlPath}`;
-  const responseApi: ResponseFetch = { status: 0, ok: false, data: [] };
+  const responseApi: ResponseFetch = { status: 0, ok: false, data: null };
 
   try {
     const headers: Headers = new Headers();
 
-    if (sotreAuth.getTokenDataForApi() && !omitHeaders.Authorization) {
-      headers.append(
-        "Authorization",
-        `Bearer ${sotreAuth.getTokenDataForApi()}`
-      );
+    // if (sotreAuth.getTokenDataForApi() && !omitHeaders.Authorization) {
+    //   headers.append(
+    //     "Authorization",
+    //     `Bearer ${sotreAuth.getTokenDataForApi()}`
+    //   );
 
-      if (DEBUG_USER_TOKEN) {
-        console.info("auth0 token:", sotreAuth.getTokenDataForApi());
-      }
-    }
+    //   if (DEBUG_USER_TOKEN) {
+    //     console.info("auth0 token:", sotreAuth.getTokenDataForApi());
+    //   }
+    // }
 
     const { data } = await useFetch(url, {
-      onRequest({ options }) {
+      onRequest({ options }: { options: FetchOptions }) {
         options.headers = headers;
         options.method = "GET";
       },
-      onResponse({ response }) {
+      onResponse({ response }: { response: Response }) {
         responseApi.status = response.status;
         responseApi.ok = response.ok;
       },
