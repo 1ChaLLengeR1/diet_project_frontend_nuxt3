@@ -10,5 +10,13 @@
       "login": "Logowanie",
       "logout": "Wyloguj się"
     }
+  },
+  "loadingSpinner": {
+    "information": "Ładowanie...",
+    "informationMore": "Może to potrwać kilka sekund...",
+    "stores": {
+      "userData": "Trwa sprawdzanie automatycznego logowania...",
+      "dictionary": "Trwa ładowanie słowników..."
+    }
   }
 }

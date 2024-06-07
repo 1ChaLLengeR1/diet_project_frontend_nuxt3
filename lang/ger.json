@@ -10,5 +10,13 @@
       "login": "Anmeldung",
       "logout": "Ausloggen"
     }
+  },
+  "loadingSpinner": {
+    "information": "Wird geladen...",
+    "informationMore": "Dies kann einige Sekunden dauern...",
+    "stores": {
+      "userData": "Automatische Anmeldung wird geprüft...",
+      "dictionary": "Wörterbücher werden geladen..."
+    }
   }
 }

@@ -40,13 +40,6 @@ export default defineComponent({
     const dictionaryStore = DictionaryStore();
     const smallLanguage = ref<string | null>("");
 
-    const items = [
-      { title: "Click Me" },
-      { title: "Click Me" },
-      { title: "Click Me" },
-      { title: "Click Me 2" },
-    ];
-
     const checkScreenWidth = throttle(() => {
       smallLanguage.value = window.innerWidth >= 380 ? null : "font-size: 10px";
     }, 200);
@@ -60,7 +53,7 @@ export default defineComponent({
       window.removeEventListener("resize", checkScreenWidth);
     });
 
-    return { items, colorsStore, smallLanguage, dictionaryStore };
+    return { colorsStore, smallLanguage, dictionaryStore };
   },
 });
 </script>

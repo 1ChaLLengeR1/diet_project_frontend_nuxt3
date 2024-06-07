@@ -12,9 +12,10 @@ module.exports = {
     "./node_modules/@vueform/vueform/themes/tailwind/**/*.js",
   ],
   theme: {
-    extend: {},
-    colors: {
-      main: "#FF7200",
+    extend: {
+      colors: {
+        main: "#FF7200",
+      },
     },
     fontFamily: {
       titleSidebar: ["Panic"],

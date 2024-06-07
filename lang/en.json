@@ -10,5 +10,13 @@
       "login": "Login",
       "logout": "LogOut"
     }
+  },
+  "loadingSpinner": {
+    "information": "Loading...",
+    "informationMore": "This may take a few seconds...",
+    "stores": {
+      "userData": "Automatic login is being checked...",
+      "dictionary": "Dictionaries are loading..."
+    }
   }
 }
