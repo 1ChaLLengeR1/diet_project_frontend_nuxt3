@@ -1,6 +1,9 @@
 <template>
   <main class="relative w-full flex-col">
-    <LoadingSpinner v-if="spinnerStore.app" :info="spinnerInfo" />
+    <LoadingSpinner
+      v-if="spinnerStore.app.active"
+      :info="spinnerStore.app.info"
+    />
     <MenuHeader v-if="!mobile" />
     <div class="w-full flex">
       <MenuSidebar v-if="mobile" />
@@ -39,15 +42,16 @@ export default defineComponent({
     const spinnerInfo = ref<string>("");
 
     onMounted(async () => {
-      spinnerStore.app = true;
-
-      spinnerInfo.value = "loadingSpinner.stores.userData";
+      spinnerStore.app.active = true;
+      spinnerStore.app.info = "loadingSpinner.stores.userData";
       await authStore.populateDataUser();
 
-      spinnerInfo.value = "loadingSpinner.stores.dictionary";
+      spinnerStore.app.active = true;
+      spinnerStore.app.info = "loadingSpinner.stores.dictionary";
       await dictionaryStore.apiFetch();
 
-      spinnerStore.app = false;
+      spinnerStore.app.active = false;
+      spinnerStore.app.info = "";
     });
 
     const checkScreenWidth = throttle(() => {

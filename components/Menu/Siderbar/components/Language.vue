@@ -17,9 +17,16 @@
           v-for="(item, index) in dictionaryStore.collection"
           :key="index"
         >
-          <v-list-item-title class="cursor-pointer">{{
-            item.key
-          }}</v-list-item-title>
+          <v-list-item-title
+            @click="changeLanguage(item.key)"
+            class="cursor-pointer"
+            >{{
+              $t("language.dictionaryFormat", {
+                translation: item.translation,
+                key: item.key,
+              })
+            }}</v-list-item-title
+          >
         </v-list-item>
       </v-list>
     </v-menu>
@@ -33,11 +40,13 @@ import { throttle } from "lodash";
 // stores
 import { ColorsStore } from "./../../../../storage/colors/colors";
 import { DictionaryStore } from "./../../../../storage/dictionary/dictionary";
+import { RefreshStore } from "./../../../../storage/refresh";
 
 export default defineComponent({
   setup() {
     const colorsStore = ColorsStore();
     const dictionaryStore = DictionaryStore();
+    const refreshStore = RefreshStore();
     const smallLanguage = ref<string | null>("");
 
     const checkScreenWidth = throttle(() => {
@@ -53,7 +62,12 @@ export default defineComponent({
       window.removeEventListener("resize", checkScreenWidth);
     });
 
-    return { colorsStore, smallLanguage, dictionaryStore };
+    const changeLanguage = async (key: string) => {
+      dictionaryStore.changeLanguage(key);
+      await refreshStore.refreshStores();
+    };
+
+    return { colorsStore, smallLanguage, dictionaryStore, changeLanguage };
   },
 });
 </script>

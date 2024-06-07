@@ -30,3 +30,8 @@ export interface Dictionary {
   key: string;
   translation: string;
 }
+
+export interface AppLanguage {
+  id: string;
+  key: string;
+}

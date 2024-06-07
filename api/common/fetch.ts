@@ -7,8 +7,10 @@ import type {
   ResponseFetch,
   OmitHeaders,
 } from "./../../data/types/api/common/types";
-
 import type { FetchOptions } from "ohmyfetch";
+
+// stores
+import { DictionaryStore } from "./../../storage/dictionary/dictionary";
 
 export async function apiGet(
   urlPath: string,
@@ -24,8 +26,17 @@ export async function apiGet(
   const url: string = `${urlApi}${urlPath}`;
   const responseApi: ResponseFetch = { status: 0, ok: false, data: null };
 
+  const dictionaryStore = DictionaryStore();
+
   try {
     const headers: Headers = new Headers();
+
+    if (omitHeaders.AppLanguage && dictionaryStore.getAppLanguage() !== "") {
+      headers.append("AppLanguage", `${dictionaryStore.getAppLanguage()}`);
+      if (DEBUG_LANG) {
+        console.info("lang id:", dictionaryStore.getAppLanguage());
+      }
+    }
 
     // if (sotreAuth.getTokenDataForApi() && !omitHeaders.Authorization) {
     //   headers.append(

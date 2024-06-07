@@ -1,4 +1,7 @@
 {
+  "language": {
+    "dictionaryFormat": "{translation} - {key}"
+  },
   "sidebar": {
     "language": {
       "title": "Wybierz język"
