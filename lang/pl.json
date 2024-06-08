@@ -25,5 +25,33 @@
   },
   "footer": {
     "info": "Copyright {year} Artur Ścibor. Wszystkie prawa zastrzeżone."
+  },
+  "banner": {
+    "h1": "Cześć, nazywam się Artur,",
+    "h2": "To jest mój kolejny projekt, który zbudowałem do codziennej pracy i samorealizacji. Ten projekt służy do zapisywania moich codziennych wyników, zwłaszcza podczas realizacji długoterminowych wyzwań lub challengów. Obecnie jest tu jeden projekt, który dokumentuje moją przemianę w 150 dni.",
+    "h3": "Jaki był cel budowy projektu?",
+    "h4": "Zbudowałem program, który liczy statystyki z tygodnia na tydzień na podstawie moich codziennych danych i wyników. Stwierdziłem, że będzie fajnie stworzyć podstawowy projekt, który będzie dla mnie ułatwieniem i który będę mógł w każdej chwili rozbudowywać i ulepszać. Projekt jest dostępny dla wielu osób, które mogą zapisywać swoje postępy. Aby uzyskać dostęp, należy się ze mną skontaktować. Traktuję ten projekt także jako kolejny element mojego portfolio.",
+    "h5": "Jakie narzędzia zostały użyte do budowy projektu:",
+    "p1": "Frontend:",
+    "p2": "Backend:",
+    "h6": "Podsumowanie:",
+    "p": " Dziękuję, że tu dotarłeś. Przypuszczam, że projekt nie robi 'wow', ale taki był jego cel. Jest to projekt stworzony na bazie potężnych narzędzi, które zostały tu użyte. Warstwa wizualna nie została zaprojektowana od podstaw, ale raczej częściowo odwzorowana z innej strony.",
+    "list": {
+      "frontend": {
+        "nuxt3": "Nuxt3",
+        "vuetify": "Vuetify",
+        "vueForm": "VueForm",
+        "i18n": "I18n",
+        "auth0": "Auth0",
+        "cypress": "Cypress"
+      },
+      "backend": {
+        "golang": "Golang",
+        "gin": "Biblioteka Gin",
+        "sql": "Biblioteka SQL",
+        "auth0": "Auth0",
+        "postgresql": "PostgreSql"
+      }
+    }
   }
 }
