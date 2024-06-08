@@ -1,6 +1,11 @@
 <template>
-  <div class="w-fit" @click="openMenu">
-    <v-icon icon="mdi-menu" size="large" class="cursor-pointer"></v-icon>
+  <div class="w-full flex justify-end p-3">
+    <v-icon
+      icon="mdi-close-circle"
+      size="x-large"
+      class="cursor-pointer"
+      @click="closeMenu"
+    ></v-icon>
   </div>
 </template>
 
@@ -13,10 +18,11 @@ import { MenuMobileStore } from "./../../../../storage/siderbarMenu/menuMobile";
 export default defineComponent({
   setup() {
     const menuMobileStore = MenuMobileStore();
-    const openMenu = () => {
-      menuMobileStore.openMenu = true;
+    const closeMenu = () => {
+      menuMobileStore.openMenu = false;
     };
-    return { openMenu };
+
+    return { closeMenu };
   },
 });
 </script>

@@ -9,7 +9,7 @@
 import { defineComponent } from "vue";
 
 //components
-import Language from "./../../Siderbar/components/Language.vue";
+import Language from "./../../../Language/Language.vue";
 import HamburgerVue from "./Hamburger.vue";
 
 export default defineComponent({

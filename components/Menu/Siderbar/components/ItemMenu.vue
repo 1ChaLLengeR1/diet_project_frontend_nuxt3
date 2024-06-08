@@ -6,8 +6,12 @@
   >
     <NuxtLink
       :to="path"
-      class="leading-4 cursor-pointer text-xl from-left"
-      :class="[{ activeLink: active }]"
+      class="leading-4 cursor-pointer text-xl"
+      :class="[
+        { activeLink: active },
+        { 'from-left': position === 'left' },
+        { 'from-right': position === 'right' },
+      ]"
     >
       {{ $t(`${changeButtonLogin(name)}`) }}
     </NuxtLink>
@@ -35,6 +39,10 @@ export default defineComponent({
     },
     active: {
       type: Boolean,
+      required: true,
+    },
+    position: {
+      type: String,
       required: true,
     },
   },
@@ -75,5 +83,9 @@ a.activeLink:after {
 
 a.from-left:after {
   transform-origin: left;
+}
+
+a.from-right:after {
+  transform-origin: right;
 }
 </style>

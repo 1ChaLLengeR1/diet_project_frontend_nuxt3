@@ -1,16 +1,16 @@
 <template>
-  <div
-    class="min-w-[340px] max-w-[380px] h-screen flex flex-col gap-3 border-r"
-  >
-    <Language />
-    <SiderbarTitle />
-    <MenuNav />
+  <div class="min-w-[340px] max-w-[380px] h-screen border-r">
+    <div class="fixed top-0 left-0 w-full h-full flex flex-col gap-3">
+      <Language />
+      <SiderbarTitle />
+      <MenuNav position="left" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Language from "./components/Language.vue";
+import Language from "./../../Language/Language.vue";
 import SiderbarTitle from "./components/Title.vue";
 import MenuNav from "./components/MenuNav.vue";
 

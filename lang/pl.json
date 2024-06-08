@@ -10,6 +10,7 @@
     "siderbarMenu": {
       "home": "Strona główna",
       "projects": "Projekty",
+      "adminPanel": "Panel Administratora",
       "login": "Logowanie",
       "logout": "Wyloguj się"
     }
@@ -21,5 +22,8 @@
       "userData": "Trwa sprawdzanie automatycznego logowania...",
       "dictionary": "Trwa ładowanie słowników..."
     }
+  },
+  "footer": {
+    "info": "Copyright {year} Artur Ścibor. Wszystkie prawa zastrzeżone."
   }
 }

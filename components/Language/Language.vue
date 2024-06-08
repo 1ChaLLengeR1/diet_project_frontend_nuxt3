@@ -38,9 +38,9 @@ import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
 import { throttle } from "lodash";
 
 // stores
-import { ColorsStore } from "./../../../../storage/colors/colors";
-import { DictionaryStore } from "./../../../../storage/dictionary/dictionary";
-import { RefreshStore } from "./../../../../storage/refresh";
+import { ColorsStore } from "./../../storage/colors/colors";
+import { DictionaryStore } from "./../../storage/dictionary/dictionary";
+import { RefreshStore } from "./../../storage/refresh";
 
 export default defineComponent({
   setup() {

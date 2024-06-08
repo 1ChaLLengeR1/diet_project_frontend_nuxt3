@@ -10,6 +10,7 @@
     "siderbarMenu": {
       "home": "Heim",
       "projects": "Projekte",
+      "adminPanel": "Administratorbereich",
       "login": "Anmeldung",
       "logout": "Ausloggen"
     }
@@ -21,5 +22,8 @@
       "userData": "Automatische Anmeldung wird geprüft...",
       "dictionary": "Wörterbücher werden geladen..."
     }
+  },
+  "footer": {
+    "info": "Copyright {year} Artur Ścibor. Alle Rechte vorbehalten."
   }
 }

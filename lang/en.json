@@ -10,6 +10,7 @@
     "siderbarMenu": {
       "home": "Home",
       "projects": "Projects",
+      "adminPanel": "Admin Panel",
       "login": "Login",
       "logout": "LogOut"
     }
@@ -21,5 +22,8 @@
       "userData": "Automatic login is being checked...",
       "dictionary": "Dictionaries are loading..."
     }
+  },
+  "footer": {
+    "info": "Copyright {year} Artur Ścibor. All rights reserved."
   }
 }

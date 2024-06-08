@@ -27,12 +27,25 @@ export const SiderbarMenu = defineStore("siderbarMenu", () => {
       active: false,
     },
     {
+      name: "sidebar.siderbarMenu.adminPanel",
+      type: "panel",
+      path: ``,
+      active: false,
+    },
+    {
       name: "sidebar.siderbarMenu.login",
       type: "login",
       path: "",
       active: false,
     },
   ]);
+
+  const filterLinks = () => {
+    if (authStore.paramsAuth0?.nickname === "") {
+      return menuList.value.filter((item) => item.type !== "panel");
+    }
+    return menuList.value;
+  };
 
   const activeLink = (name: string) => {
     menuList.value.forEach((el) => {
@@ -65,5 +78,5 @@ export const SiderbarMenu = defineStore("siderbarMenu", () => {
   };
   loadActivelink();
 
-  return { menuList, activeLink, changeButtonLogin };
+  return { menuList, activeLink, changeButtonLogin, filterLinks };
 });
