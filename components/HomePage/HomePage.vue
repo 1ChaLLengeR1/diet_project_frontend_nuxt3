@@ -1,12 +1,13 @@
 <template>
-  <div class="relative w-full h-100% flex">
-    <CarouselHome :images="images" />
+  <div class="relative w-full h-screen flex">
+    <CarouselHome v-if="onCarousel" :images="images" />
     <Banner />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
+import { throttle } from "lodash";
 
 // components
 import CarouselHome from "./../../components/Carousel/CaroselHome.vue";
@@ -23,11 +24,20 @@ export default defineComponent({
     Banner,
   },
   setup() {
+    const onCarousel = ref<boolean>(false);
     const images = ref<string[]>([]);
-
     images.value = [imageBike, imageRun, imageSwim];
 
-    return { images };
+    const checkScreenWidth = throttle(() => {
+      onCarousel.value = window.innerWidth >= 1700 ? true : false;
+    }, 200);
+
+    onMounted(() => {
+      window.addEventListener("resize", checkScreenWidth);
+      checkScreenWidth();
+    });
+
+    return { images, onCarousel };
   },
 });
 </script>

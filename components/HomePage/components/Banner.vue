@@ -2,6 +2,7 @@
   <div class="absolute z-10 w-full h-full p-7">
     <div
       class="w-full h-full flex flex-col rounded-xl p-6 backdrop-blur-sm bg-black/60 shadow-lg space-y-4 text-white"
+      :class="[{ 'overflow-auto': onOverFlow }]"
     >
       <h1 class="text-2xl font-bold text-main">{{ $t("banner.h1") }}</h1>
       <h2 class="text-lg">
@@ -35,10 +36,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
+import { throttle } from "lodash";
 
 export default defineComponent({
   setup() {
+    const onOverFlow = ref<boolean>(false);
+
     const listFrontend = ref<string[]>([
       "banner.list.frontend.nuxt3",
       "banner.list.frontend.vuetify",
@@ -55,7 +59,16 @@ export default defineComponent({
       "banner.list.backend.postgresql",
     ]);
 
-    return { listFrontend, listBackend };
+    const checkScreenWidth = throttle(() => {
+      onOverFlow.value = window.innerWidth <= 1900 ? true : false;
+    }, 200);
+
+    onMounted(() => {
+      window.addEventListener("resize", checkScreenWidth);
+      checkScreenWidth();
+    });
+
+    return { listFrontend, listBackend, onOverFlow };
   },
 });
 </script>

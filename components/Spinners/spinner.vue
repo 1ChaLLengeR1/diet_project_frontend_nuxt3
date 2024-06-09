@@ -1,7 +1,7 @@
 <template>
   <div
     id="loadingSpinner"
-    :class="`${classValue} h-full fixed left-auto right-auto top-auto flex justify-center items-center z-40 backdrop-blur-sm bg-black/30`"
+    :class="`${classValue} h-full fixed left-auto right-auto top-auto flex justify-center items-center z-40 backdrop-blur-sm bg-white/70`"
   >
     <div class="w-full flex flex-col gap-3 items-center justify-center">
       <svg
