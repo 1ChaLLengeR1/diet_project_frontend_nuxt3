@@ -9,5 +9,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     directives,
   });
 
-  nuxtApp.vueApp.use(vuetify);
+  if (process.client) {
+    nuxtApp.vueApp.use(vuetify);
+  }
 });

@@ -1,1 +1,57 @@
-{}
+{
+  "language": {
+    "dictionaryFormat": "{translation} - {key}"
+  },
+  "sidebar": {
+    "language": {
+      "title": "Choose Language"
+    },
+    "projectTitle": "Diet Project.",
+    "siderbarMenu": {
+      "home": "Home",
+      "projects": "Projects",
+      "adminPanel": "Admin Panel",
+      "login": "Login",
+      "logout": "LogOut"
+    }
+  },
+  "loadingSpinner": {
+    "information": "Loading...",
+    "informationMore": "This may take a few seconds...",
+    "stores": {
+      "userData": "Automatic login is being checked...",
+      "dictionary": "Dictionaries are loading..."
+    }
+  },
+  "footer": {
+    "info": "Copyright {year} Artur Ścibor. All rights reserved."
+  },
+  "banner": {
+    "h1": "Hi, my name is Artur,",
+    "h2": "This is my next project, built for daily work and self-realization. This project is used to record my daily results, especially during long-term challenges or goals. Currently, there is one project that documents my transformation over 150 days.",
+    "h3": "What was the purpose of building this project?",
+    "h4": "I created a program that calculates statistics from week to week based on my daily data and results. I thought it would be nice to create a basic project that would make things easier for me and that I could expand and improve at any time. The project is available to many people who can record their progress. To gain access, you need to contact me. I also consider this project as another addition to my portfolio.",
+    "h5": "What tools were used to build the project:",
+    "p1": "Frontend:",
+    "p2": "Backend:",
+    "h6": "Summary:",
+    "p": "Thank you for reaching this point. I assume that the project does not have a 'wow' factor, but that was its goal. It is a project built on powerful tools that have been used here. The visual layer was not designed from scratch but rather partially modeled on another site.",
+    "list": {
+      "frontend": {
+        "nuxt3": "Nuxt3",
+        "vuetify": "Vuetify",
+        "vueForm": "VueForm",
+        "i18n": "I18n",
+        "auth0": "Auth0",
+        "cypress": "Cypress"
+      },
+      "backend": {
+        "golang": "Golang",
+        "gin": "Library Gin",
+        "sql": "Library SQL",
+        "auth0": "Auth0",
+        "postgresql": "PostgreSql"
+      }
+    }
+  }
+}

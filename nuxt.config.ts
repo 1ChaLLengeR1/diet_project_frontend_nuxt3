@@ -1,5 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      apiServer: process.env.API_SERVER,
+      domainAuth0: process.env.DOMAIN_AUTH0,
+      clientIdAuth0: process.env.CLIENT_ID_AUTH0,
+      redirectUri: process.env.REDIRECT_URL,
+    },
+  },
   devtools: { enabled: true },
   css: [
     "./public/main.css",

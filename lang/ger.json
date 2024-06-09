@@ -1,1 +1,57 @@
-{}
+{
+  "language": {
+    "dictionaryFormat": "{translation} - {key}"
+  },
+  "sidebar": {
+    "language": {
+      "title": "Sprache wählen"
+    },
+    "projectTitle": "Diätprojekt.",
+    "siderbarMenu": {
+      "home": "Heim",
+      "projects": "Projekte",
+      "adminPanel": "Administratorbereich",
+      "login": "Anmeldung",
+      "logout": "Ausloggen"
+    }
+  },
+  "loadingSpinner": {
+    "information": "Wird geladen...",
+    "informationMore": "Dies kann einige Sekunden dauern...",
+    "stores": {
+      "userData": "Automatische Anmeldung wird geprüft...",
+      "dictionary": "Wörterbücher werden geladen..."
+    }
+  },
+  "footer": {
+    "info": "Copyright {year} Artur Ścibor. Alle Rechte vorbehalten."
+  },
+  "banner": {
+    "h1": "Hallo, mein Name ist Artur,",
+    "h2": "Dies ist mein nächstes Projekt, das für die tägliche Arbeit und Selbstverwirklichung entwickelt wurde. Dieses Projekt dient dazu, meine täglichen Ergebnisse aufzuzeichnen, insbesondere während langfristiger Herausforderungen oder Ziele. Derzeit gibt es ein Projekt, das meine Transformation über 150 Tage dokumentiert.",
+    "h3": "Was war der Zweck des Baus dieses Projekts?",
+    "h4": "Ich habe ein Programm erstellt, das wöchentliche Statistiken basierend auf meinen täglichen Daten und Ergebnissen berechnet. Ich dachte, es wäre schön, ein einfaches Projekt zu erstellen, das mir die Arbeit erleichtert und das ich jederzeit erweitern und verbessern kann. Das Projekt steht vielen Menschen zur Verfügung, die ihren Fortschritt aufzeichnen können. Um Zugang zu erhalten, müssen Sie mich kontaktieren. Ich betrachte dieses Projekt auch als eine weitere Ergänzung zu meinem Portfolio.",
+    "h5": "Welche Werkzeuge wurden für den Bau des Projekts verwendet:",
+    "p1": "Frontend:",
+    "p2": "Backend:",
+    "h6": "Zusammenfassung:",
+    "p": "Vielen Dank, dass Sie bis hierher gekommen sind. Ich vermute, dass das Projekt keinen 'Wow'-Faktor hat, aber das war sein Ziel. Es ist ein Projekt, das auf leistungsstarken Werkzeugen basiert, die hier verwendet wurden. Die visuelle Schicht wurde nicht von Grund auf neu gestaltet, sondern teilweise an eine andere Seite angelehnt.",
+    "list": {
+      "frontend": {
+        "nuxt3": "Nuxt3",
+        "vuetify": "Vuetify",
+        "vueForm": "VueForm",
+        "i18n": "I18n",
+        "auth0": "Auth0",
+        "cypress": "Cypress"
+      },
+      "backend": {
+        "golang": "Golang",
+        "gin": "Bibliothek Gin",
+        "sql": "Bibliothek SQL",
+        "auth0": "Auth0",
+        "postgresql": "PostgreSql"
+      }
+    }
+  }
+}
