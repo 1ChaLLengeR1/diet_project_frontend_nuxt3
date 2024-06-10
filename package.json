@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test:cypress-dev": "yarn cypress open"
+    "test:cypress-dev": "cypress open --e2e",
+    "test:cypress": "cypress run"
   },
   "dependencies": {
     "@auth0/auth0-vue": "^2.3.3",
