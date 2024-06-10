@@ -6,12 +6,21 @@
 import { defineComponent } from "vue";
 import { useRoute } from "vue-router";
 
+// stores
+import { DictionaryStore } from "./../storage/dictionary/dictionary";
+
 export default defineComponent({
   setup() {
     const { $i18n } = useNuxtApp();
     const route = useRoute();
 
-    const loadLangs = (data: string) => {
+    const dictionaryStore = DictionaryStore();
+
+    const loadLangs = async (data: string) => {
+      if (dictionaryStore.collection.length === 0) {
+        await dictionaryStore.apiFetch();
+      }
+
       const collectionLangs: string[] = [];
       if (data !== undefined) {
         const lang = JSON.parse(data);
@@ -25,7 +34,7 @@ export default defineComponent({
     const runActions = async () => {
       switch (route.query.action) {
         case "loadLangs": {
-          loadLangs(route.query.data as string);
+          await loadLangs(route.query.data as string);
           break;
         }
       }

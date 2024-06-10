@@ -1,7 +1,12 @@
 import { paths } from "./../../../../utils/paths";
 import { Spinner } from "./../../../support/objectComponents/spinner";
+import { HomePage } from "./../../../support/objectPages/homePage";
+import { DropDownLanguage } from "./../../../support/objectComponents/dropDownLanguage";
+import { checkLanguageHomePage } from "./../../../helpers/homePage/dropDown";
 
 const spinner = new Spinner();
+const homePage = new HomePage();
+const dropDownLanguage = new DropDownLanguage();
 
 describe("Home Page Basic", () => {
   it("HP, check loadingSpinner info", () => {
@@ -25,5 +30,99 @@ describe("Home Page Basic", () => {
       spinner.checkInfo(parse[1], "info");
       spinner.checkInfo(parse[2], "infoStores");
     });
+  });
+
+  it("HP, check SiderMenu", () => {
+    const linkMainPage = "sidebar.siderbarMenu.home";
+    const linlProject = "sidebar.siderbarMenu.projects";
+    const linkLogin = "sidebar.siderbarMenu.login";
+
+    cy.visit(
+      `${paths.testPanel}?action=loadLangs&data={"lang":["${linkMainPage}", "${linlProject}", "${linkLogin}"]}`
+    );
+    cy.wait(500);
+    cy.visit(paths.home);
+
+    cy.window().then((win) => {
+      const lang = win.localStorage.getItem("lang");
+      const parse = JSON.parse(lang!);
+      const links = [
+        { active: true, text: parse[0] },
+        { active: false, text: parse[1] },
+        { active: false, text: parse[2] },
+      ];
+
+      homePage.checkMenu(links);
+    });
+  });
+
+  it("HP, check dropDown Dictionary", () => {
+    const dropDownTitle = "sidebar.language.title";
+    const polishDefaultLang = "language.default.pl";
+    const englishDefaultLang = "language.default.en";
+    const germanDefaultLang = "language.default.ger";
+
+    cy.visit(
+      `${paths.testPanel}?action=loadLangs&data={"lang":["${dropDownTitle}", "${polishDefaultLang}", "${englishDefaultLang}", "${germanDefaultLang}"]}`
+    );
+    cy.wait(500);
+    cy.visit(paths.home);
+
+    cy.window().then((win) => {
+      const lang = win.localStorage.getItem("lang");
+      const parse = JSON.parse(lang!);
+      dropDownLanguage.checkDropDown(parse[0]);
+      dropDownLanguage.checkDropDownLanguage([parse[1], parse[2], parse[3]]);
+    });
+  });
+
+  it("HP, change language page to EN => I see dropDown, mainPage and SiderMenu in EN", () => {
+    const language = "Angielski - en";
+    cy.visit(
+      `${paths.testPanel}?action=loadLangs&data={"lang":["${language}"]}`
+    );
+    cy.wait(500);
+
+    cy.visit(paths.home);
+
+    cy.intercept("GET", "http://localhost:3001/api/dictionary/collection").as(
+      "collectionDictionary"
+    );
+    cy.wait("@collectionDictionary");
+    cy.wait(500);
+
+    cy.window().then((win) => {
+      const lang = win.localStorage.getItem("lang");
+      const parse = JSON.parse(lang!);
+      dropDownLanguage.changeLanguage(parse[0]);
+      win.localStorage.removeItem("lang");
+    });
+
+    checkLanguageHomePage();
+  });
+
+  it("HP, change language page to GER => I see dropDown, mainPage and SiderMenu in GER", () => {
+    const language = "Niemiecki - ger";
+    cy.visit(
+      `${paths.testPanel}?action=loadLangs&data={"lang":["${language}"]}`
+    );
+    cy.wait(500);
+
+    cy.visit(paths.home);
+
+    cy.intercept("GET", "http://localhost:3001/api/dictionary/collection").as(
+      "collectionDictionary"
+    );
+    cy.wait("@collectionDictionary");
+    cy.wait(500);
+
+    cy.window().then((win) => {
+      const lang = win.localStorage.getItem("lang");
+      const parse = JSON.parse(lang!);
+      dropDownLanguage.changeLanguage(parse[0]);
+      win.localStorage.removeItem("lang");
+    });
+
+    checkLanguageHomePage();
   });
 });

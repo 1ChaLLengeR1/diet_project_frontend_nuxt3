@@ -32,7 +32,6 @@ export const DictionaryStore = defineStore("dictionary", () => {
     response.collection?.forEach((item) => {
       collection.value.push(item);
     });
-    console.log(collection.value);
   };
 
   const changeLanguage = (key: string) => {

@@ -1,5 +1,10 @@
 {
   "language": {
+    "default": {
+      "pl": "Polieren - pl",
+      "en": "Englisch - en",
+      "ger": "Deutsch - ger "
+    },
     "dictionaryFormat": "{translation} - {key}"
   },
   "sidebar": {

@@ -1,5 +1,10 @@
 {
   "language": {
+    "default": {
+      "pl": "Polish - pl",
+      "en": "English - en",
+      "ger": "German - ger "
+    },
     "dictionaryFormat": "{translation} - {key}"
   },
   "sidebar": {
