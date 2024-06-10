@@ -21,11 +21,17 @@
         />
       </svg>
       <div class="w-full flex flex-col items-center gap-3">
-        <p class="font-bold text-lg">
+        <p id="loadingSpinnerInfo" class="font-bold text-lg">
           {{ $t("loadingSpinner.informationMore") }}
         </p>
-        <p class="font-bold text-lg">{{ $t("loadingSpinner.information") }}</p>
-        <p v-if="info !== null" class="font-bold text-lg">
+        <p id="loadingSpinnerInfo" class="font-bold text-lg">
+          {{ $t("loadingSpinner.information") }}
+        </p>
+        <p
+          id="loadingSpinnerInfoStores"
+          v-if="info !== null"
+          class="font-bold text-lg"
+        >
           {{ $t(`${info}`) }}
         </p>
       </div>

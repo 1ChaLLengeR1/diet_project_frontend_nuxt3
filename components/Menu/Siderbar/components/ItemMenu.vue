@@ -1,5 +1,6 @@
 <template>
   <li
+    id="itemMenuSiderbar"
     class="w-fit hover:text-main"
     :class="[{ 'text-main': active }]"
     @click="handlerLinks(type, name)"

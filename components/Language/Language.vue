@@ -1,8 +1,9 @@
 <template>
-  <div class="w-full flex justify-start p-3">
+  <div id="dropDownLanguage" class="w-full flex justify-start p-3">
     <v-menu transition="scale-transition">
       <template v-slot:activator="{ props }">
         <v-btn
+          id="dropDownButton"
           prepend-icon="mdi-web"
           :color="colorsStore.main"
           :style="smallLanguage"
@@ -14,6 +15,7 @@
 
       <v-list>
         <v-list-item
+          id="dropDownItem"
           v-for="(item, index) in dictionaryStore.collection"
           :key="index"
         >
