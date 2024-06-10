@@ -13,6 +13,12 @@ export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {},
     baseUrl: "http://localhost:3000",
+    specPattern: [
+      "__tests__/test/1.LoadInit/**/*.cy.{js,jsx,ts,tsx}",
+      "__tests__/test/2.mainPages/**/*.cy.{js,jsx,ts,tsx}",
+      "__tests__/test/3.profilePages/**/*.cy.{js,jsx,ts,tsx}",
+      "__tests__/test/4.authectification/**/*.cy.{js,jsx,ts,tsx}",
+    ],
     supportFile: "__tests__/support/e2e.ts",
     retries: {
       runMode: 2,

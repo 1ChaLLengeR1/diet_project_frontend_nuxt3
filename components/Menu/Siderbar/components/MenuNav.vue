@@ -1,6 +1,7 @@
 <template>
   <header class="w-full mt-24">
     <ul
+      id="MenuNavSiderbar"
       class="w-full flex flex-col gap-3 px-7"
       :class="[
         { 'items-end': position === 'right' },
