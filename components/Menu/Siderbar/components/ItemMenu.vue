@@ -21,8 +21,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+
+// stores
 import { SiderbarMenu } from "./../../../../storage/siderbarMenu/siderbarMenu";
 import { AuthStore } from "./../../../../storage/auth/auth";
+import { ProfilePanelStore } from "./../../../../storage/profilePanel/profilePanel";
 
 export default defineComponent({
   props: {
@@ -48,13 +51,19 @@ export default defineComponent({
     },
   },
   setup() {
-    const authStore = AuthStore();
     const { activeLink, changeButtonLogin } = SiderbarMenu();
+
+    const authStore = AuthStore();
+    const profilePanelStore = ProfilePanelStore();
 
     const handlerLinks = async (type: string, name: string) => {
       if (type === "login") {
         await authStore.singIn();
         return;
+      }
+
+      if (name === "sidebar.siderbarMenu.adminPanel") {
+        profilePanelStore.saveTab("projects");
       }
 
       activeLink(name);

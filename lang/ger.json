@@ -58,5 +58,13 @@
         "postgresql": "PostgreSql"
       }
     }
+  },
+  "profilePanel": {
+    "tabs": {
+      "project": "Projekte",
+      "create_project": "Erstellen Sie ein Projekt",
+      "post": "Beiträge",
+      "create_post": "Erstellen Sie einen Beitrag"
+    }
   }
 }

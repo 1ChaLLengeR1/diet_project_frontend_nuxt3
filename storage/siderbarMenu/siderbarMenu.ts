@@ -29,7 +29,7 @@ export const SiderbarMenu = defineStore("siderbarMenu", () => {
     {
       name: "sidebar.siderbarMenu.adminPanel",
       type: "panel",
-      path: ``,
+      path: `${paths.profilePanelProject}`,
       active: false,
     },
     {
