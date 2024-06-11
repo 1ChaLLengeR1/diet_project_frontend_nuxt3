@@ -17,3 +17,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+:root {
+  --button-create: #04aa6d;
+}
+</style>

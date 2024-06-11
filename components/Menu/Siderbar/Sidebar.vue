@@ -2,7 +2,7 @@
   <div
     class="relative min-w-[340px] max-w-[380px] h-screen border-r-2 border-black"
   >
-    <div class="fixed top-0 left-0 w-full h-full flex flex-col gap-3">
+    <div class="fixed top-0 left-0 min-w-[337px] h-full flex flex-col gap-3">
       <Language />
       <SiderbarTitle />
       <MenuNav position="left" />

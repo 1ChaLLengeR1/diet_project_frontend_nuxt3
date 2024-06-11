@@ -65,6 +65,28 @@
       "create_project": "Create Project",
       "post": "Posts",
       "create_post": "Create Post"
+    },
+    "autoGenerateForm": {
+      "email": "E-Mail",
+      "phoneNumber": "Phone Number",
+      "title": "Title",
+      "description": "Description",
+      "date": "Data",
+
+      "button": {
+        "addProject": "Add Project"
+      },
+
+      "messages": {
+        "required": "The :attribute must be completed.",
+        "email": "The :attribute address must be a valid email address.",
+        "max": "The length of :attribute cannot be longer than :max characters.",
+        "min": "The length of :attribute must be longer than :min characters.",
+        "image": {
+          "max": "The size of :attribute cannot exceed :max kilobytes."
+        },
+        "custom": {}
+      }
     }
   }
 }

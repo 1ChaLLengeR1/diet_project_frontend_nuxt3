@@ -65,6 +65,28 @@
       "create_project": "Erstellen Sie ein Projekt",
       "post": "Beiträge",
       "create_post": "Erstellen Sie einen Beitrag"
+    },
+    "autoGenerateForm": {
+      "email": "E-Mail",
+      "phoneNumber": "Telefonnummer",
+      "title": "Titel",
+      "description": "Beschreibung",
+      "date": "Daten",
+
+      "button": {
+        "addProject": "Projekt hinzufügen"
+      },
+
+      "messages": {
+        "required": "Das :attribute muss ausgefüllt werden.",
+        "email": "Die :attribute-Adresse muss eine gültige E-Mail-Adresse sein.",
+        "max": "Die Länge von :attribute darf nicht länger als :max Zeichen sein.",
+        "min": "Die Länge von :attribute muss länger als :min Zeichen sein.",
+        "image": {
+          "max": "Die Größe von :attribute darf :max Kilobyte nicht überschreiten."
+        },
+        "custom": {}
+      }
     }
   }
 }

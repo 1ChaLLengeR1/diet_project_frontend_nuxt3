@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full flex flex-col p-3">
+  <div class="w-full flex flex-col gap-3 p-3">
     <ProfileTab />
-    create project
+    <AutoGenerateFrom :schemaJson="create_project" />
   </div>
 </template>
 
@@ -10,13 +10,18 @@ import { defineComponent } from "vue";
 
 // components
 import ProfileTab from "./../../../../components/Tabs/ProfilePanel/Profile.vue";
+import AutoGenerateFrom from "./../../../../components/Forms/AutoGenerate.vue";
+
+// schema json form
+import create_project from "./../../../../__forms__/projects/create_project.json";
 
 export default defineComponent({
   components: {
     ProfileTab,
+    AutoGenerateFrom,
   },
   setup() {
-    return {};
+    return { create_project };
   },
 });
 </script>
