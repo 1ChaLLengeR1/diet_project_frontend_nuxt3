@@ -1,7 +1,10 @@
 <template>
   <div class="w-full flex flex-col gap-3 p-3">
     <ProfileTab />
-    <AutoGenerateFrom :schemaJson="create_project" />
+    <AutoGenerateFrom
+      :schemaJson="create_project"
+      @handler-form="handlerForm"
+    />
   </div>
 </template>
 
@@ -21,7 +24,11 @@ export default defineComponent({
     AutoGenerateFrom,
   },
   setup() {
-    return { create_project };
+    const handlerForm = async (value: any) => {
+      console.log(value);
+    };
+
+    return { create_project, handlerForm };
   },
 });
 </script>

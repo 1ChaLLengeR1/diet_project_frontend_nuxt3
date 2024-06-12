@@ -72,6 +72,8 @@
       "title": "Tytuł",
       "description": "Opis",
       "date": "Data",
+      "files": "Zdjecia",
+      "fileProject": "Zdjęcie projektu",
 
       "button": {
         "addProject": "Dodaj projekt"

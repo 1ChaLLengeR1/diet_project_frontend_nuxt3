@@ -17,12 +17,23 @@
       "rules": ["required"],
       "type": "textarea"
     },
+    "fileProject": {
+      "name": "fileProject",
+      "accept": ".jpg,.png,.gif",
+      "auto": false,
+      "columns": 4,
+      "drop": true,
+      "label": "profilePanel.autoGenerateForm.fileProject",
+      "messages": {
+        "max": "profilePanel.autoGenerateForm.messages.image.max"
+      },
+      "rules": ["max:4096"],
+      "type": "file",
+      "view": "gallery"
+    },
     "button": {
       "buttonLabel": "profilePanel.autoGenerateForm.button.addProject",
       "full": "full",
-      "addClass": {
-        "button": "font-bold bg-green border-none"
-      },
       "onclick": "handlerButton()",
       "size": "lg",
       "type": "button"

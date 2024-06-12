@@ -72,6 +72,8 @@
       "title": "Title",
       "description": "Description",
       "date": "Data",
+      "files": "Files",
+      "fileProject": "File Project",
 
       "button": {
         "addProject": "Add Project"

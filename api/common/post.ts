@@ -13,8 +13,10 @@ import type { FetchOptions } from "ohmyfetch";
 import { DictionaryStore } from "./../../storage/dictionary/dictionary";
 import { AuthStore } from "./../../storage/auth/auth";
 
-export async function apiGet(
+export async function apiPost(
   urlPath: string,
+  body: object,
+  method: "POST" | "PATCH" | "PUT" | "DELETE" = "POST",
   lvl: number = 0,
   omitHeaders: OmitHeaders = {
     AppLanguage: false,
@@ -53,9 +55,10 @@ export async function apiGet(
     const { data } = await useFetch(url, {
       onRequest({ options }: { options: FetchOptions }) {
         options.headers = headers;
-        options.method = "GET";
+        options.method = method;
+        options.body = body;
       },
-      onResponse({ response }: { response: Response }) {
+      onResponse({ response }) {
         responseApi.status = response.status;
         responseApi.ok = response.ok;
       },
@@ -76,7 +79,7 @@ export async function apiGet(
   } catch (error) {
     if (lvl < 3) {
       await new Promise((resolve) => setTimeout(resolve, 3000));
-      return apiGet(urlPath, lvl + 1);
+      return apiPost(urlPath, body, "POST", lvl + 1);
     } else {
       console.error(`${url} is not working`);
       throw error;

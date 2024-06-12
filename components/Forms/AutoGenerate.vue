@@ -1,6 +1,15 @@
 <template>
   <div class="w-full h-fit">
-    <Vueform id="profileForm" class="w-full" ref="form" v-bind="schemaForm" />
+    <Vueform
+      id="profileForm"
+      class="w-full"
+      :add-class="[
+        { 'custom-form-create-project': typeButton === 'create' },
+        { 'bg-primary': typeButton === 'change' },
+      ]"
+      ref="form"
+      v-bind="schemaForm"
+    />
   </div>
 </template>
 
@@ -16,15 +25,32 @@ export default defineComponent({
       type: Object as SchemaJsonType,
       required: true,
     },
+    typeButton: {
+      type: String,
+      required: false,
+      default: "create",
+    },
   },
-  setup(props) {
+  emits: ["handler-form"],
+  setup(props, ctx) {
     const { $i18n } = useNuxtApp();
     const schemaForm = ref();
     const form = ref();
     schemaForm.value = props.schemaJson;
 
-    const handlerButton = () => {
-      console.log(form.value.data);
+    const handlerButton = async () => {
+      await form.value.validate();
+      if (form.value.invalid) {
+        setTimeout(async () => {
+          form.value.resetValidators();
+        }, 5000);
+        return;
+      }
+      ctx.emit("handler-form", form.value.data);
+    };
+
+    const deleteFile = async (value: string) => {
+      console.log(value);
     };
 
     const convertedJsonSchema = JSON.parse(
@@ -42,6 +68,10 @@ export default defineComponent({
 
         if (key === "messages" && value.email) {
           value.email = $i18n.t(value.email);
+        }
+
+        if (value === "deleteFile()") {
+          return deleteFile;
         }
 
         if (value === "handlerButton()") {
@@ -63,7 +93,8 @@ export default defineComponent({
 .custom-form-create-project {
   button {
     background-color: var(--button-create);
-    color: black;
+    color: white;
+    font-weight: bold;
   }
   button:hover {
     transform: scale(1);

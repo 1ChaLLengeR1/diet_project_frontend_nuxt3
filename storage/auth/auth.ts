@@ -92,5 +92,12 @@ export const AuthStore = defineStore("auth", () => {
     await loadDataAuth0();
   };
 
-  return { paramsAuth0, singIn, populateDataUser };
+  const getTokenDataForApi = (): string => {
+    if (paramsAuth0.value?.__raw !== "") {
+      return paramsAuth0.value?.__raw;
+    }
+    return "";
+  };
+
+  return { paramsAuth0, singIn, populateDataUser, getTokenDataForApi };
 });
