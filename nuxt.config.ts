@@ -6,6 +6,7 @@ export default defineNuxtConfig({
       domainAuth0: process.env.DOMAIN_AUTH0,
       clientIdAuth0: process.env.CLIENT_ID_AUTH0,
       redirectUri: process.env.REDIRECT_URL,
+      audience: process.env.AUDIENCE,
     },
   },
   devtools: { enabled: true },

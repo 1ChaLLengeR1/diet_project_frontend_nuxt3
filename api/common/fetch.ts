@@ -1,6 +1,7 @@
 // variables
 const DEBUG_USER_TOKEN = false;
 const DEBUG_LANG = false;
+const DEBUG_USER_DATA = false;
 
 // types
 import type {
@@ -47,6 +48,13 @@ export async function apiGet(
       );
       if (DEBUG_USER_TOKEN) {
         console.info("auth0 token:", authStore.getTokenDataForApi());
+      }
+    }
+
+    if (authStore.getUserDataForApi() && !omitHeaders.UserData) {
+      headers.append("UserData", JSON.stringify(authStore.getUserDataForApi()));
+      if (DEBUG_USER_DATA) {
+        console.info("userData:", authStore.getUserDataForApi());
       }
     }
 

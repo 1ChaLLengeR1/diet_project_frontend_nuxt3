@@ -10,8 +10,13 @@ import type {
 } from "../../data/types/storage/auth/types";
 
 export const AuthStore = defineStore("auth", () => {
-  const { isAuthenticated, idTokenClaims, logout, loginWithRedirect } =
-    useAuth0();
+  const {
+    isAuthenticated,
+    idTokenClaims,
+    getAccessTokenSilently,
+    logout,
+    loginWithRedirect,
+  } = useAuth0();
 
   const paramsAuth0 = ref<ParamsAuth0 | undefined>({
     aud: "",
@@ -28,6 +33,7 @@ export const AuthStore = defineStore("auth", () => {
     sub: "",
     updated_at: "",
     __raw: "",
+    token: "",
   });
 
   const userData = ref<UserData>({
@@ -59,7 +65,10 @@ export const AuthStore = defineStore("auth", () => {
     if (!isAuthenticated.value) {
       return;
     }
+
     paramsAuth0.value = idTokenClaims.value;
+    paramsAuth0.value.token = await getAccessTokenSilently();
+
     userData.value = {
       name: paramsAuth0.value?.email,
       nickname: paramsAuth0.value?.nickname,
@@ -93,11 +102,18 @@ export const AuthStore = defineStore("auth", () => {
   };
 
   const getTokenDataForApi = (): string => {
-    if (paramsAuth0.value?.__raw !== "") {
-      return paramsAuth0.value?.__raw;
-    }
-    return "";
+    return paramsAuth0.value?.token!;
   };
 
-  return { paramsAuth0, singIn, populateDataUser, getTokenDataForApi };
+  const getUserDataForApi = (): UserData => {
+    return userData.value;
+  };
+
+  return {
+    paramsAuth0,
+    singIn,
+    populateDataUser,
+    getTokenDataForApi,
+    getUserDataForApi,
+  };
 });

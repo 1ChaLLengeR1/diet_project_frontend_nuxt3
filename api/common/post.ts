@@ -1,6 +1,7 @@
 // variables
-const DEBUG_USER_TOKEN = false;
-const DEBUG_LANG = false;
+const DEBUG_USER_TOKEN = true;
+const DEBUG_LANG = true;
+const DEBUG_USER_DATA = true;
 
 // types
 import type {
@@ -35,20 +36,27 @@ export async function apiPost(
   try {
     const headers: Headers = new Headers();
 
-    if (omitHeaders.AppLanguage && dictionaryStore.getAppLanguage() !== "") {
+    if (dictionaryStore.getAppLanguage() !== "" && omitHeaders.AppLanguage) {
       headers.append("AppLanguage", `${dictionaryStore.getAppLanguage()}`);
       if (DEBUG_LANG) {
         console.info("lang id:", dictionaryStore.getAppLanguage());
       }
     }
 
-    if (authStore.getTokenDataForApi() && !omitHeaders.Authorization) {
+    if (authStore.getTokenDataForApi() !== "" && omitHeaders.Authorization) {
       headers.append(
         "Authorization",
         `Bearer ${authStore.getTokenDataForApi()}`
       );
       if (DEBUG_USER_TOKEN) {
         console.info("auth0 token:", authStore.getTokenDataForApi());
+      }
+    }
+
+    if (authStore.getUserDataForApi().sub !== "" && omitHeaders.UserData) {
+      headers.append("UserData", JSON.stringify(authStore.getUserDataForApi()));
+      if (DEBUG_USER_DATA) {
+        console.info("userData:", authStore.getUserDataForApi());
       }
     }
 
@@ -68,7 +76,6 @@ export async function apiPost(
       console.error(
         `Api status is not in the confirm pool: ${responseApi.status} status`
       );
-      return;
     }
 
     return {

@@ -13,6 +13,7 @@ export interface ParamsAuth0 {
   sub?: string;
   updated_at?: string;
   __raw?: string;
+  token?: string;
 }
 
 export interface UserData {

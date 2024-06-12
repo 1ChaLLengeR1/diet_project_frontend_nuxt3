@@ -13,7 +13,7 @@ export async function collectionProject(
   const response: ResponseApiProject | undefined = await apiGet(urlPath, 0, {
     AppLanguage: true,
     UserData: true,
-    Authorization: true,
+    Authorization: false,
   });
 
   if (!response || response.ok !== true || response.status >= 400) {
@@ -24,6 +24,7 @@ export async function collectionProject(
 
   const responseData: ResponseProject = {
     collection: response.data?.collection,
+    pagination: response.data?.pagination,
     error: response.data?.error,
     status: response.data?.status,
   };

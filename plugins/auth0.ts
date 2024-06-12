@@ -8,6 +8,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     cacheLocation: "localstorage",
     authorizationParams: {
       redirect_uri: env.public.redirectUri,
+      audience: env.public.audience,
     },
   });
 

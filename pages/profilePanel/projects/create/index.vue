@@ -18,14 +18,27 @@ import AutoGenerateFrom from "./../../../../components/Forms/AutoGenerate.vue";
 // schema json form
 import create_project from "./../../../../__forms__/projects/create_project.json";
 
+// stores
+import { ProjectStore } from "./../../../../storage/project/project";
+
+// types
+import type { FormProject } from "./../../../../data/types/storage/project/types";
+
 export default defineComponent({
   components: {
     ProfileTab,
     AutoGenerateFrom,
   },
   setup() {
-    const handlerForm = async (value: any) => {
-      console.log(value);
+    const projectStore = ProjectStore();
+
+    const handlerForm = async (formValues: any) => {
+      const body: FormProject = {
+        title: formValues.title,
+        description: formValues.description,
+        file: formValues.fileProject,
+      };
+      await projectStore.createProjectF(body);
     };
 
     return { create_project, handlerForm };
