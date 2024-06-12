@@ -89,6 +89,29 @@
         },
         "custom": {}
       }
+    },
+    "projectPanel": {
+      "cards": {
+        "button": {
+          "delete": "Löschen Sie das Projekt",
+          "change": "Bearbeiten Sie das Projekt"
+        }
+      }
+    }
+  },
+  "alert": {
+    "message": {
+      "positive": {
+        "project": {
+          "addProject": "Projekt erfolgreich hinzugefügt"
+        }
+      },
+      "error": {
+        "project": {
+          "addProject": "Projekt nicht erfolgreich hinzugefügt!"
+        }
+      },
+      "warning": {}
     }
   }
 }

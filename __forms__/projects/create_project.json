@@ -21,7 +21,6 @@
       "name": "fileProject",
       "accept": ".jpg,.png,.gif",
       "auto": false,
-      "columns": 4,
       "drop": true,
       "label": "profilePanel.autoGenerateForm.fileProject",
       "messages": {

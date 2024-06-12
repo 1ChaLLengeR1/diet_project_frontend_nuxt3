@@ -89,6 +89,29 @@
         },
         "custom": {}
       }
+    },
+    "projectPanel": {
+      "cards": {
+        "button": {
+          "delete": "Usuń projekt",
+          "change": "Edytuj projekt"
+        }
+      }
+    }
+  },
+  "alert": {
+    "message": {
+      "positive": {
+        "project": {
+          "addProject": "Dodano pomyślnie projekt!"
+        }
+      },
+      "error": {
+        "project": {
+          "addProject": "Nie dodano pomyslnie projektu!"
+        }
+      },
+      "warning": {}
     }
   }
 }

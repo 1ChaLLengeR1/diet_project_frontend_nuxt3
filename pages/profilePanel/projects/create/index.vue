@@ -10,6 +10,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
+import { paths } from "./../../../../utils/paths";
 
 // components
 import ProfileTab from "./../../../../components/Tabs/ProfilePanel/Profile.vue";
@@ -31,6 +33,7 @@ export default defineComponent({
   },
   setup() {
     const projectStore = ProjectStore();
+    const router = useRouter();
 
     const handlerForm = async (formValues: any) => {
       const body: FormProject = {
@@ -39,6 +42,7 @@ export default defineComponent({
         file: formValues.fileProject,
       };
       await projectStore.createProjectF(body);
+      router.push({ path: paths.profilePanelProject });
     };
 
     return { create_project, handlerForm };

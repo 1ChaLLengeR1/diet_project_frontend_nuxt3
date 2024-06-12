@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-24 right-1 z-40">
+  <div class="fixed top-24 right-1 z-50">
     <ul class="w-full flex flex-col gap-3">
       <li v-for="(item, index) in storeAlert.collection" :key="index">
         <Positive

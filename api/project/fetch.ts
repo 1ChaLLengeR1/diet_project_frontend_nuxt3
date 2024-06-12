@@ -17,7 +17,6 @@ export async function collectionProject(
   });
 
   if (!response || response.ok !== true || response.status >= 400) {
-    console.error(`error: ${response}`);
     console.error("api response does not return the collection in Project!");
     return null;
   }

@@ -41,7 +41,7 @@ export async function apiGet(
       }
     }
 
-    if (authStore.getTokenDataForApi() && !omitHeaders.Authorization) {
+    if (authStore.getTokenDataForApi() && omitHeaders.Authorization) {
       headers.append(
         "Authorization",
         `Bearer ${authStore.getTokenDataForApi()}`
@@ -51,7 +51,7 @@ export async function apiGet(
       }
     }
 
-    if (authStore.getUserDataForApi() && !omitHeaders.UserData) {
+    if (authStore.getUserDataForApi().sub !== "" && omitHeaders.UserData) {
       headers.append("UserData", JSON.stringify(authStore.getUserDataForApi()));
       if (DEBUG_USER_DATA) {
         console.info("userData:", authStore.getUserDataForApi());
@@ -73,7 +73,6 @@ export async function apiGet(
       console.error(
         `Api status is not in the confirm pool: ${responseApi.status} status`
       );
-      return;
     }
 
     return {
