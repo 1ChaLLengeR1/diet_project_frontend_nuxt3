@@ -14,10 +14,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, watch } from "vue";
 
 // types
 type SchemaJsonType = any;
+
+// stores
+import { DictionaryStore } from "./../../storage/dictionary/dictionary";
 
 export default defineComponent({
   props: {
@@ -33,10 +36,10 @@ export default defineComponent({
   },
   emits: ["handler-form"],
   setup(props, ctx) {
+    const dictionaryStore = DictionaryStore();
     const { $i18n } = useNuxtApp();
     const schemaForm = ref();
     const form = ref();
-    schemaForm.value = props.schemaJson;
 
     const handlerButton = async () => {
       await form.value.validate();
@@ -53,36 +56,43 @@ export default defineComponent({
       console.log(value);
     };
 
-    const convertedJsonSchema = JSON.parse(
-      JSON.stringify(schemaForm.value),
-      (key, value) => {
-        if (
-          key === "buttonLabel" ||
-          key === "label" ||
-          key === "required" ||
-          key === "max" ||
-          key === "min"
-        ) {
-          return $i18n.t(value);
+    const loadForm = () => {
+      schemaForm.value = props.schemaJson;
+      const convertedJsonSchema = JSON.parse(
+        JSON.stringify(schemaForm.value),
+        (key, value) => {
+          if (
+            key === "buttonLabel" ||
+            key === "label" ||
+            key === "required" ||
+            key === "max" ||
+            key === "min"
+          ) {
+            return $i18n.t(value);
+          }
+
+          if (key === "messages" && value.email) {
+            value.email = $i18n.t(value.email);
+          }
+
+          if (value === "deleteFile()") {
+            return deleteFile;
+          }
+
+          if (value === "handlerButton()") {
+            return handlerButton;
+          }
+
+          return value;
         }
+      );
+      schemaForm.value = convertedJsonSchema;
+    };
+    loadForm();
 
-        if (key === "messages" && value.email) {
-          value.email = $i18n.t(value.email);
-        }
-
-        if (value === "deleteFile()") {
-          return deleteFile;
-        }
-
-        if (value === "handlerButton()") {
-          return handlerButton;
-        }
-
-        return value;
-      }
-    );
-
-    schemaForm.value = convertedJsonSchema;
+    watch(dictionaryStore, async () => {
+      loadForm();
+    });
 
     return { schemaForm, form };
   },

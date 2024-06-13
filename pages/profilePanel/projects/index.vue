@@ -31,7 +31,6 @@ export default defineComponent({
   },
   setup() {
     const projectStore = ProjectStore();
-
     onMounted(async () => {
       await projectStore.apiFetch();
     });

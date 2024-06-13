@@ -9,4 +9,12 @@ export interface CreateProject {
   description: string;
 }
 
-export interface Collection {}
+export interface Collection {
+  id: string;
+  userId: string;
+  ikdLanguage: string;
+  title: string;
+  description: string;
+  createdUp: string;
+  updateUp: string;
+}

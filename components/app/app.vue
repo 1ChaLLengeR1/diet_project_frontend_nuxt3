@@ -65,6 +65,7 @@ export default defineComponent({
       await dictionaryStore.apiFetch();
 
       if (authStore.getUserDataForApi().sub !== "") {
+        spinnerStore.app.info = "loadingSpinner.stores.projects";
         await projectStore.apiFetch();
       }
 

@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-full bg-main text-center d-flex flex-column pb-1">
+  <footer class="sticky w-full bg-main text-center d-flex flex-column pb-1">
     <div>
       <v-btn
         v-for="(icon, index) in icons"

@@ -25,7 +25,8 @@
     "informationMore": "Może to potrwać kilka sekund...",
     "stores": {
       "userData": "Trwa sprawdzanie automatycznego logowania...",
-      "dictionary": "Trwa ładowanie słowników..."
+      "dictionary": "Trwa ładowanie słowników...",
+      "projects": "Trwa ładowanie projektów..."
     }
   },
   "footer": {
@@ -91,6 +92,10 @@
       }
     },
     "projectPanel": {
+      "createProject": {
+        "title": "Tworzenie projektu",
+        "description": "Jeśli chcesz stworzyć projekt w trzech językach musisz dodać projekt osobno za każdym razem. Czyli tworzysz go w wersji polskiej, później angielskiej i niemieckiej. Jeśli dodasz tylko w jednej wersji to po zmianie języka on nie pojawi się."
+      },
       "cards": {
         "button": {
           "delete": "Usuń projekt",
@@ -103,12 +108,20 @@
     "message": {
       "positive": {
         "project": {
-          "addProject": "Dodano pomyślnie projekt!"
+          "addProject": "Dodano pomyślnie projekt",
+          "deleteProject": "Usunięto poprawnie projekt"
+        },
+        "file": {
+          "createFile": "Dodano zdjęcia poprawnie"
         }
       },
       "error": {
         "project": {
-          "addProject": "Nie dodano pomyslnie projektu!"
+          "addProject": "Nie dodano pomyslnie projektu!",
+          "deleteProject": "Błąd podczas usuwania projektu"
+        },
+        "file": {
+          "createFile": "Błąd podczas dodawania zdjęć"
         }
       },
       "warning": {}

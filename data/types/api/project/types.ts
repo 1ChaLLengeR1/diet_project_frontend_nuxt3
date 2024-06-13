@@ -1,6 +1,4 @@
 export interface ResponseApiProject {
-  ok: boolean;
-  status: number;
   data?: {
     collection?: Array<{
       id: string;
@@ -11,6 +9,7 @@ export interface ResponseApiProject {
       createdUp: string;
       updateUp: string;
     }>;
+    collectionRemoveId?: Array<string>;
     pagination?: {
       nextPage: number;
       previousPage: number;
@@ -23,6 +22,8 @@ export interface ResponseApiProject {
     error: string;
     status: number;
   };
+  ok: boolean;
+  status: number;
 }
 
 export interface ResponseProject {
@@ -35,6 +36,7 @@ export interface ResponseProject {
     createdUp: string;
     updateUp: string;
   }>;
+  collectionRemoveId?: Array<string>;
   pagination?: {
     nextPage: number;
     previousPage: number;

@@ -21,5 +21,6 @@ export default defineComponent({
 <style>
 :root {
   --button-create: #04aa6d;
+  --bg-main: #ff7200;
 }
 </style>

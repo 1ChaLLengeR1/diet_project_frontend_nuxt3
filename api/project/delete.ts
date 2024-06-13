@@ -5,17 +5,16 @@ import type {
   ResponseProject,
 } from "./../../data/types/api/project/types";
 
-export async function createProject(
-  body: any
+export async function deleteProject(
+  id: string
 ): Promise<ResponseProject | null> {
-  const urlPath: string = `/api/project/create`;
+  const urlPath = `/api/project/delete/${id}`;
   const response: ResponseApiProject | undefined = await apiPost(
     urlPath,
-    body,
-    "POST",
+    {},
+    "DELETE",
     0,
     {
-      AppLanguage: true,
       UserData: true,
       Authorization: true,
     }
@@ -23,13 +22,14 @@ export async function createProject(
 
   if (!response || response.ok !== true || response.status >= 400) {
     console.error(
-      "api response does not return the collection in Create Project!"
+      "api response does not return the collection in Delete Project!"
     );
     return null;
   }
 
   const responseData: ResponseProject = {
     collection: response.data?.collection,
+    collectionRemoveId: response.data?.collectionRemoveId,
     error: response.data?.error,
     status: response.data?.status,
   };

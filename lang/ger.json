@@ -25,7 +25,8 @@
     "informationMore": "Dies kann einige Sekunden dauern...",
     "stores": {
       "userData": "Automatische Anmeldung wird geprüft...",
-      "dictionary": "Wörterbücher werden geladen..."
+      "dictionary": "Wörterbücher werden geladen...",
+      "projects": "Projekte werden geladen..."
     }
   },
   "footer": {
@@ -91,6 +92,10 @@
       }
     },
     "projectPanel": {
+      "createProject": {
+        "title": "Projekt erstellen",
+        "description": "Wenn Sie ein Projekt in drei Sprachen erstellen möchten, müssen Sie das Projekt jedes Mal separat hinzufügen. Sie erstellen es also in polnischer, dann in englischer und deutscher Version. Wenn Sie nur eine Version hinzufügen, wird diese nach dem Ändern der Sprache nicht angezeigt."
+      },
       "cards": {
         "button": {
           "delete": "Löschen Sie das Projekt",
@@ -103,12 +108,20 @@
     "message": {
       "positive": {
         "project": {
-          "addProject": "Projekt erfolgreich hinzugefügt"
+          "addProject": "Projekt erfolgreich hinzugefügt",
+          "deleteProject": "Projekt korrekt gelöscht"
+        },
+        "file": {
+          "createFile": "Fotos korrekt hinzugefügt"
         }
       },
       "error": {
         "project": {
-          "addProject": "Projekt nicht erfolgreich hinzugefügt!"
+          "addProject": "Projekt nicht erfolgreich hinzugefügt!",
+          "deleteProject": "Fehler beim Löschen des Projekts"
+        },
+        "file": {
+          "createFile": "Fehler beim Hinzufügen von Fotos"
         }
       },
       "warning": {}

@@ -25,7 +25,8 @@
     "informationMore": "This may take a few seconds...",
     "stores": {
       "userData": "Automatic login is being checked...",
-      "dictionary": "Dictionaries are loading..."
+      "dictionary": "Dictionaries are loading...",
+      "projects": "Loading projects..."
     }
   },
   "footer": {
@@ -91,6 +92,10 @@
       }
     },
     "projectPanel": {
+      "createProject": {
+        "title": "Create Project",
+        "description": "If you want to create a project in three languages, you need to add the project separately each time. So you create it in Polish, then English and German versions. If you add only one version, it will not appear after changing the language."
+      },
       "cards": {
         "button": {
           "delete": "Delete project",
@@ -103,12 +108,20 @@
     "message": {
       "positive": {
         "project": {
-          "addProject": "Project added successfully!"
+          "addProject": "Project added successfully",
+          "deleteProject": "Project deleted correctly"
+        },
+        "file": {
+          "createFile": "Photos added correctly"
         }
       },
       "error": {
         "project": {
-          "addProject": "Project not added successfully!"
+          "addProject": "Project not added successfully!",
+          "deleteProject": "Error deleting project"
+        },
+        "file": {
+          "createFile": "Error adding photos"
         }
       },
       "warning": {}

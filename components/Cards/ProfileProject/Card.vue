@@ -1,9 +1,9 @@
 <template>
-  <v-card class="w-max-[400px]" max-width="400">
+  <v-card class="w-max-[400px]" :border="true" max-width="400">
     <v-img class="align-end text-white" height="200" :src="noImage" cover>
-      <v-card-title class="text-black">{{
-        formatDateTime(updateUp)
-      }}</v-card-title>
+      <v-card-title class="text-black">
+        {{ formatDateTime(updateUp) }}
+      </v-card-title>
     </v-img>
 
     <v-card-subtitle class="pt-4 text-main">
@@ -29,7 +29,11 @@
 import { defineComponent } from "vue";
 import noImage from "./../../../public/images/noImage.png";
 
+// helper
 import { formatDateTime } from "./../../../storage/common/formaters";
+
+// stores
+import { ProjectStore } from "./../../../storage/project/project";
 
 export default defineComponent({
   props: {
@@ -56,14 +60,18 @@ export default defineComponent({
     },
   },
   setup() {
+    const projectStore = ProjectStore();
+
     const changeProject = async (id: string) => {
       console.log(id);
     };
 
     const deleteProject = async (id: string) => {
-      console.log(id);
+      await projectStore.deleteProjectF(id);
     };
     return { noImage, changeProject, deleteProject, formatDateTime };
   },
 });
 </script>
+
+<style scoped></style>

@@ -14,9 +14,9 @@ import type { FetchOptions } from "ohmyfetch";
 import { DictionaryStore } from "./../../storage/dictionary/dictionary";
 import { AuthStore } from "./../../storage/auth/auth";
 
-export async function apiPost(
+export async function apiPostFormData(
   urlPath: string,
-  body: object,
+  formData: object,
   method: "POST" | "PATCH" | "PUT" | "DELETE" = "POST",
   lvl: number = 0,
   omitHeaders: OmitHeaders = {
@@ -64,7 +64,7 @@ export async function apiPost(
       onRequest({ options }: { options: FetchOptions }) {
         options.headers = headers;
         options.method = method;
-        options.body = body;
+        options.body = formData;
       },
       onResponse({ response }) {
         responseApi.status = response.status;
@@ -86,7 +86,7 @@ export async function apiPost(
   } catch (error) {
     if (lvl < 3) {
       await new Promise((resolve) => setTimeout(resolve, 3000));
-      return apiPost(urlPath, body, "POST", lvl + 1);
+      return apiPostFormData(urlPath, formData, "POST", lvl + 1);
     } else {
       console.error(`${url} is not working`);
       throw error;
