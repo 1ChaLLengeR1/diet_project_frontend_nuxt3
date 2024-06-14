@@ -128,5 +128,22 @@
       },
       "warning": {}
     }
+  },
+  "confirmButton": {
+    "default": {
+      "buttonClose": "Close"
+    },
+    "project": {
+      "title": "Delete the project",
+      "text": "Are you sure you want to delete the project named: {nameProject}?",
+      "deleteButton": "Delete the project",
+      "openDialog": "Delete the project"
+    },
+    "post": {
+      "title": "Delete post",
+      "text": "Are you sure you want to delete the post named: {namePost}?",
+      "deleteButton": "Delete post",
+      "openDialog": "Delete post"
+    }
   }
 }

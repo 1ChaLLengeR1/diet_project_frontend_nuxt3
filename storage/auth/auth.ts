@@ -23,7 +23,7 @@ export const AuthStore = defineStore("auth", () => {
     loginWithRedirect,
   } = useAuth0();
 
-  const paramsAuth0 = ref<ParamsAuth0 | undefined>({
+  const paramsAuth0 = ref<ParamsAuth0>({
     aud: "",
     email: "",
     email_verified: false,

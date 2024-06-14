@@ -18,9 +18,14 @@
       <v-btn @click="changeProject(id)" color="blue">
         {{ $t("profilePanel.projectPanel.cards.button.change") }}</v-btn
       >
-      <v-btn @click="deleteProject(id)" color="red">{{
-        $t("profilePanel.projectPanel.cards.button.delete")
-      }}</v-btn>
+      <ConfirmButton
+        text="confirmButton.project.text"
+        title="confirmButton.project.title"
+        openDialog="confirmButton.project.openDialog"
+        confirmd="confirmButton.project.deleteButton"
+        :nameValue="title"
+        @delete-handler="deleteProject(true, id)"
+      />
     </v-card-actions>
   </v-card>
 </template>
@@ -28,6 +33,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import noImage from "./../../../public/images/noImage.png";
+
+// components
+import ConfirmButton from "./../../../components/Button/ConfirmButton.vue";
 
 // helper
 import { formatDateTime } from "./../../../storage/common/formaters";
@@ -59,6 +67,9 @@ export default defineComponent({
       required: true,
     },
   },
+  components: {
+    ConfirmButton,
+  },
   setup() {
     const projectStore = ProjectStore();
 
@@ -66,8 +77,10 @@ export default defineComponent({
       console.log(id);
     };
 
-    const deleteProject = async (id: string) => {
-      await projectStore.deleteProjectF(id);
+    const deleteProject = async (confirmd: boolean, id: string) => {
+      if (confirmd) {
+        await projectStore.deleteProjectF(id);
+      }
     };
     return { noImage, changeProject, deleteProject, formatDateTime };
   },

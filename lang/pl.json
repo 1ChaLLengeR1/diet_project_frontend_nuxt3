@@ -128,5 +128,22 @@
       },
       "warning": {}
     }
+  },
+  "confirmButton": {
+    "default": {
+      "buttonClose": "Zamknij"
+    },
+    "project": {
+      "title": "Usuń projekt",
+      "text": "Czy jesteś pewny, że chcesz usunąć projekt o nazwie: {nameProject}?",
+      "deleteButton": "Usuń projekt",
+      "openDialog": "Usuń projekt"
+    },
+    "post": {
+      "title": "Usuń post",
+      "text": "Czy jesteś pewny, że chcesz usunąć post o nazwie: {namePost}?",
+      "deleteButton": "Usuń post",
+      "openDialog": "Usuń post"
+    }
   }
 }
