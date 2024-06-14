@@ -112,16 +112,18 @@
           "deleteProject": "Usunięto poprawnie projekt"
         },
         "file": {
-          "createFile": "Dodano zdjęcia poprawnie"
+          "createFile": "Dodano zdjęcia poprawnie",
+          "deleteAllFile": "Usunięto wszystkie zdjęcia"
         }
       },
       "error": {
         "project": {
           "addProject": "Nie dodano pomyslnie projektu!",
-          "deleteProject": "Błąd podczas usuwania projektu"
+          "deleteProject": "Error deleting photos"
         },
         "file": {
-          "createFile": "Błąd podczas dodawania zdjęć"
+          "createFile": "Błąd podczas dodawania zdjęć",
+          "deleteAllFile": "Wystąpił błąd podczas usuwania wszystkich zdjęć"
         }
       },
       "warning": {}

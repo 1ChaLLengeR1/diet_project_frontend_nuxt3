@@ -24,6 +24,7 @@ import create_project from "./../../../../__forms__/projects/create_project.json
 
 // stores
 import { ProjectStore } from "./../../../../storage/project/project";
+import { ProfilePanelStore } from "./../../../../storage/profilePanel/profilePanel";
 
 // types
 import type { FormProject } from "./../../../../data/types/storage/project/types";
@@ -36,6 +37,7 @@ export default defineComponent({
   },
   setup() {
     const projectStore = ProjectStore();
+    const profilePanelStore = ProfilePanelStore();
     const router = useRouter();
 
     const handlerForm = async (formValues: any) => {
@@ -46,6 +48,7 @@ export default defineComponent({
       };
       await projectStore.createProjectF(body);
       projectStore.collection = [];
+      profilePanelStore.saveTab("projects");
       router.push({ path: paths.profilePanelProject });
     };
 

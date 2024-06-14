@@ -9,7 +9,10 @@ import type {
   CreateProject,
 } from "./../../data/types/storage/project/types";
 
-import type { CreateFile } from "./../../data/types/storage/file/types";
+import type {
+  CreateFile,
+  DeleteAll,
+} from "./../../data/types/storage/file/types";
 
 // apis
 import { collectionProject } from "./../../api/project/fetch";
@@ -62,6 +65,10 @@ export const ProjectStore = defineStore("project", () => {
         file: body.file,
       };
 
+      if (!body.file) {
+        return;
+      }
+
       const responseFile = await fileStore.createFile([objectFile]);
       if (responseFile !== null && responseFile.length > 0) {
         alertStore.addToCollection(
@@ -104,10 +111,23 @@ export const ProjectStore = defineStore("project", () => {
         collection.value.splice(findId, 1);
       }
 
-      const responseDeleteFileAll = await fileStore.deleteAllFileF(
-        response.collectionRemoveId!
-      );
-      if (responseDeleteFileAll !== null) {
+      if (response.collectionRemoveId!.length === 0) {
+        return;
+      }
+
+      const ids: DeleteAll = {
+        ids: response.collectionRemoveId!,
+      };
+
+      const responseDeleteFileAll = await fileStore.deleteAllFileF(ids);
+
+      if (responseDeleteFileAll !== null && responseDeleteFileAll.length > 0) {
+        alertStore.addToCollection(
+          $i18n.t("alert.message.positive.file.deleteAllFile"),
+          "positive"
+        );
+      } else {
+        $i18n.t("alert.message.error.file.deleteAllFile"), "error";
       }
 
       return;

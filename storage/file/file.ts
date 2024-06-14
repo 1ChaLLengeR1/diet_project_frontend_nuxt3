@@ -37,7 +37,9 @@ export const FileStore = defineStore("file", () => {
     return null;
   };
 
-  const deleteAllFileF = async (ids: string[]): Promise<ItemFile[] | null> => {
+  const deleteAllFileF = async (ids: {
+    ids: string[];
+  }): Promise<ItemFile[] | null> => {
     const response = await deleteAllFile(ids);
     if (response !== null) {
       return response?.collection!;

@@ -16,3 +16,7 @@ export interface ItemFile {
   createdUp: string;
   updateUp: string;
 }
+
+export interface DeleteAll {
+  ids: string[];
+}

@@ -9,7 +9,12 @@ import type {
   UserData,
 } from "../../data/types/storage/auth/types";
 
+// stores
+import { SiderbarMenu } from "./../../storage/siderbarMenu/siderbarMenu";
+
 export const AuthStore = defineStore("auth", () => {
+  const siderbarMenu = SiderbarMenu();
+
   const {
     isAuthenticated,
     idTokenClaims,
@@ -46,6 +51,7 @@ export const AuthStore = defineStore("auth", () => {
   const localStorageUserData = ref<string>("userData");
 
   const singIn = async () => {
+    siderbarMenu.activeLink("sidebar.siderbarMenu.home");
     if (isAuthenticated.value) {
       await logout({
         logoutParams: {

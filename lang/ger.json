@@ -112,7 +112,8 @@
           "deleteProject": "Projekt korrekt gelöscht"
         },
         "file": {
-          "createFile": "Fotos korrekt hinzugefügt"
+          "createFile": "Fotos korrekt hinzugefügt",
+          "deleteAllFile": "Alle Fotos gelöscht"
         }
       },
       "error": {
@@ -121,7 +122,8 @@
           "deleteProject": "Fehler beim Löschen des Projekts"
         },
         "file": {
-          "createFile": "Fehler beim Hinzufügen von Fotos"
+          "createFile": "Fehler beim Hinzufügen von Fotos",
+          "deleteAllFile": "Fehler beim Löschen der Fotos"
         }
       },
       "warning": {}

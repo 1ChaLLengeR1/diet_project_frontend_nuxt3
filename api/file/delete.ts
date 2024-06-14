@@ -5,9 +5,9 @@ import type {
   ResponseFile,
 } from "./../../data/types/api/file/types";
 
-export async function deleteAllFile(
-  ids: string[]
-): Promise<ResponseFile | null> {
+export async function deleteAllFile(ids: {
+  ids: string[];
+}): Promise<ResponseFile | null> {
   const urlPath = `/api/file/deleteAll`;
   const response: ResponseApiFile | undefined = await apiPost(
     urlPath,
