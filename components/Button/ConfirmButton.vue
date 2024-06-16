@@ -17,7 +17,7 @@
           <v-spacer></v-spacer>
 
           <v-btn @click="dialog = false">
-            {{ $t("confirmButton.default.buttonClose") }}
+            {{ $t("confirmButton.default.buttons.close") }}
           </v-btn>
 
           <v-btn @click="deleteHandler"> {{ $t(`${confirmd}`) }}</v-btn>

@@ -52,7 +52,6 @@ export default defineComponent({
     const menuMobileStore = MenuMobileStore();
     const projectStore = ProjectStore();
 
-    const spinnerInfo = ref<string>("");
     const mobile = ref<boolean>(false);
 
     onMounted(async () => {
@@ -95,7 +94,7 @@ export default defineComponent({
       window.removeEventListener("resize", checkScreenWidth);
     });
 
-    return { mobile, spinnerStore, spinnerInfo, menuMobileStore };
+    return { mobile, spinnerStore, menuMobileStore };
   },
 });
 </script>

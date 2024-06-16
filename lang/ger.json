@@ -26,7 +26,8 @@
     "stores": {
       "userData": "Automatische Anmeldung wird geprüft...",
       "dictionary": "Wörterbücher werden geladen...",
-      "projects": "Projekte werden geladen..."
+      "projects": "Projekte werden geladen...",
+      "fileMultipleProject": "Verschiedene Fotos aus Projekten werden geladen..."
     }
   },
   "footer": {
@@ -131,7 +132,10 @@
   },
   "confirmButton": {
     "default": {
-      "buttonClose": "Schließen"
+      "buttons": {
+        "close": "Schließen",
+        "description": "Beschreibung"
+      }
     },
     "project": {
       "title": "Löschen des Projekts",

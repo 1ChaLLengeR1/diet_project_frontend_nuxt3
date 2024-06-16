@@ -7,6 +7,7 @@ import type { LoadingSpinner } from "./../../data/types/spinners/types";
 
 export const SpinnerStore = defineStore("spinner", () => {
   const app = ref<LoadingSpinner>({ active: false, info: "" });
+  const projectPanel = ref<LoadingSpinner>({ active: false, info: "" });
 
-  return { app };
+  return { app, projectPanel };
 });

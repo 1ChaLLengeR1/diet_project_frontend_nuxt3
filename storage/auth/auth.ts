@@ -50,18 +50,22 @@ export const AuthStore = defineStore("auth", () => {
   const localStorageParamsAuth0 = ref<string>("paramsAuth0");
   const localStorageUserData = ref<string>("userData");
 
+  const removeParamsAuth0 = async () => {
+    await logout({
+      logoutParams: {
+        returnTo: window.location.origin,
+      },
+    });
+    paramsAuth0.value = {} as ParamsAuth0;
+    userData.value = {} as UserData;
+    localStorage.removeItem(localStorageParamsAuth0.value);
+    localStorage.removeItem(localStorageUserData.value);
+  };
+
   const singIn = async () => {
     siderbarMenu.activeLink("sidebar.siderbarMenu.home");
     if (isAuthenticated.value) {
-      await logout({
-        logoutParams: {
-          returnTo: window.location.origin,
-        },
-      });
-      paramsAuth0.value = {} as ParamsAuth0;
-      userData.value = {} as UserData;
-      localStorage.removeItem(localStorageParamsAuth0.value);
-      localStorage.removeItem(localStorageUserData.value);
+      await removeParamsAuth0();
       return;
     }
     await loginWithRedirect();
@@ -73,13 +77,19 @@ export const AuthStore = defineStore("auth", () => {
     }
 
     paramsAuth0.value = idTokenClaims.value;
-    paramsAuth0.value.token = await getAccessTokenSilently();
-
     userData.value = {
       name: paramsAuth0.value?.email,
       nickname: paramsAuth0.value?.nickname,
       sub: paramsAuth0.value?.sub,
     };
+
+    if (new Date(paramsAuth0.value?.exp! * 1000) < new Date()) {
+      console.error("token is not expired");
+      await removeParamsAuth0();
+      return;
+    }
+
+    paramsAuth0.value.token = await getAccessTokenSilently();
 
     localStorage.setItem(
       localStorageParamsAuth0.value,

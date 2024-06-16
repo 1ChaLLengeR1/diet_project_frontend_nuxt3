@@ -26,7 +26,8 @@
     "stores": {
       "userData": "Automatic login is being checked...",
       "dictionary": "Dictionaries are loading...",
-      "projects": "Loading projects..."
+      "projects": "Loading projects...",
+      "fileMultipleProject": "Loading various photos from projects..."
     }
   },
   "footer": {
@@ -131,7 +132,10 @@
   },
   "confirmButton": {
     "default": {
-      "buttonClose": "Close"
+      "buttons": {
+        "close": "Close",
+        "description": "Description"
+      }
     },
     "project": {
       "title": "Delete the project",

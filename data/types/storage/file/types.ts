@@ -20,3 +20,7 @@ export interface ItemFile {
 export interface DeleteAll {
   ids: string[];
 }
+
+export interface CollectionIds {
+  ids: string[];
+}

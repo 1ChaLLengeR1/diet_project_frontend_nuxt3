@@ -26,7 +26,8 @@
     "stores": {
       "userData": "Trwa sprawdzanie automatycznego logowania...",
       "dictionary": "Trwa ładowanie słowników...",
-      "projects": "Trwa ładowanie projektów..."
+      "projects": "Trwa ładowanie projektów...",
+      "fileMultipleProject": "Trwa wczytywanie różnych zdjęć z projektów..."
     }
   },
   "footer": {
@@ -131,7 +132,10 @@
   },
   "confirmButton": {
     "default": {
-      "buttonClose": "Zamknij"
+      "buttons": {
+        "close": "Zamknij",
+        "description": "Opis"
+      }
     },
     "project": {
       "title": "Usuń projekt",
