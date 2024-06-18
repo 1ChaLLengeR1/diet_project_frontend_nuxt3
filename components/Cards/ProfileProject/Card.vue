@@ -57,6 +57,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 import noImage from "./../../../public/images/noImage.png";
 
 // components
@@ -64,6 +65,7 @@ import ConfirmButton from "./../../../components/Button/ConfirmButton.vue";
 
 // helper
 import { formatDateTime } from "./../../../storage/common/formaters";
+import { paths } from "./../../../utils/paths";
 
 // stores
 import { ProjectStore } from "./../../../storage/project/project";
@@ -98,9 +100,10 @@ export default defineComponent({
   setup() {
     const projectStore = ProjectStore();
     const show = ref<boolean>(false);
+    const router = useRouter();
 
     const changeProject = async (id: string) => {
-      console.log(id);
+      router.push({ path: `${paths.profilePanelProjectChange}/${id}` });
     };
 
     const deleteProject = async (confirmd: boolean, id: string) => {

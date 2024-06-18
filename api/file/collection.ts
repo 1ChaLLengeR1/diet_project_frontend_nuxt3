@@ -1,5 +1,6 @@
 // general
 import { apiPost } from "./../common/post";
+import { apiGet } from "./../common/fetch";
 
 // types
 import type { CollectionIds } from "./../../data/types/storage/file/types";
@@ -21,6 +22,29 @@ export async function collectionFileMultiple(body: CollectionIds) {
     console.error(
       "api response does not return the collection in FileMultiple!"
     );
+    return null;
+  }
+
+  const responseData: ResponseFile = {
+    collection: response.data?.collection,
+    error: response.data?.error,
+    status: response.data?.status,
+  };
+
+  return responseData;
+}
+
+export async function collectionOne(id: string) {
+  const urlPath: string = `/api/file/collection/${id}`;
+
+  const response: ResponseApiFile = await apiGet(urlPath, 0, {
+    AppLanguage: false,
+    Authorization: false,
+    UserData: true,
+  });
+
+  if (!response || response.ok !== true || response.status >= 400) {
+    console.error("api response does not return the collection file one!");
     return null;
   }
 

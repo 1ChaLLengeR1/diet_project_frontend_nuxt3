@@ -9,15 +9,29 @@ import type {
   CollectionIds,
 } from "./../../data/types/storage/file/types";
 
+import type { ResponseFile } from "./../../data/types/api/file/types";
+
 // apis
 import { uploadFile } from "./../../api/file/post";
-import { deleteAllFile } from "./../../api/file/delete";
-import { collectionFileMultiple } from "./../../api/file/collection";
+import { deleteAllFile, deleteImage } from "./../../api/file/delete";
+import {
+  collectionFileMultiple,
+  collectionOne,
+} from "./../../api/file/collection";
+
+// stores
+import { AlertStore } from "./../alert/alert";
 
 export const FileStore = defineStore("file", () => {
+  const { $i18n } = useNuxtApp();
+  const alertStore = AlertStore();
   const collectionMultiple = ref<ItemFile[]>([]);
 
   const apiGetMultiple = async (ids: CollectionIds) => {
+    if (collectionMultiple.value === null) {
+      return;
+    }
+
     if (collectionMultiple.value.length > 0) {
       return;
     }
@@ -30,14 +44,43 @@ export const FileStore = defineStore("file", () => {
     collectionMultiple.value = response?.collection!;
   };
 
+  const apiFetchOne = async (id: string): Promise<ItemFile | null> => {
+    const response: ResponseFile | null = await collectionOne(id);
+    if (response !== null && response.collection) {
+      return response.collection[0];
+    }
+
+    return null;
+  };
+
   const findImage = (id: string): string | null => {
+    if (collectionMultiple.value === null) {
+      return null;
+    }
     const findImage = collectionMultiple.value.find(
       (item) => item.projectId === id
     );
-    if (findImage !== undefined) {
-      return findImage.url;
+
+    if (findImage !== undefined || findImage !== null) {
+      return findImage?.url!;
     }
     return null;
+  };
+
+  const deleteImageF = async (id: string) => {
+    const response = await deleteImage(id);
+    console.log(response);
+    if (response !== null) {
+      alertStore.addToCollection(
+        $i18n.t("alert.message.positive.file.deleteFile"),
+        "positive"
+      );
+      return;
+    }
+    alertStore.addToCollection(
+      $i18n.t("alert.message.error.file.deleteFile"),
+      "error"
+    );
   };
 
   const createFile = async (
@@ -75,5 +118,12 @@ export const FileStore = defineStore("file", () => {
     return null;
   };
 
-  return { findImage, createFile, deleteAllFileF, apiGetMultiple };
+  return {
+    findImage,
+    createFile,
+    deleteAllFileF,
+    apiGetMultiple,
+    apiFetchOne,
+    deleteImageF,
+  };
 });

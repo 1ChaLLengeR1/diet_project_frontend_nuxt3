@@ -78,7 +78,8 @@
       "fileProject": "File Project",
 
       "button": {
-        "addProject": "Add Project"
+        "addProject": "Add Project",
+        "changeProject": "Update the project"
       },
 
       "messages": {
@@ -114,7 +115,8 @@
         },
         "file": {
           "createFile": "Photos added correctly",
-          "deleteAllFile": "All photos deleted"
+          "deleteAllFile": "All photos deleted",
+          "deleteFile": "Photo removed"
         }
       },
       "error": {
@@ -124,7 +126,8 @@
         },
         "file": {
           "createFile": "Error adding photos",
-          "deleteAllFile": "All photos deleted"
+          "deleteAllFile": "All photos deleted",
+          "deleteFile": "Error deleting photo"
         }
       },
       "warning": {}

@@ -5,7 +5,7 @@
       class="w-full"
       :add-class="[
         { 'custom-form-create-project': typeButton === 'create' },
-        { 'bg-primary': typeButton === 'change' },
+        { 'custom-form-change-project': typeButton === 'change' },
       ]"
       ref="form"
       v-bind="schemaForm"
@@ -33,8 +33,18 @@ export default defineComponent({
       required: false,
       default: "create",
     },
+    loadForm: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    dataForm: {
+      type: Object as SchemaJsonType,
+      required: false,
+      default: null,
+    },
   },
-  emits: ["handler-form"],
+  emits: ["handler-form", "handler-deleteImage"],
   setup(props, ctx) {
     const dictionaryStore = DictionaryStore();
     const { $i18n } = useNuxtApp();
@@ -52,11 +62,20 @@ export default defineComponent({
       ctx.emit("handler-form", form.value.data);
     };
 
+    const loadForm = async () => {
+      if (props.loadForm) {
+        setTimeout(() => {
+          form.value.update(props.dataForm);
+        }, 500);
+      }
+    };
+    loadForm();
+
     const deleteFile = async (value: string) => {
-      console.log(value);
+      ctx.emit("handler-deleteImage", value);
     };
 
-    const loadForm = () => {
+    const generatorForm = () => {
       schemaForm.value = props.schemaJson;
       const convertedJsonSchema = JSON.parse(
         JSON.stringify(schemaForm.value),
@@ -88,10 +107,10 @@ export default defineComponent({
       );
       schemaForm.value = convertedJsonSchema;
     };
-    loadForm();
+    generatorForm();
 
     watch(dictionaryStore, async () => {
-      loadForm();
+      generatorForm();
     });
 
     return { schemaForm, form };
@@ -103,6 +122,17 @@ export default defineComponent({
 .custom-form-create-project {
   button {
     background-color: var(--button-create);
+    color: white;
+    font-weight: bold;
+  }
+  button:hover {
+    transform: scale(1);
+  }
+}
+
+.custom-form-change-project {
+  button {
+    background-color: blue;
     color: white;
     font-weight: bold;
   }

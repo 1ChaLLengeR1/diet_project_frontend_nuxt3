@@ -78,7 +78,8 @@
       "fileProject": "Zdjęcie projektu",
 
       "button": {
-        "addProject": "Dodaj projekt"
+        "addProject": "Dodaj projekt",
+        "changeProject": "Zaktualizuj projekt"
       },
 
       "messages": {
@@ -114,7 +115,8 @@
         },
         "file": {
           "createFile": "Dodano zdjęcia poprawnie",
-          "deleteAllFile": "Usunięto wszystkie zdjęcia"
+          "deleteAllFile": "Usunięto wszystkie zdjęcia",
+          "deleteFile": "Usunięto zdjęcie"
         }
       },
       "error": {
@@ -124,7 +126,8 @@
         },
         "file": {
           "createFile": "Błąd podczas dodawania zdjęć",
-          "deleteAllFile": "Wystąpił błąd podczas usuwania wszystkich zdjęć"
+          "deleteAllFile": "Wystąpił błąd podczas usuwania wszystkich zdjęć",
+          "deleteFile": "Błąd podczas usuwania zdjęcia"
         }
       },
       "warning": {}

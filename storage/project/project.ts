@@ -9,13 +9,15 @@ import type {
   CreateProject,
 } from "./../../data/types/storage/project/types";
 
+import type { ResponseProject } from "./../../data/types/api/project/types";
+
 import type {
   CreateFile,
   DeleteAll,
 } from "./../../data/types/storage/file/types";
 
 // apis
-import { collectionProject } from "./../../api/project/fetch";
+import { collectionProject, collectionOne } from "./../../api/project/fetch";
 import { createProject } from "./../../api/project/post";
 import { deleteProject } from "./../../api/project/delete";
 
@@ -42,6 +44,16 @@ export const ProjectStore = defineStore("project", () => {
     if (response !== null && response?.collection) {
       collection.value = response?.collection;
     }
+  };
+
+  const apiFetchOne = async (id: string): Promise<Collection | null> => {
+    const response: ResponseProject | null = await collectionOne(id);
+
+    if (response !== null && response.collection) {
+      return response.collection[0];
+    }
+
+    return null;
   };
 
   const createProjectF = async (body: FormProject) => {
@@ -149,5 +161,6 @@ export const ProjectStore = defineStore("project", () => {
     createProjectF,
     deleteProjectF,
     refreschCollection,
+    apiFetchOne,
   };
 });
