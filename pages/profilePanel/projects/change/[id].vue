@@ -28,6 +28,9 @@ import { FileStore } from "./../../../../storage/file/file";
 // schema json form
 import change_project from "./../../../../__forms__/projects/change_project.json";
 
+// types
+import type { FormProject } from "./../../../../data/types/storage/project/types";
+
 export default defineComponent({
   components: {
     ProfileTab,
@@ -37,8 +40,12 @@ export default defineComponent({
     const route = useRoute();
     const projectStore = ProjectStore();
     const fileStore = FileStore();
+
     const loadDatas = ref<boolean>(false);
     const fileId = ref<string>("");
+    const fileFolder = ref<string>("");
+    const id = ref<string>(route.params.id as string);
+
     const dataFrom = ref<{
       title: string;
       description: string;
@@ -47,18 +54,29 @@ export default defineComponent({
 
     onMounted(async () => {
       loadDatas.value = false;
-      const id: string = route.params.id as string;
-      const project = await projectStore.apiFetchOne(id);
-      const file = await fileStore.apiFetchOne(id);
+
+      const project = await projectStore.apiFetchOne(id.value);
+      const file = await fileStore.apiFetchOne(id.value);
+
       fileId.value = file?.id!;
+      fileFolder.value = file?.folder!;
+
       dataFrom.value.title = project?.title!;
       dataFrom.value.description = project?.description!;
       dataFrom.value.fileProject = file?.url!;
+
       loadDatas.value = true;
     });
 
     const handlerForm = async (dataForm: any) => {
-      console.log(dataForm);
+      const body: FormProject = {
+        title: dataForm.title,
+        description: dataForm.description,
+        file: dataForm.fileProject,
+        fileFolder: fileFolder.value,
+      };
+
+      await projectStore.changeProjectF(id.value, body);
     };
 
     const handlerDeleteImage = async () => {

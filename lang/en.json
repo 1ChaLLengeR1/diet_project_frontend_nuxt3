@@ -111,6 +111,7 @@
       "positive": {
         "project": {
           "addProject": "Project added successfully",
+          "changeProject": "The update went correctly",
           "deleteProject": "Project deleted correctly"
         },
         "file": {
@@ -122,6 +123,7 @@
       "error": {
         "project": {
           "addProject": "Project not added successfully!",
+          "changeProject": "Error while updating the project",
           "deleteProject": "Error deleting project"
         },
         "file": {

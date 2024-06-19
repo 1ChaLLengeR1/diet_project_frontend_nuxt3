@@ -1,6 +1,7 @@
 export interface FormProject {
   title: string;
   description: string;
+  fileFolder?: string;
   file: File;
 }
 

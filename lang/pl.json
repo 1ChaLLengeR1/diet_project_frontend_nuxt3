@@ -111,6 +111,7 @@
       "positive": {
         "project": {
           "addProject": "Dodano pomyślnie projekt",
+          "changeProject": "Aktualizacja przebiegła poprawnie",
           "deleteProject": "Usunięto poprawnie projekt"
         },
         "file": {
@@ -122,7 +123,8 @@
       "error": {
         "project": {
           "addProject": "Nie dodano pomyslnie projektu!",
-          "deleteProject": "Error deleting photos"
+          "changeProject": "Błąd podczas aktualizacji projektu",
+          "deleteProject": "Błąd podczas usuwania projektu"
         },
         "file": {
           "createFile": "Błąd podczas dodawania zdjęć",

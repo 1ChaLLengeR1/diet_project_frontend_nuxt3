@@ -69,7 +69,6 @@ export const FileStore = defineStore("file", () => {
 
   const deleteImageF = async (id: string) => {
     const response = await deleteImage(id);
-    console.log(response);
     if (response !== null) {
       alertStore.addToCollection(
         $i18n.t("alert.message.positive.file.deleteFile"),

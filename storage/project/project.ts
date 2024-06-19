@@ -20,6 +20,7 @@ import type {
 import { collectionProject, collectionOne } from "./../../api/project/fetch";
 import { createProject } from "./../../api/project/post";
 import { deleteProject } from "./../../api/project/delete";
+import { changeProeject } from "./../../api/project/change";
 
 // stores
 import { AlertStore } from "./../alert/alert";
@@ -103,6 +104,25 @@ export const ProjectStore = defineStore("project", () => {
     );
   };
 
+  const changeProjectF = async (id: string, body: FormProject) => {
+    const changeProject: { title: string; description: string } = {
+      title: body.title,
+      description: body.description,
+    };
+
+    const responseProject = await changeProeject(id, changeProject);
+    if (responseProject !== null) {
+      alertStore.addToCollection(
+        $i18n.t("alert.message.positive.project.changeProject"),
+        "positive"
+      );
+    }
+    alertStore.addToCollection(
+      $i18n.t("alert.message.error.project.changeProject"),
+      "error"
+    );
+  };
+
   const deleteProjectF = async (id: string) => {
     const response = await deleteProject(id);
     if (
@@ -162,5 +182,6 @@ export const ProjectStore = defineStore("project", () => {
     deleteProjectF,
     refreschCollection,
     apiFetchOne,
+    changeProjectF,
   };
 });
