@@ -118,6 +118,7 @@ export const FileStore = defineStore("file", () => {
   };
 
   return {
+    collectionMultiple,
     findImage,
     createFile,
     deleteAllFileF,

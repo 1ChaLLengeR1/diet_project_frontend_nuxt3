@@ -6,7 +6,7 @@
       :src="img !== null ? img : noImage"
       cover
     >
-      <v-card-title class="text-black">
+      <v-card-title class="text-main">
         {{ formatDateTime(updateUp) }}
       </v-card-title>
     </v-img>
@@ -109,6 +109,7 @@ export default defineComponent({
     const deleteProject = async (confirmd: boolean, id: string) => {
       if (confirmd) {
         await projectStore.deleteProjectF(id);
+        await projectStore.apiFetch(true, 1, true);
       }
     };
     return { noImage, changeProject, deleteProject, formatDateTime, show };

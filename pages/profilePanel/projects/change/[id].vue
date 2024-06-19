@@ -15,7 +15,8 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import { paths } from "./../../../../utils/paths";
 
 // components
 import ProfileTab from "./../../../../components/Tabs/ProfilePanel/Profile.vue";
@@ -38,6 +39,7 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute();
+    const router = useRouter();
     const projectStore = ProjectStore();
     const fileStore = FileStore();
 
@@ -77,9 +79,16 @@ export default defineComponent({
       };
 
       await projectStore.changeProjectF(id.value, body);
+      await projectStore.apiFetch(true);
+
+      projectStore.collection = [];
+      setTimeout(() => {
+        router.push({ path: paths.profilePanelProject });
+      }, 1000);
     };
 
     const handlerDeleteImage = async () => {
+      fileStore.collectionMultiple = [];
       await fileStore.deleteImageF(fileId.value);
     };
 

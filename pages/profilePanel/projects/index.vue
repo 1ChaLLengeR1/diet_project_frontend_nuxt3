@@ -14,6 +14,14 @@
         :updateUp="item.updateUp"
       />
     </ul>
+    <v-pagination
+      v-if="projectStore.pagination.totalPages > 1"
+      v-model="projectStore.pagination.currentPage"
+      @click="changePage"
+      :length="projectStore.pagination.totalPages"
+      next-icon="mdi-menu-right"
+      prev-icon="mdi-menu-left"
+    ></v-pagination>
   </div>
 </template>
 
@@ -44,6 +52,10 @@ export default defineComponent({
     const fileStore = FileStore();
     const spinnerStore = SpinnerStore();
 
+    const changePage = async () => {
+      await projectStore.loadPagePagination();
+    };
+
     onMounted(async () => {
       spinnerStore.projectPanel.active = true;
       spinnerStore.app.info = "loadingSpinner.stores.fileMultipleProject";
@@ -56,7 +68,7 @@ export default defineComponent({
       spinnerStore.projectPanel.active = false;
     });
 
-    return { projectStore, fileStore, spinnerStore };
+    return { projectStore, fileStore, spinnerStore, changePage };
   },
 });
 </script>

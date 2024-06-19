@@ -10,6 +10,7 @@ import type {
 } from "./../../data/types/storage/project/types";
 
 import type { ResponseProject } from "./../../data/types/api/project/types";
+import type { Pagination } from "./../../data/types/storage/types";
 
 import type {
   CreateFile,
@@ -31,8 +32,21 @@ export const ProjectStore = defineStore("project", () => {
   const alertStore = AlertStore();
   const fileStore = FileStore();
   const collection = ref<Collection[]>([]);
+  const pagination = ref<Pagination>({
+    nextPage: 0,
+    previousPage: 0,
+    currentPage: 0,
+    totalPages: 0,
+    twoAfter: 0,
+    twoBelow: 0,
+    offset: 0,
+  });
 
-  const apiFetch = async (reset: boolean = false) => {
+  const apiFetch = async (
+    reset: boolean = false,
+    page: number = 1,
+    privateMode: boolean = true
+  ) => {
     if (reset === true) {
       collection.value = [];
     }
@@ -41,9 +55,10 @@ export const ProjectStore = defineStore("project", () => {
       return;
     }
 
-    const response = await collectionProject(1, true);
+    const response = await collectionProject(page, privateMode);
     if (response !== null && response?.collection) {
       collection.value = response?.collection;
+      pagination.value = response?.pagination!;
     }
   };
 
@@ -88,13 +103,7 @@ export const ProjectStore = defineStore("project", () => {
           $i18n.t("alert.message.positive.file.createFile"),
           "positive"
         );
-      } else {
-        alertStore.addToCollection(
-          $i18n.t("alert.message.positive.file.createFile"),
-          "error"
-        );
       }
-
       return;
     }
 
@@ -105,17 +114,49 @@ export const ProjectStore = defineStore("project", () => {
   };
 
   const changeProjectF = async (id: string, body: FormProject) => {
+    let folder: string;
     const changeProject: { title: string; description: string } = {
       title: body.title,
       description: body.description,
     };
 
     const responseProject = await changeProeject(id, changeProject);
-    if (responseProject !== null) {
+    if (responseProject !== null && responseProject.collection) {
       alertStore.addToCollection(
         $i18n.t("alert.message.positive.project.changeProject"),
         "positive"
       );
+
+      if (body.file === null) {
+        return;
+      }
+
+      folder = responseProject?.collection[0].title;
+      if (body.fileFolder !== undefined) {
+        folder = body.fileFolder;
+      }
+
+      const objectFile: CreateFile = {
+        projectId: responseProject?.collection[0].id,
+        folder: folder,
+        name: responseProject?.collection[0].title,
+        file: body.file,
+      };
+
+      const responseFile = await fileStore.createFile([objectFile]);
+      if (responseFile !== null && responseFile.length > 0) {
+        alertStore.addToCollection(
+          $i18n.t("alert.message.positive.file.createFile"),
+          "positive"
+        );
+      } else {
+        alertStore.addToCollection(
+          $i18n.t("alert.message.positive.file.createFile"),
+          "error"
+        );
+      }
+
+      return;
     }
     alertStore.addToCollection(
       $i18n.t("alert.message.error.project.changeProject"),
@@ -134,18 +175,6 @@ export const ProjectStore = defineStore("project", () => {
         $i18n.t("alert.message.positive.project.deleteProject"),
         "positive"
       );
-
-      const findId = collection.value.findIndex(
-        (item) => item.id === response.collection[0].id
-      );
-
-      if (findId !== -1) {
-        collection.value.splice(findId, 1);
-      }
-
-      if (response.collectionRemoveId!.length === 0) {
-        return;
-      }
 
       const ids: DeleteAll = {
         ids: response.collectionRemoveId!,
@@ -171,11 +200,16 @@ export const ProjectStore = defineStore("project", () => {
     );
   };
 
+  const loadPagePagination = async () => {
+    await apiFetch(true, pagination.value.currentPage, true);
+  };
+
   const refreschCollection = async () => {
     await apiFetch(true);
   };
 
   return {
+    pagination,
     collection,
     apiFetch,
     createProjectF,
@@ -183,5 +217,6 @@ export const ProjectStore = defineStore("project", () => {
     refreschCollection,
     apiFetchOne,
     changeProjectF,
+    loadPagePagination,
   };
 });
