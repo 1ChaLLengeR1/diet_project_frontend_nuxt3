@@ -2,7 +2,7 @@
   <v-card>
     <v-tabs v-model="tab" :color="colorsStore.main">
       <div class="w-full flex justify-between">
-        <div class="w-fit flex">
+        <div class="w-fit hidden sm:flex">
           <v-tab
             v-for="(tab, index) in profilePanelStore.tabs"
             :key="index"
@@ -12,6 +12,7 @@
             <NuxtLink :to="tab.path"> {{ $t(`${tab.name}`) }} </NuxtLink>
           </v-tab>
         </div>
+        <SelectTab :links="profilePanelStore.tabs" class="sm:hidden" />
         <div class="w-fit flex">
           <v-tab
             v-for="(tab, index) in profilePanelStore.filterActiveCreateTabs(
@@ -38,7 +39,13 @@ import { paths } from "./../../../utils/paths";
 import { ProfilePanelStore } from "./../../../storage/profilePanel/profilePanel";
 import { ColorsStore } from "./../../../storage/colors/colors";
 
+// components
+import SelectTab from "./../Select.vue";
+
 export default defineComponent({
+  components: {
+    SelectTab,
+  },
   setup() {
     const router = useRouter();
     const route = useRoute();
@@ -55,7 +62,14 @@ export default defineComponent({
       tab.value = profilePanelStore.activeTab();
     });
 
-    return { tab, profilePanelStore, colorsStore, paths, route, goToPage };
+    return {
+      tab,
+      profilePanelStore,
+      colorsStore,
+      paths,
+      route,
+      goToPage,
+    };
   },
 });
 </script>

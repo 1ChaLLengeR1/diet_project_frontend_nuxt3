@@ -18,7 +18,7 @@
     <v-card-actions>
       <v-btn
         color="orange-lighten-2"
-        :text="$t('confirmButton.default.buttons.description')"
+        :text="$t('tabs.confirmButton.default.buttons.description')"
       ></v-btn>
 
       <v-spacer></v-spacer>
@@ -44,10 +44,10 @@
         {{ $t("profilePanel.projectPanel.cards.button.change") }}</v-btn
       >
       <ConfirmButton
-        text="confirmButton.project.text"
-        title="confirmButton.project.title"
-        openDialog="confirmButton.project.openDialog"
-        confirmd="confirmButton.project.deleteButton"
+        text="tabs.confirmButton.project.text"
+        title="tabs.confirmButton.project.title"
+        openDialog="tabs.confirmButton.project.openDialog"
+        confirmd="tabs.confirmButton.project.deleteButton"
         :nameValue="title"
         @delete-handler="deleteProject(true, id)"
       />
@@ -109,7 +109,7 @@ export default defineComponent({
     const deleteProject = async (confirmd: boolean, id: string) => {
       if (confirmd) {
         await projectStore.deleteProjectF(id);
-        await projectStore.apiFetch(true, 1, true);
+        await projectStore.apiFetch(true, 1);
       }
     };
     return { noImage, changeProject, deleteProject, formatDateTime, show };

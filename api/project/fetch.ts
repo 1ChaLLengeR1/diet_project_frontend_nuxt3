@@ -6,10 +6,9 @@ import type {
 } from "./../../data/types/api/project/types";
 
 export async function collectionProject(
-  page: number = 1,
-  privateMode: boolean = false
+  page: number = 1
 ): Promise<ResponseProject | null> {
-  const urlPath: string = `/api/project/collection/${page}?private=${privateMode}`;
+  const urlPath: string = `/api/project/collection/${page}`;
   const response: ResponseApiProject | undefined = await apiGet(urlPath, 0, {
     AppLanguage: true,
     UserData: true,

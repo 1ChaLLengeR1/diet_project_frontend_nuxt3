@@ -135,24 +135,29 @@
       "warning": {}
     }
   },
-  "confirmButton": {
-    "default": {
-      "buttons": {
-        "close": "Zamknij",
-        "description": "Opis"
+  "tabs": {
+    "select": {
+      "pages": "Strony"
+    },
+    "confirmButton": {
+      "default": {
+        "buttons": {
+          "close": "Zamknij",
+          "description": "Opis"
+        }
+      },
+      "project": {
+        "title": "Usuń projekt",
+        "text": "Czy jesteś pewny, że chcesz usunąć projekt o nazwie: {nameProject}?",
+        "deleteButton": "Usuń projekt",
+        "openDialog": "Usuń projekt"
+      },
+      "post": {
+        "title": "Usuń post",
+        "text": "Czy jesteś pewny, że chcesz usunąć post o nazwie: {namePost}?",
+        "deleteButton": "Usuń post",
+        "openDialog": "Usuń post"
       }
-    },
-    "project": {
-      "title": "Usuń projekt",
-      "text": "Czy jesteś pewny, że chcesz usunąć projekt o nazwie: {nameProject}?",
-      "deleteButton": "Usuń projekt",
-      "openDialog": "Usuń projekt"
-    },
-    "post": {
-      "title": "Usuń post",
-      "text": "Czy jesteś pewny, że chcesz usunąć post o nazwie: {namePost}?",
-      "deleteButton": "Usuń post",
-      "openDialog": "Usuń post"
     }
   }
 }

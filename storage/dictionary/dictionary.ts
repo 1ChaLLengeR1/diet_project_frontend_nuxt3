@@ -25,13 +25,9 @@ export const DictionaryStore = defineStore("dictionary", () => {
     }
 
     const response = await collectionDictionary();
-    if (response === null) {
-      return;
+    if (response !== null && response.collection) {
+      collection.value = response.collection;
     }
-
-    response.collection?.forEach((item) => {
-      collection.value.push(item);
-    });
   };
 
   const changeLanguage = (key: string) => {

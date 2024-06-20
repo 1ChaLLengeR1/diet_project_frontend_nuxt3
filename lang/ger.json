@@ -135,24 +135,29 @@
       "warning": {}
     }
   },
-  "confirmButton": {
-    "default": {
-      "buttons": {
-        "close": "Schließen",
-        "description": "Beschreibung"
+  "tabs": {
+    "select": {
+      "pages": "Seiten"
+    },
+    "confirmButton": {
+      "default": {
+        "buttons": {
+          "close": "Schließen",
+          "description": "Beschreibung"
+        }
+      },
+      "project": {
+        "title": "Löschen des Projekts",
+        "text": "Möchten Sie das Projekt mit dem Namen wirklich löschen: {nameProject}?",
+        "deleteButton": "Löschen des Projekts",
+        "openDialog": "Löschen des Projekts"
+      },
+      "post": {
+        "title": "Beitrag entfernen",
+        "text": "Möchten Sie den folgenden Beitrag wirklich löschen: {namePost}?",
+        "deleteButton": "Beitrag entfernen",
+        "openDialog": "Beitrag entfernen"
       }
-    },
-    "project": {
-      "title": "Löschen des Projekts",
-      "text": "Möchten Sie das Projekt mit dem Namen wirklich löschen: {nameProject}?",
-      "deleteButton": "Löschen des Projekts",
-      "openDialog": "Löschen des Projekts"
-    },
-    "post": {
-      "title": "Beitrag entfernen",
-      "text": "Möchten Sie den folgenden Beitrag wirklich löschen: {namePost}?",
-      "deleteButton": "Beitrag entfernen",
-      "openDialog": "Beitrag entfernen"
     }
   }
 }

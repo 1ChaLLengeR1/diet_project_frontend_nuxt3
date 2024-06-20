@@ -135,24 +135,29 @@
       "warning": {}
     }
   },
-  "confirmButton": {
-    "default": {
-      "buttons": {
-        "close": "Close",
-        "description": "Description"
+  "tabs": {
+    "select": {
+      "pages": "Pages"
+    },
+    "confirmButton": {
+      "default": {
+        "buttons": {
+          "close": "Close",
+          "description": "Description"
+        }
+      },
+      "project": {
+        "title": "Delete the project",
+        "text": "Are you sure you want to delete the project named: {nameProject}?",
+        "deleteButton": "Delete the project",
+        "openDialog": "Delete the project"
+      },
+      "post": {
+        "title": "Delete post",
+        "text": "Are you sure you want to delete the post named: {namePost}?",
+        "deleteButton": "Delete post",
+        "openDialog": "Delete post"
       }
-    },
-    "project": {
-      "title": "Delete the project",
-      "text": "Are you sure you want to delete the project named: {nameProject}?",
-      "deleteButton": "Delete the project",
-      "openDialog": "Delete the project"
-    },
-    "post": {
-      "title": "Delete post",
-      "text": "Are you sure you want to delete the post named: {namePost}?",
-      "deleteButton": "Delete post",
-      "openDialog": "Delete post"
     }
   }
 }

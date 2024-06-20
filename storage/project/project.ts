@@ -42,11 +42,7 @@ export const ProjectStore = defineStore("project", () => {
     offset: 0,
   });
 
-  const apiFetch = async (
-    reset: boolean = false,
-    page: number = 1,
-    privateMode: boolean = true
-  ) => {
+  const apiFetch = async (reset: boolean = false, page: number = 1) => {
     if (reset === true) {
       collection.value = [];
     }
@@ -55,7 +51,7 @@ export const ProjectStore = defineStore("project", () => {
       return;
     }
 
-    const response = await collectionProject(page, privateMode);
+    const response = await collectionProject(page);
     if (response !== null && response?.collection) {
       collection.value = response?.collection;
       pagination.value = response?.pagination!;
@@ -201,7 +197,7 @@ export const ProjectStore = defineStore("project", () => {
   };
 
   const loadPagePagination = async () => {
-    await apiFetch(true, pagination.value.currentPage, true);
+    await apiFetch(true, pagination.value.currentPage);
   };
 
   const refreschCollection = async () => {
