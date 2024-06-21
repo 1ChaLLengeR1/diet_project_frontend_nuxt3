@@ -27,7 +27,8 @@
       "userData": "Trwa sprawdzanie automatycznego logowania...",
       "dictionary": "Trwa ładowanie słowników...",
       "projects": "Trwa ładowanie projektów...",
-      "fileMultipleProject": "Trwa wczytywanie różnych zdjęć z projektów..."
+      "fileMultipleProject": "Trwa wczytywanie różnych zdjęć z projektów...",
+      "users": "Trwa ładowanie użytkowników..."
     }
   },
   "footer": {
@@ -143,7 +144,8 @@
       "default": {
         "buttons": {
           "close": "Zamknij",
-          "description": "Opis"
+          "description": "Opis",
+          "posts": "Zobacz posty"
         }
       },
       "project": {
@@ -158,6 +160,11 @@
         "deleteButton": "Usuń post",
         "openDialog": "Usuń post"
       }
+    }
+  },
+  "selects": {
+    "selectUser": {
+      "select": "Wybierz użytkownika"
     }
   }
 }

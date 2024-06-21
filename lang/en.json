@@ -27,7 +27,8 @@
       "userData": "Automatic login is being checked...",
       "dictionary": "Dictionaries are loading...",
       "projects": "Loading projects...",
-      "fileMultipleProject": "Loading various photos from projects..."
+      "fileMultipleProject": "Loading various photos from projects...",
+      "users": "Loading users..."
     }
   },
   "footer": {
@@ -143,7 +144,8 @@
       "default": {
         "buttons": {
           "close": "Close",
-          "description": "Description"
+          "description": "Description",
+          "posts": "See posts"
         }
       },
       "project": {
@@ -158,6 +160,11 @@
         "deleteButton": "Delete post",
         "openDialog": "Delete post"
       }
+    }
+  },
+  "selects": {
+    "selectUser": {
+      "select": "Select user"
     }
   }
 }

@@ -19,3 +19,9 @@ export interface Collection {
   createdUp: string;
   updateUp: string;
 }
+
+export interface BodyCollectionPublic {
+  id: string;
+  idLanguage: string;
+  page: string;
+}

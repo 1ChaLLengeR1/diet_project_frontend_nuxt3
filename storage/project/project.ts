@@ -26,11 +26,14 @@ import { changeProeject } from "./../../api/project/change";
 // stores
 import { AlertStore } from "./../alert/alert";
 import { FileStore } from "./../file/file";
+import { AuthStore } from "./../auth/auth";
 
 export const ProjectStore = defineStore("project", () => {
   const { $i18n } = useNuxtApp();
   const alertStore = AlertStore();
   const fileStore = FileStore();
+  const authStore = AuthStore();
+
   const collection = ref<Collection[]>([]);
   const pagination = ref<Pagination>({
     nextPage: 0,
@@ -201,7 +204,9 @@ export const ProjectStore = defineStore("project", () => {
   };
 
   const refreschCollection = async () => {
-    await apiFetch(true);
+    if (authStore.getTokenDataForApi() !== "") {
+      await apiFetch(true);
+    }
   };
 
   return {

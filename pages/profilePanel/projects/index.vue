@@ -15,7 +15,10 @@
       />
     </ul>
     <v-pagination
-      v-if="projectStore.pagination.totalPages > 1"
+      v-if="
+        projectStore.pagination.totalPages > 1 &&
+        projectStore.collection.length > 0
+      "
       v-model="projectStore.pagination.currentPage"
       @click="changePage"
       :length="projectStore.pagination.totalPages"

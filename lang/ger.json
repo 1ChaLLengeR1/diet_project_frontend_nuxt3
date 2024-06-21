@@ -27,7 +27,8 @@
       "userData": "Automatische Anmeldung wird geprüft...",
       "dictionary": "Wörterbücher werden geladen...",
       "projects": "Projekte werden geladen...",
-      "fileMultipleProject": "Verschiedene Fotos aus Projekten werden geladen..."
+      "fileMultipleProject": "Verschiedene Fotos aus Projekten werden geladen...",
+      "users": "Benutzer werden geladen..."
     }
   },
   "footer": {
@@ -143,7 +144,8 @@
       "default": {
         "buttons": {
           "close": "Schließen",
-          "description": "Beschreibung"
+          "description": "Beschreibung",
+          "posts": "Siehe Beiträge"
         }
       },
       "project": {
@@ -158,6 +160,11 @@
         "deleteButton": "Beitrag entfernen",
         "openDialog": "Beitrag entfernen"
       }
+    }
+  },
+  "selects": {
+    "selectUser": {
+      "select": "Nutzer wählen"
     }
   }
 }

@@ -40,17 +40,11 @@
     </v-expand-transition>
 
     <v-card-actions>
-      <v-btn @click="changeProject(id)" color="blue">
-        {{ $t("profilePanel.projectPanel.cards.button.change") }}</v-btn
-      >
-      <ConfirmButton
-        text="tabs.confirmButton.project.text"
-        title="tabs.confirmButton.project.title"
-        openDialog="tabs.confirmButton.project.openDialog"
-        confirmd="tabs.confirmButton.project.deleteButton"
-        :nameValue="title"
-        @delete-handler="deleteProject(true, id)"
-      />
+      <v-btn
+        :to="`${paths.posts}/${id}`"
+        color="orange-lighten-2"
+        :text="$t('tabs.confirmButton.default.buttons.posts')"
+      ></v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -102,17 +96,7 @@ export default defineComponent({
     const show = ref<boolean>(false);
     const router = useRouter();
 
-    const changeProject = async (id: string) => {
-      router.push({ path: `${paths.profilePanelProjectChange}/${id}` });
-    };
-
-    const deleteProject = async (confirmd: boolean, id: string) => {
-      if (confirmd) {
-        await projectStore.deleteProjectF(id);
-        await projectStore.apiFetch(true, 1);
-      }
-    };
-    return { noImage, changeProject, deleteProject, formatDateTime, show };
+    return { noImage, formatDateTime, show };
   },
 });
 </script>

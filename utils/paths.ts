@@ -1,6 +1,7 @@
 export const paths = {
   home: "/",
   projects: "/projects",
+  posts: "/posts",
   logOut: "/logout",
   testPanel: "/testPanel",
   profilePanel: "/profilePanel",

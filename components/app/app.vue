@@ -27,6 +27,7 @@ import { DictionaryStore } from "./../../storage/dictionary/dictionary";
 import { SpinnerStore } from "./../../storage/spinners/spinners";
 import { MenuMobileStore } from "./../../storage/siderbarMenu/menuMobile";
 import { ProjectStore } from "./../../storage/project/project";
+import { UsersStore } from "./../../storage/user/user";
 
 // components
 import MenuSidebar from "./../Menu/Siderbar/Sidebar.vue";
@@ -51,6 +52,7 @@ export default defineComponent({
     const spinnerStore = SpinnerStore();
     const menuMobileStore = MenuMobileStore();
     const projectStore = ProjectStore();
+    const usersStore = UsersStore();
 
     const mobile = ref<boolean>(false);
 
@@ -62,6 +64,9 @@ export default defineComponent({
 
       spinnerStore.app.info = "loadingSpinner.stores.dictionary";
       await dictionaryStore.apiFetch();
+
+      spinnerStore.app.info = "loadingSpinner.stores.users";
+      await usersStore.apiFetch();
 
       if (authStore.getUserDataForApi().sub !== "") {
         spinnerStore.app.info = "loadingSpinner.stores.projects";
