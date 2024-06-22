@@ -28,7 +28,8 @@
       "dictionary": "Wörterbücher werden geladen...",
       "projects": "Projekte werden geladen...",
       "fileMultipleProject": "Verschiedene Fotos aus Projekten werden geladen...",
-      "users": "Benutzer werden geladen..."
+      "users": "Benutzer werden geladen...",
+      "authorization": "Benutzerdaten werden geladen..."
     }
   },
   "footer": {

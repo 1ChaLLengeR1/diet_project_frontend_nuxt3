@@ -7,10 +7,14 @@ import { useAuth0 } from "@auth0/auth0-vue";
 import type {
   ParamsAuth0,
   UserData,
+  UserParams,
 } from "../../data/types/storage/auth/types";
 
 // stores
 import { SiderbarMenu } from "./../../storage/siderbarMenu/siderbarMenu";
+
+// api
+import { authorization } from "./../../api/auth/auth";
 
 export const AuthStore = defineStore("auth", () => {
   const siderbarMenu = SiderbarMenu();
@@ -47,8 +51,25 @@ export const AuthStore = defineStore("auth", () => {
     sub: "",
   });
 
+  const userParams = ref<UserParams>({
+    id: "",
+    userName: "",
+    lastName: "",
+    nickName: "",
+    email: "",
+    role: "",
+    sub: "",
+  });
+
   const localStorageParamsAuth0 = ref<string>("paramsAuth0");
   const localStorageUserData = ref<string>("userData");
+
+  const authorizationUser = async () => {
+    const response = await authorization();
+    if (response !== null && response.collection) {
+      userParams.value = response.collection[0];
+    }
+  };
 
   const removeParamsAuth0 = async () => {
     await logout({
@@ -131,5 +152,6 @@ export const AuthStore = defineStore("auth", () => {
     populateDataUser,
     getTokenDataForApi,
     getUserDataForApi,
+    authorizationUser,
   };
 });

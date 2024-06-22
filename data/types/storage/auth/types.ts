@@ -21,3 +21,13 @@ export interface UserData {
   nickname?: string;
   sub?: string;
 }
+
+export interface UserParams {
+  id: string;
+  userName: string;
+  lastName: string;
+  nickName: string;
+  email: string;
+  role: string;
+  sub: string;
+}

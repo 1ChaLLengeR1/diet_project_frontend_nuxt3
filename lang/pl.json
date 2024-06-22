@@ -28,7 +28,8 @@
       "dictionary": "Trwa ładowanie słowników...",
       "projects": "Trwa ładowanie projektów...",
       "fileMultipleProject": "Trwa wczytywanie różnych zdjęć z projektów...",
-      "users": "Trwa ładowanie użytkowników..."
+      "users": "Trwa ładowanie użytkowników...",
+      "authorization": "Trwa ładowanie danych użytkownika..."
     }
   },
   "footer": {

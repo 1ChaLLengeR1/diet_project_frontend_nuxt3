@@ -51,7 +51,6 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { useRouter } from "vue-router";
 import noImage from "./../../../public/images/noImage.png";
 
 // components
@@ -60,9 +59,6 @@ import ConfirmButton from "./../../../components/Button/ConfirmButton.vue";
 // helper
 import { formatDateTime } from "./../../../storage/common/formaters";
 import { paths } from "./../../../utils/paths";
-
-// stores
-import { ProjectStore } from "./../../../storage/project/project";
 
 export default defineComponent({
   props: {
@@ -92,11 +88,8 @@ export default defineComponent({
     ConfirmButton,
   },
   setup() {
-    const projectStore = ProjectStore();
     const show = ref<boolean>(false);
-    const router = useRouter();
-
-    return { noImage, formatDateTime, show };
+    return { noImage, formatDateTime, show, paths };
   },
 });
 </script>

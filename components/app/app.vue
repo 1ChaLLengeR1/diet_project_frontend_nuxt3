@@ -62,6 +62,11 @@ export default defineComponent({
       spinnerStore.app.info = "loadingSpinner.stores.userData";
       await authStore.populateDataUser();
 
+      if (authStore.getUserDataForApi().sub !== "") {
+        spinnerStore.app.info = "loadingSpinner.stores.dictionary";
+        await authStore.authorizationUser();
+      }
+
       spinnerStore.app.info = "loadingSpinner.stores.dictionary";
       await dictionaryStore.apiFetch();
 

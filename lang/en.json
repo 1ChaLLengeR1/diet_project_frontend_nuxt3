@@ -28,7 +28,8 @@
       "dictionary": "Dictionaries are loading...",
       "projects": "Loading projects...",
       "fileMultipleProject": "Loading various photos from projects...",
-      "users": "Loading users..."
+      "users": "Loading users...",
+      "authorization": "Loading user data..."
     }
   },
   "footer": {
