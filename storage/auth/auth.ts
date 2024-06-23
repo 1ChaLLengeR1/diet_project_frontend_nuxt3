@@ -153,5 +153,6 @@ export const AuthStore = defineStore("auth", () => {
     getTokenDataForApi,
     getUserDataForApi,
     authorizationUser,
+    removeParamsAuth0,
   };
 });

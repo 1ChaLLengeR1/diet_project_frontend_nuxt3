@@ -3,13 +3,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
+
+// stores
+import { AuthStore } from "./../storage/auth/auth";
 
 export default defineComponent({
   setup() {
+    const authStore = AuthStore();
+
+    onMounted(async () => {
+      await authStore.removeParamsAuth0();
+    });
+
     return {};
   },
 });
 </script>
-
-<style scoped></style>

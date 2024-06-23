@@ -1,11 +1,11 @@
 import { paths } from "./../../../../utils/paths";
 import { Spinner } from "./../../../support/objectComponents/spinner";
-import { HomePage } from "./../../../support/objectPages/homePage";
+import { SideBarMenu } from "../../../support/objectComponents/sideBar";
 import { DropDownLanguage } from "./../../../support/objectComponents/dropDownLanguage";
 import { checkLanguageHomePage } from "./../../../helpers/homePage/dropDown";
 
 const spinner = new Spinner();
-const homePage = new HomePage();
+const sideBarMenu = new SideBarMenu();
 const dropDownLanguage = new DropDownLanguage();
 
 describe("Home Page Basic", () => {
@@ -52,7 +52,7 @@ describe("Home Page Basic", () => {
         { active: false, text: parse[2] },
       ];
 
-      homePage.checkMenu(links);
+      sideBarMenu.checkMenu(links);
     });
   });
 

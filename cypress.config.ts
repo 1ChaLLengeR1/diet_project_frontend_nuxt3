@@ -26,6 +26,11 @@ export default defineConfig({
   },
   chromeWebSecurity: false,
   env: {
+    DIET_AUTH0_ENDPOINT: "https://dev-j5zz44d2346f1e2h.us.auth0.com/",
+
+    AUTH0_EMAIL: "artek.scibor@gmail.com",
+    AUTH0_PASSWORD: "auth0@zaq1@WSXartek123",
+
     browserPermissions: {
       notifications: "allow",
       geolocation: "allow",
