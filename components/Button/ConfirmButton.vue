@@ -20,7 +20,9 @@
             {{ $t("tabs.confirmButton.default.buttons.close") }}
           </v-btn>
 
-          <v-btn @click="deleteHandler"> {{ $t(`${confirmd}`) }}</v-btn>
+          <v-btn id="confirmButton" @click="deleteHandler">
+            {{ $t(`${confirmd}`) }}</v-btn
+          >
         </template>
       </v-card>
     </v-dialog>

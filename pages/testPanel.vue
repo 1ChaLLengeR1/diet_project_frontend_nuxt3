@@ -21,6 +21,7 @@ export default defineComponent({
         await dictionaryStore.apiFetch();
       }
 
+      localStorage.removeItem("lang");
       const collectionLangs: string[] = [];
       if (data !== undefined) {
         const lang = JSON.parse(data);

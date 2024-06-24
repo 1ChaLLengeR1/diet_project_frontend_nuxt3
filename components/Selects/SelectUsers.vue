@@ -1,6 +1,7 @@
 <template>
   <div class="w-full">
     <v-select
+      id="selectUser"
       :label="loadSelectTitle"
       v-model="search"
       clearable

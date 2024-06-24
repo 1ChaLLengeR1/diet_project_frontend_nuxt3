@@ -1,5 +1,10 @@
 <template>
-  <v-card class="w-[380px] h-fit" :border="true" max-width="380">
+  <v-card
+    id="itemProject"
+    class="w-[380px] h-fit"
+    :border="true"
+    max-width="380"
+  >
     <v-img
       class="align-end text-white"
       height="200"
@@ -12,7 +17,7 @@
     </v-img>
 
     <v-card-subtitle class="pt-4 text-main">
-      <p class="font-bold">{{ title }}</p>
+      <p id="titleCard" class="font-bold">{{ title }}</p>
     </v-card-subtitle>
 
     <v-card-actions>
@@ -44,6 +49,7 @@
         {{ $t("profilePanel.projectPanel.cards.button.change") }}</v-btn
       >
       <ConfirmButton
+        id="confirmButtonProjectCard"
         text="tabs.confirmButton.project.text"
         title="tabs.confirmButton.project.title"
         openDialog="tabs.confirmButton.project.openDialog"

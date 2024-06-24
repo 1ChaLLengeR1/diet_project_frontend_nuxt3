@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex flex-col gap-3 p-3">
     <ProfileTab />
-    <ul class="w-full flex justify-center flex-wrap gap-3">
+    <ul id="listProject" class="w-full flex justify-center flex-wrap gap-3">
       <LoadingSpinner v-if="spinnerStore.projectPanel.active" />
       <CardProject
         v-else

@@ -1,9 +1,10 @@
 <template>
   <v-card>
-    <v-tabs v-model="tab" :color="colorsStore.main">
+    <v-tabs id="profilePanelTabs" v-model="tab" :color="colorsStore.main">
       <div class="w-full flex justify-between">
         <div class="w-fit hidden sm:flex">
           <v-tab
+            id="profilePanelTab"
             v-for="(tab, index) in profilePanelStore.tabs"
             :key="index"
             :value="tab.value"
@@ -15,6 +16,7 @@
         <SelectTab :links="profilePanelStore.tabs" class="sm:hidden" />
         <div class="w-fit flex">
           <v-tab
+            id="profilePanelTab"
             v-for="(tab, index) in profilePanelStore.filterActiveCreateTabs(
               route.fullPath
             )"

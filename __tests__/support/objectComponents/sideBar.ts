@@ -19,6 +19,10 @@ export class SideBarMenu {
     });
   }
 
+  checkLink(link: string) {
+    this.itemMenuSiderbar.contains(link).should("exist");
+  }
+
   clickLink(link: string) {
     this.itemMenuSiderbar.contains(link).should("exist").click();
   }

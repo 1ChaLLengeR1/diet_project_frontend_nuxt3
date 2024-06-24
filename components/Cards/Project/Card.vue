@@ -1,5 +1,10 @@
 <template>
-  <v-card class="w-[380px] h-fit" :border="true" max-width="380">
+  <v-card
+    id="itemProject"
+    class="w-[380px] h-fit"
+    :border="true"
+    max-width="380"
+  >
     <v-img
       class="align-end text-white"
       height="200"
