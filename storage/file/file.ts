@@ -36,6 +36,7 @@ export const FileStore = defineStore("file", () => {
       return;
     }
 
+    console.log(ids);
     const response = await collectionFileMultiple(ids);
     if (response === null) {
       return;

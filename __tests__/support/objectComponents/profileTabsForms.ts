@@ -18,5 +18,11 @@ export class ProfileTabsForms {
     cy.get('[id="button"]').click();
   }
 
+  changeProject(title: string, description: string) {
+    cy.get('[id="title"]').should("exist").clear().type(title);
+    cy.get('[id="description"]').should("exist").clear().type(description);
+    cy.get('[id="button"]').click();
+  }
+
   checkFormPost() {}
 }

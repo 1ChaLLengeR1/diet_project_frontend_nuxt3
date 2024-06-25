@@ -1,8 +1,8 @@
 import { paths } from "./../../../utils/paths";
-import { HomePage } from "./../../support/objectPages/homePage";
+import { SideBarMenu } from "./../../support/objectComponents/sideBar";
 import { DropDownLanguage } from "./../../support/objectComponents/dropDownLanguage";
 
-const homePage = new HomePage();
+const sideBarMenu = new SideBarMenu();
 const dropDownLanguage = new DropDownLanguage();
 
 export function checkLanguageHomePage() {
@@ -30,7 +30,7 @@ export function checkLanguageHomePage() {
       { active: false, text: parse[1] },
       { active: false, text: parse[2] },
     ];
-    homePage.checkMenu(links);
+    sideBarMenu.checkMenu(links);
     dropDownLanguage.checkDropDown(parse[3]);
   });
 }

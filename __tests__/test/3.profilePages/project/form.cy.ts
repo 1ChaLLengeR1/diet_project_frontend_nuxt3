@@ -72,5 +72,51 @@ describe("Profile Page Panel Project Form", () => {
     });
   });
 
-  it("Login, create project, change project -> I see alert", () => {});
+  it("Login, create project, delete image -> I see alert", () => {
+    const title = `title_${Math.random().toFixed(4)}`;
+    const description = `description_${Math.random().toFixed(4)}`;
+    const alertLnag = "alert.message.positive.file.deleteFile";
+
+    loginAuth0Simple();
+
+    cy.visit(
+      `${paths.testPanel}?action=loadLangs&data={"lang":["${alertLnag}"]}`
+    );
+    cy.wait(1000);
+
+    cy.visit(paths.profilePanelProjectCreate);
+    profileTabsForms.createProject(title, description);
+    cy.window().then((win) => {
+      const lang = win.localStorage.getItem("lang");
+      const parse = JSON.parse(lang!);
+      profilePanelProject.deleteImage(title);
+      alert.checkAlert("positive", parse[0], 0);
+    });
+  });
+
+  it("Login, create project, change project -> I see alert", () => {
+    const title = `title_${Math.random().toFixed(4)}`;
+    const description = `description_${Math.random().toFixed(4)}`;
+    const changeTitle = `${title}_change`;
+    const changeDescription = `${description}_change`;
+    const alertLnag = "alert.message.positive.project.changeProject";
+
+    loginAuth0Simple();
+
+    cy.visit(
+      `${paths.testPanel}?action=loadLangs&data={"lang":["${alertLnag}"]}`
+    );
+    cy.wait(1000);
+
+    cy.visit(paths.profilePanelProjectCreate);
+    profileTabsForms.createProject(title, description);
+    profilePanelProject.openChnageProject(title);
+    profileTabsForms.changeProject(changeTitle, changeDescription);
+    cy.window().then((win) => {
+      const lang = win.localStorage.getItem("lang");
+      const parse = JSON.parse(lang!);
+      profilePanelProject.deleteImage(title);
+      alert.checkAlert("positive", parse[0], 0);
+    });
+  });
 });

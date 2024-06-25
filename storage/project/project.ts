@@ -126,7 +126,9 @@ export const ProjectStore = defineStore("project", () => {
         "positive"
       );
 
-      if (body.file === null) {
+      console.log(body.file instanceof File);
+
+      if (body.file === null || body.file! instanceof File === false) {
         return;
       }
 

@@ -2,7 +2,7 @@
   <div class="w-full flex flex-col gap-3 p-3">
     <ProfileTab />
     <ul id="listProject" class="w-full flex justify-center flex-wrap gap-3">
-      <LoadingSpinner v-if="spinnerStore.projectPanel.active" />
+      <div v-if="activeList"></div>
       <CardProject
         v-else
         v-for="(item, index) in projectStore.collection"
@@ -29,17 +29,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, ref } from "vue";
 
 // stores
 import { ProjectStore } from "./../../../storage/project/project";
 import { FileStore } from "./../../../storage/file/file";
-import { SpinnerStore } from "./../../../storage/spinners/spinners";
 
 // components
 import ProfileTab from "./../../../components/Tabs/ProfilePanel/Profile.vue";
 import CardProject from "./../../../components/Cards/ProfileProject/Card.vue";
-import LoadingSpinner from "./../../../components/Spinners/spinner.vue";
 
 // helpers
 import { findIds } from "./../../../storage/common/finds";
@@ -48,30 +46,33 @@ export default defineComponent({
   components: {
     ProfileTab,
     CardProject,
-    LoadingSpinner,
   },
   setup() {
     const projectStore = ProjectStore();
     const fileStore = FileStore();
-    const spinnerStore = SpinnerStore();
+    const activeList = ref<boolean>(false);
 
     const changePage = async () => {
       await projectStore.loadPagePagination();
     };
 
-    onMounted(async () => {
-      spinnerStore.projectPanel.active = true;
-      spinnerStore.app.info = "loadingSpinner.stores.fileMultipleProject";
+    const runActions = async () => {
+      activeList.value = true;
 
       await projectStore.apiFetch();
       const collectionIds: string[] = findIds(projectStore.collection);
       await fileStore.apiGetMultiple({ ids: collectionIds });
 
-      spinnerStore.app.info = "";
-      spinnerStore.projectPanel.active = false;
-    });
+      activeList.value = false;
+    };
 
-    return { projectStore, fileStore, spinnerStore, changePage };
+    setTimeout(async () => {
+      activeList.value = true;
+      await runActions();
+      activeList.value = false;
+    }, 1000);
+
+    return { projectStore, fileStore, activeList, changePage };
   },
 });
 </script>

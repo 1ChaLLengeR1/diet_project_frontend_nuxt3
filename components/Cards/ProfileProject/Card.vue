@@ -45,7 +45,7 @@
     </v-expand-transition>
 
     <v-card-actions>
-      <v-btn @click="changeProject(id)" color="blue">
+      <v-btn id="changeProjectCard" @click="changeProject(id)" color="blue">
         {{ $t("profilePanel.projectPanel.cards.button.change") }}</v-btn
       >
       <ConfirmButton
