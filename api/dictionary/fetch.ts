@@ -2,7 +2,7 @@ import { apiGet } from "./../common/fetch";
 import type {
   ResponseApiDictionary,
   ResponseDictionary,
-} from "./../../data/types/storage/dictionary/types";
+} from "./../../data/types/api/dictionary/types";
 
 export async function collectionDictionary(): Promise<ResponseDictionary | null> {
   const urlPath: string = "/api/dictionary/collection";

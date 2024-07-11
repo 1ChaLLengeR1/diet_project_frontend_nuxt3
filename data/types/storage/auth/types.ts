@@ -13,10 +13,21 @@ export interface ParamsAuth0 {
   sub?: string;
   updated_at?: string;
   __raw?: string;
+  token?: string;
 }
 
 export interface UserData {
   name?: string;
   nickname?: string;
+  sub?: string;
+}
+
+export interface UserParams {
+  id?: string;
+  userName: string;
+  lastName: string;
+  nickName: string;
+  email: string;
+  role: string;
   sub?: string;
 }

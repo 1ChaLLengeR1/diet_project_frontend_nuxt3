@@ -4,7 +4,6 @@ import { ref } from "vue";
 // types
 import type {
   Dictionary,
-  ResponseDictionary,
   AppLanguage,
 } from "./../../data/types/storage/dictionary/types";
 
@@ -12,6 +11,7 @@ import { collectionDictionary } from "./../../api/dictionary/fetch";
 
 export const DictionaryStore = defineStore("dictionary", () => {
   const { setLocale } = useI18n();
+  const refreshForms = ref<string>("");
   const localStorageAppLanguage = ref<string>("appLanguage");
   const appLanguage = ref<AppLanguage>({
     id: "e09bd685-aaf8-4d65-bcdd-aadca85670bc",
@@ -24,22 +24,16 @@ export const DictionaryStore = defineStore("dictionary", () => {
       return;
     }
 
-    const response: ResponseDictionary | null = await collectionDictionary();
-    if (response === null) {
-      return;
+    const response = await collectionDictionary();
+    if (response !== null && response.collection) {
+      collection.value = response.collection;
     }
-
-    response.collection?.forEach((item) => {
-      collection.value.push(item);
-    });
   };
 
   const changeLanguage = (key: string) => {
     const findLaunguage: Dictionary | undefined = collection.value.find(
       (launguage) => launguage.key === key
     );
-
-    console.log(findLaunguage);
 
     if (findLaunguage !== undefined) {
       localStorage.setItem(
@@ -76,12 +70,14 @@ export const DictionaryStore = defineStore("dictionary", () => {
   };
 
   const refreshCollection = async () => {
-    collection.value = [] as Dictionary[];
+    refreshForms.value = Math.random().toString();
+    collection.value = [];
     await apiFetch();
   };
 
   return {
     collection,
+    refreshForms,
     apiFetch,
     getAppLanguage,
     changeLanguage,

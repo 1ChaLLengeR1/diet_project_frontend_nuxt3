@@ -23,9 +23,15 @@
   "loadingSpinner": {
     "information": "Wird geladen...",
     "informationMore": "Dies kann einige Sekunden dauern...",
+    "informationForm": "Formulare werden geladen...",
+    "informationGlobal": "Daten werden geladen, bitte warten...",
     "stores": {
       "userData": "Automatische Anmeldung wird geprüft...",
-      "dictionary": "Wörterbücher werden geladen..."
+      "dictionary": "Wörterbücher werden geladen...",
+      "projects": "Projekte werden geladen...",
+      "fileMultipleProject": "Verschiedene Fotos aus Projekten werden geladen...",
+      "users": "Benutzer werden geladen...",
+      "authorization": "Benutzerdaten werden geladen..."
     }
   },
   "footer": {
@@ -56,6 +62,197 @@
         "sql": "Bibliothek SQL",
         "auth0": "Auth0",
         "postgresql": "PostgreSql"
+      }
+    }
+  },
+  "profilePanel": {
+    "tabs": {
+      "project": "Projekte",
+      "create_project": "Erstellen Sie ein Projekt",
+      "post": "Beiträge",
+      "create_post": "Erstellen Sie einen Beitrag",
+      "user": "Benutzer"
+    },
+    "autoGenerateForm": {
+      "label": {
+        "addTraining": "Training hinzufügen"
+      },
+
+      "email": "E-Mail",
+      "userName": "Vorname",
+      "lastName": "Nachname",
+      "nickName": "Spitzname",
+      "role": "Rolle",
+      "phoneNumber": "Telefonnummer",
+      "title": "Titel",
+      "description": "Beschreibung",
+      "date": "Daten",
+      "files": "Dateien",
+      "fileProject": "Datei Projekt",
+      "fileFigure": "Silhouettenfoto",
+      "fileWeight": "Foto der Waage",
+      "fileKcal": "Foto von Kalorien",
+      "fileTraining": "Trainingsfoto",
+      "selectProject": "Projekt auswählen",
+      "day": "Tag",
+      "weight": "Waage",
+      "kcal": "Kalorien",
+      "type": "Sportart",
+      "time": "Sitzungszeit",
+
+      "button": {
+        "addProject": "Projekt hinzufügen",
+        "addPost": "Beitrag hinzufügen",
+        "changeProject": "Aktualisieren Sie das Projekt",
+        "changePost": "Aktualisieren Sie das post",
+        "changeUser": "Benutzer aktualisieren",
+        "addTraining": "Training hinzufügen"
+      },
+
+      "messages": {
+        "required": "Das :attribute muss ausgefüllt werden.",
+        "email": "Die :attribute-Adresse muss eine gültige E-Mail-Adresse sein.",
+        "max": "Die Länge von :attribute darf nicht länger als :max Zeichen sein.",
+        "min": "Die Länge von :attribute muss länger als :min Zeichen sein.",
+        "image": {
+          "max": "Die Größe von :attribute darf :max Kilobyte nicht überschreiten."
+        },
+        "custom": {
+          "project": "Projekt auswählen.",
+          "typeTraining": "Trainingsart auswählen.",
+          "typeTrainingTime": "Fehler bei der Zeitvalidierung."
+        }
+      }
+    },
+    "projectPanel": {
+      "createProject": {
+        "title": "Projekt erstellen",
+        "description": "Wenn Sie ein Projekt in drei Sprachen erstellen möchten, müssen Sie das Projekt jedes Mal separat hinzufügen. Sie erstellen es also in polnischer, dann in englischer und deutscher Version. Wenn Sie nur eine Version hinzufügen, wird diese nach dem Ändern der Sprache nicht angezeigt."
+      },
+      "user": {
+        "title": "Benutzerwerte",
+        "description": "Um im Projektabschnitt angezeigt zu werden, müssen Sie Ihre Daten vollständig ausfüllen. Andernfalls werden Sie nicht in der Benutzerauswahl in Projekten erscheinen."
+      },
+      "cards": {
+        "button": {
+          "delete": "Löschen Sie das Projekt",
+          "change": "Bearbeiten Sie das Projekt"
+        }
+      },
+      "lists": {
+        "posts": {
+          "button": {
+            "change": "Beitrag bearbeiten"
+          }
+        }
+      }
+    }
+  },
+  "alert": {
+    "message": {
+      "positive": {
+        "project": {
+          "addProject": "Projekt erfolgreich hinzugefügt",
+          "changeProject": "Das Update verlief ordnungsgemäß",
+          "deleteProject": "Projekt korrekt gelöscht"
+        },
+        "post": {
+          "addPost": "Beitrag erfolgreich hinzugefügt",
+          "changeProject": "Das Update verlief ordnungsgemäß",
+          "deletePost": "Beitrag erfolgreich gelöscht"
+        },
+        "user": {
+          "change": "Die Benutzeraktualisierung war erfolgreich"
+        },
+        "file": {
+          "createFile": "Fotos korrekt hinzugefügt",
+          "deleteAllFile": "Alle Fotos gelöscht",
+          "deleteFile": "Foto entfernen"
+        }
+      },
+      "error": {
+        "project": {
+          "addProject": "Projekt nicht erfolgreich hinzugefügt!",
+          "changeProject": "Fehler beim Aktualisieren des Projekts",
+          "deleteProject": "Fehler beim Löschen des Projekts"
+        },
+        "post": {
+          "addPost": "Fehler beim Hinzufügen eines Beitrags",
+          "changeProject": "Fehler beim Aktualisieren des Projekts",
+          "deletePost": "Fehler beim Löschen des Beitrags"
+        },
+        "user": {
+          "change": "Die Benutzeraktualisierung ist fehlgeschlagen"
+        },
+        "file": {
+          "createFile": "Fehler beim Hinzufügen von Fotos",
+          "deleteAllFile": "Fehler beim Löschen der Fotos",
+          "deleteFile": "Fehler beim Löschen des Fotos"
+        }
+      },
+      "warning": {
+        "post": {
+          "time": "Fehler beim Überprüfen der Validierung der „Zeitsitzung“!"
+        }
+      }
+    }
+  },
+  "tabs": {
+    "select": {
+      "pages": "Seiten"
+    },
+    "confirmButton": {
+      "default": {
+        "buttons": {
+          "close": "Schließen",
+          "description": "Beschreibung",
+          "posts": "Siehe Beiträge"
+        }
+      },
+      "project": {
+        "title": "Löschen des Projekts",
+        "text": "Möchten Sie das Projekt mit dem Namen wirklich löschen: {name}?",
+        "deleteButton": "Löschen des Projekts",
+        "openDialog": "Löschen des Projekts"
+      },
+      "post": {
+        "title": "Beitrag entfernen",
+        "text": "Möchten Sie den folgenden Beitrag wirklich löschen: {name}?",
+        "deleteButton": "Beitrag entfernen",
+        "openDialog": "Beitrag entfernen"
+      }
+    }
+  },
+  "selects": {
+    "select": {
+      "user": "Nutzer wählen",
+      "project": "Projekt auswählen"
+    },
+    "typeTraining": {
+      "bike": "Radfahren",
+      "run": "Laufen",
+      "swim": "Schwimmen",
+      "hike": "Wandern",
+      "gym": "Fitnessstudio"
+    }
+  },
+  "lists": {
+    "profilePanel": {
+      "posts": {
+        "day": "Tag - {day}",
+        "weight": "Gewicht - {weight}",
+        "kcal": "Kcal - {kcal}",
+        "typeTraining": "Trainingsart - {typeTraining}",
+        "timeTraining": "Trainings zeit - {timeTraining}",
+        "kcalTraining": "Kalorien verbrannt - {kcalTraining}",
+        "training": "Ausbildung",
+        "days": "Tags"
+      }
+    },
+    "posts": {
+      "buttons": {
+        "seePost": "Sehen Sie den Tag",
+        "posts": "Siehe Tage"
       }
     }
   }

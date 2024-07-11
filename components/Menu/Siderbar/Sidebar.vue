@@ -1,8 +1,8 @@
 <template>
-  <div
-    class="relative min-w-[340px] max-w-[380px] h-screen border-r-2 border-black"
-  >
-    <div class="fixed top-0 left-0 w-full h-full flex flex-col gap-3">
+  <div class="relative min-w-[340px] max-w-[380px] h-screen">
+    <div
+      class="fixed top-0 left-0 min-w-[340px] h-full flex flex-col gap-3 border-r-2 border-black"
+    >
       <Language />
       <SiderbarTitle />
       <MenuNav position="left" />

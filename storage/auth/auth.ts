@@ -7,13 +7,27 @@ import { useAuth0 } from "@auth0/auth0-vue";
 import type {
   ParamsAuth0,
   UserData,
+  UserParams,
 } from "../../data/types/storage/auth/types";
 
-export const AuthStore = defineStore("auth", () => {
-  const { isAuthenticated, idTokenClaims, logout, loginWithRedirect } =
-    useAuth0();
+// stores
+import { SiderbarMenu } from "./../../storage/siderbarMenu/siderbarMenu";
 
-  const paramsAuth0 = ref<ParamsAuth0 | undefined>({
+// api
+import { authorization } from "./../../api/auth/auth";
+
+export const AuthStore = defineStore("auth", () => {
+  const siderbarMenu = SiderbarMenu();
+
+  const {
+    isAuthenticated,
+    idTokenClaims,
+    getAccessTokenSilently,
+    logout,
+    loginWithRedirect,
+  } = useAuth0();
+
+  const paramsAuth0 = ref<ParamsAuth0>({
     aud: "",
     email: "",
     email_verified: false,
@@ -28,6 +42,7 @@ export const AuthStore = defineStore("auth", () => {
     sub: "",
     updated_at: "",
     __raw: "",
+    token: "",
   });
 
   const userData = ref<UserData>({
@@ -36,20 +51,42 @@ export const AuthStore = defineStore("auth", () => {
     sub: "",
   });
 
+  const userParams = ref<UserParams>({
+    id: "",
+    userName: "",
+    lastName: "",
+    nickName: "",
+    email: "",
+    role: "",
+    sub: "",
+  });
+
   const localStorageParamsAuth0 = ref<string>("paramsAuth0");
   const localStorageUserData = ref<string>("userData");
 
+  const authorizationUser = async () => {
+    const response = await authorization();
+    if (response !== null && response.collection) {
+      userParams.value = response.collection[0];
+    }
+  };
+
+  const removeParamsAuth0 = async () => {
+    await logout({
+      logoutParams: {
+        returnTo: window.location.origin,
+      },
+    });
+    paramsAuth0.value = {} as ParamsAuth0;
+    userData.value = {} as UserData;
+    localStorage.removeItem(localStorageParamsAuth0.value);
+    localStorage.removeItem(localStorageUserData.value);
+  };
+
   const singIn = async () => {
+    siderbarMenu.activeLink("sidebar.siderbarMenu.home");
     if (isAuthenticated.value) {
-      await logout({
-        logoutParams: {
-          returnTo: window.location.origin,
-        },
-      });
-      paramsAuth0.value = {} as ParamsAuth0;
-      userData.value = {} as UserData;
-      localStorage.removeItem(localStorageParamsAuth0.value);
-      localStorage.removeItem(localStorageUserData.value);
+      await removeParamsAuth0();
       return;
     }
     await loginWithRedirect();
@@ -59,12 +96,21 @@ export const AuthStore = defineStore("auth", () => {
     if (!isAuthenticated.value) {
       return;
     }
+
     paramsAuth0.value = idTokenClaims.value;
     userData.value = {
       name: paramsAuth0.value?.email,
       nickname: paramsAuth0.value?.nickname,
       sub: paramsAuth0.value?.sub,
     };
+
+    if (new Date(paramsAuth0.value?.exp! * 1000) < new Date()) {
+      console.error("token is not expired");
+      await removeParamsAuth0();
+      return;
+    }
+
+    paramsAuth0.value.token = await getAccessTokenSilently();
 
     localStorage.setItem(
       localStorageParamsAuth0.value,
@@ -92,5 +138,22 @@ export const AuthStore = defineStore("auth", () => {
     await loadDataAuth0();
   };
 
-  return { paramsAuth0, singIn, populateDataUser };
+  const getTokenDataForApi = (): string => {
+    return paramsAuth0.value?.token!;
+  };
+
+  const getUserDataForApi = (): UserData => {
+    return userData.value;
+  };
+
+  return {
+    paramsAuth0,
+    userParams,
+    singIn,
+    populateDataUser,
+    getTokenDataForApi,
+    getUserDataForApi,
+    authorizationUser,
+    removeParamsAuth0,
+  };
 });

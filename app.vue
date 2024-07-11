@@ -17,3 +17,10 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+:root {
+  --button-create: #04aa6d;
+  --bg-main: #ff7200;
+}
+</style>

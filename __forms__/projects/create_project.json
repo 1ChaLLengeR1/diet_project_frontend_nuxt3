@@ -1,0 +1,44 @@
+{
+  "size": "lg",
+  "schema": {
+    "title": {
+      "label": "profilePanel.autoGenerateForm.title",
+      "messages": {
+        "required": "profilePanel.autoGenerateForm.messages.required"
+      },
+      "rules": ["required"],
+      "type": "text"
+    },
+    "description": {
+      "label": "profilePanel.autoGenerateForm.description",
+      "messages": {
+        "required": "profilePanel.autoGenerateForm.messages.required"
+      },
+      "rules": ["required"],
+      "type": "textarea"
+    },
+    "fileProject": {
+      "name": "fileProject",
+      "accept": ".jpg,.png,.gif",
+      "auto": false,
+      "drop": true,
+      "label": "profilePanel.autoGenerateForm.fileProject",
+      "messages": {
+        "max": "profilePanel.autoGenerateForm.messages.image.max"
+      },
+      "rules": ["max:4096"],
+      "type": "file",
+      "view": "gallery"
+    },
+    "button": {
+      "buttonLabel": "profilePanel.autoGenerateForm.button.addProject",
+      "addClass": {
+        "button": "bg-green"
+      },
+      "full": "full",
+      "onclick": "handlerButton()",
+      "size": "lg",
+      "type": "button"
+    }
+  }
+}

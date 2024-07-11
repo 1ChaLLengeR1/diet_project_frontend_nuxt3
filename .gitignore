@@ -1,6 +1,6 @@
 # Nuxt dev/build outputs
 .output
-.data
+.__test__/report/
 .nuxt
 .nitro
 .cache
@@ -17,6 +17,7 @@ logs
 .DS_Store
 .fleet
 .idea
+
 
 # Local env files
 .env

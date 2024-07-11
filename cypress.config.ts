@@ -11,7 +11,19 @@ export default defineConfig({
   experimentalMemoryManagement: true,
   video: false,
   e2e: {
-    setupNodeEvents(on, config) {},
+    setupNodeEvents(on, config) {
+      on("before:browser:launch", (browser, launchOptions) => {
+        if (["chrome", "edge"].includes(browser.name)) {
+          if (browser.isHeadless) {
+            launchOptions.args.push("--no-sandbox");
+            launchOptions.args.push("--disable-gl-drawing-for-tests");
+            launchOptions.args.push("--disable-gpu");
+          }
+          launchOptions.args.push("--js-flags=--max-old-space-size=3500");
+        }
+        return launchOptions;
+      });
+    },
     baseUrl: "http://localhost:3000",
     specPattern: [
       "__tests__/test/1.LoadInit/**/*.cy.{js,jsx,ts,tsx}",
@@ -26,6 +38,11 @@ export default defineConfig({
   },
   chromeWebSecurity: false,
   env: {
+    DIET_AUTH0_ENDPOINT: "https://dev-j5zz44d2346f1e2h.us.auth0.com/",
+
+    AUTH0_EMAIL: "artek.scibor@gmail.com",
+    AUTH0_PASSWORD: "auth0@zaq1@WSXartek123",
+
     browserPermissions: {
       notifications: "allow",
       geolocation: "allow",

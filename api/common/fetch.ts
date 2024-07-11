@@ -1,6 +1,7 @@
 // variables
 const DEBUG_USER_TOKEN = false;
 const DEBUG_LANG = false;
+const DEBUG_USER_DATA = false;
 
 // types
 import type {
@@ -11,6 +12,7 @@ import type { FetchOptions } from "ohmyfetch";
 
 // stores
 import { DictionaryStore } from "./../../storage/dictionary/dictionary";
+import { AuthStore } from "./../../storage/auth/auth";
 
 export async function apiGet(
   urlPath: string,
@@ -27,6 +29,7 @@ export async function apiGet(
   const responseApi: ResponseFetch = { status: 0, ok: false, data: null };
 
   const dictionaryStore = DictionaryStore();
+  const authStore = AuthStore();
 
   try {
     const headers: Headers = new Headers();
@@ -38,16 +41,22 @@ export async function apiGet(
       }
     }
 
-    // if (sotreAuth.getTokenDataForApi() && !omitHeaders.Authorization) {
-    //   headers.append(
-    //     "Authorization",
-    //     `Bearer ${sotreAuth.getTokenDataForApi()}`
-    //   );
+    if (authStore.getTokenDataForApi() && omitHeaders.Authorization) {
+      headers.append(
+        "Authorization",
+        `Bearer ${authStore.getTokenDataForApi()}`
+      );
+      if (DEBUG_USER_TOKEN) {
+        console.info("auth0 token:", authStore.getTokenDataForApi());
+      }
+    }
 
-    //   if (DEBUG_USER_TOKEN) {
-    //     console.info("auth0 token:", sotreAuth.getTokenDataForApi());
-    //   }
-    // }
+    if (authStore.getUserDataForApi().sub !== "" && omitHeaders.UserData) {
+      headers.append("UserData", JSON.stringify(authStore.getUserDataForApi()));
+      if (DEBUG_USER_DATA) {
+        console.info("userData:", authStore.getUserDataForApi());
+      }
+    }
 
     const { data } = await useFetch(url, {
       onRequest({ options }: { options: FetchOptions }) {
@@ -64,7 +73,6 @@ export async function apiGet(
       console.error(
         `Api status is not in the confirm pool: ${responseApi.status} status`
       );
-      return;
     }
 
     return {

@@ -8,6 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
+    "test:cypress": "cypress run",
     "test:cypress-dev": "cypress open --e2e"
   },
   "dependencies": {
