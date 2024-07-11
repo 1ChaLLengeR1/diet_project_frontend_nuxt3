@@ -1,0 +1,56 @@
+{
+  "size": "lg",
+  "schema": {
+    "userName": {
+      "label": "profilePanel.autoGenerateForm.userName",
+      "messages": {
+        "required": "profilePanel.autoGenerateForm.messages.required"
+      },
+      "rules": ["required"],
+      "type": "text"
+    },
+    "lastName": {
+      "label": "profilePanel.autoGenerateForm.lastName",
+      "messages": {
+        "required": "profilePanel.autoGenerateForm.messages.required"
+      },
+      "rules": ["required"],
+      "type": "text"
+    },
+    "nickName": {
+      "label": "profilePanel.autoGenerateForm.nickName",
+      "messages": {
+        "required": "profilePanel.autoGenerateForm.messages.required"
+      },
+      "rules": ["required"],
+      "type": "text"
+    },
+    "email": {
+      "label": "profilePanel.autoGenerateForm.email",
+      "messages": {
+        "required": "profilePanel.autoGenerateForm.messages.required"
+      },
+      "rules": ["required"],
+      "type": "text"
+    },
+    "role": {
+      "label": "profilePanel.autoGenerateForm.role",
+      "messages": {
+        "required": "profilePanel.autoGenerateForm.messages.required"
+      },
+      "rules": ["required"],
+      "type": "text",
+      "disabled": true
+    },
+    "button": {
+      "buttonLabel": "profilePanel.autoGenerateForm.button.changeUser",
+      "addClass": {
+        "button": "bg-green"
+      },
+      "full": "full",
+      "onclick": "handlerButton()",
+      "size": "lg",
+      "type": "button"
+    }
+  }
+}

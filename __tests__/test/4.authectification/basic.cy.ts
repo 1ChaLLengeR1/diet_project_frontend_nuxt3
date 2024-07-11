@@ -3,6 +3,7 @@ import { loginAuth0Simple } from "./../../support/helper/auth/signIn";
 import { SideBarMenu } from "./../../support/objectComponents/sideBar";
 
 const sideBarMenu = new SideBarMenu();
+const time: number = 2000;
 
 describe("Authorization", () => {
   it("HP, login -> I see profilePage", () => {
@@ -12,7 +13,7 @@ describe("Authorization", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${adminPanel}"]}`
     );
-    cy.wait(1000);
+    cy.wait(time);
 
     cy.window().then((win) => {
       const lang = win.localStorage.getItem("lang");
@@ -26,7 +27,7 @@ describe("Authorization", () => {
     loginAuth0Simple();
 
     cy.visit(`${paths.testPanel}?action=loadLangs&data={"lang":["${logout}"]}`);
-    cy.wait(1000);
+    cy.wait(time);
 
     cy.window().then((win) => {
       const lang = win.localStorage.getItem("lang");
@@ -45,7 +46,7 @@ describe("Authorization", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${linkMainPage}", "${linlProject}", "${linkLogin}", "${logout}"]}`
     );
-    cy.wait(1000);
+    cy.wait(time);
 
     cy.window().then((win) => {
       const lang = win.localStorage.getItem("lang");

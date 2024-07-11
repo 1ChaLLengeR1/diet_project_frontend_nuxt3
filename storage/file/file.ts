@@ -36,7 +36,10 @@ export const FileStore = defineStore("file", () => {
       return;
     }
 
-    console.log(ids);
+    if (ids.ids.length === 0) {
+      return;
+    }
+
     const response = await collectionFileMultiple(ids);
     if (response === null) {
       return;
@@ -45,10 +48,10 @@ export const FileStore = defineStore("file", () => {
     collectionMultiple.value = response?.collection!;
   };
 
-  const apiFetchOne = async (id: string): Promise<ItemFile | null> => {
+  const apiFetchOne = async (id: string): Promise<ItemFile[] | null> => {
     const response: ResponseFile | null = await collectionOne(id);
     if (response !== null && response.collection) {
-      return response.collection[0];
+      return response.collection;
     }
 
     return null;

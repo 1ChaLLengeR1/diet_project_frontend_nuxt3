@@ -16,6 +16,12 @@ export const ProfilePanelStore = defineStore("profilePanel", () => {
 
   const tabs = ref<Tabs[]>([
     {
+      value: "user",
+      path: `${paths.profilePanelUser}`,
+      name: "profilePanel.tabs.user",
+      active: false,
+    },
+    {
       value: "projects",
       path: `${paths.profilePanelProject}`,
       name: "profilePanel.tabs.project",

@@ -25,3 +25,8 @@ export interface BodyCollectionPublic {
   idLanguage: string;
   page: string;
 }
+
+export interface ItemFilterPost {
+  id?: string | null;
+  title?: string | null;
+}

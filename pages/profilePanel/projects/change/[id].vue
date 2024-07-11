@@ -51,7 +51,7 @@ export default defineComponent({
     const dataFrom = ref<{
       title: string;
       description: string;
-      fileProject: string;
+      fileProject: string | null;
     }>({ title: "", description: "", fileProject: "" });
 
     onMounted(async () => {
@@ -60,12 +60,16 @@ export default defineComponent({
       const project = await projectStore.apiFetchOne(id.value);
       const file = await fileStore.apiFetchOne(id.value);
 
-      fileId.value = file?.id!;
-      fileFolder.value = file?.folder!;
+      if (file !== null && file.length > 0) {
+        fileId.value = file[0].id;
+        fileFolder.value = file[0].folder;
+        dataFrom.value.fileProject = file[0].url;
+      } else {
+        dataFrom.value.fileProject = null;
+      }
 
       dataFrom.value.title = project?.title!;
       dataFrom.value.description = project?.description!;
-      dataFrom.value.fileProject = file?.url!;
 
       loadDatas.value = true;
     });

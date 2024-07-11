@@ -1,14 +1,15 @@
-import { paths } from "./../../../../utils/paths";
-import { loginAuth0Simple } from "./../../../support/helper/auth/signIn";
-import { ProfileTabsForms } from "./../../../support/objectComponents/profileTabsForms";
-import { Alert } from "./../../../support/objectComponents/alert";
-import { ProfilePanelProject } from "./../../../support/objectPages/profilePanelProject";
-import { ProjectPage } from "./../../../support/objectPages/projectPage";
+import { paths } from "../../../../utils/paths";
+import { loginAuth0Simple } from "../../../support/helper/auth/signIn";
+import { ProfileTabsForms } from "../../../support/objectComponents/profileTabsForms";
+import { Alert } from "../../../support/objectComponents/alert";
+import { ProfilePanelProject } from "../../../support/objectPages/profilePanelProject";
+import { ProjectPage } from "../../../support/objectPages/projectPage";
 
 const profileTabsForms = new ProfileTabsForms();
 const alert = new Alert();
 const profilePanelProject = new ProfilePanelProject();
 const projectPage = new ProjectPage();
+const time: number = 2000;
 
 describe("Profile Page Panel Project Form", () => {
   it("Login, create project -> I see alert", () => {
@@ -22,7 +23,7 @@ describe("Profile Page Panel Project Form", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${alertLnag}", "${alertImageLang}"]}`
     );
-    cy.wait(1000);
+    cy.wait(time);
 
     cy.visit(paths.profilePanelProjectCreate);
     profileTabsForms.createProject(title, description);
@@ -58,7 +59,7 @@ describe("Profile Page Panel Project Form", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${alertLnag}", "${alertImageLang}"]}`
     );
-    cy.wait(1000);
+    cy.wait(time);
 
     cy.visit(paths.profilePanelProjectCreate);
     profileTabsForms.createProject(title, description);
@@ -82,7 +83,7 @@ describe("Profile Page Panel Project Form", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${alertLnag}"]}`
     );
-    cy.wait(1000);
+    cy.wait(time);
 
     cy.visit(paths.profilePanelProjectCreate);
     profileTabsForms.createProject(title, description);
@@ -106,16 +107,16 @@ describe("Profile Page Panel Project Form", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${alertLnag}"]}`
     );
-    cy.wait(1000);
+    cy.wait(time);
 
     cy.visit(paths.profilePanelProjectCreate);
     profileTabsForms.createProject(title, description);
     profilePanelProject.openChnageProject(title);
-    profileTabsForms.changeProject(changeTitle, changeDescription);
+    profilePanelProject.deleteImage(title);
     cy.window().then((win) => {
       const lang = win.localStorage.getItem("lang");
       const parse = JSON.parse(lang!);
-      profilePanelProject.deleteImage(title);
+      profileTabsForms.changeProject(changeTitle, changeDescription);
       alert.checkAlert("positive", parse[0], 0);
     });
   });

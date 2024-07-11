@@ -23,6 +23,8 @@
   "loadingSpinner": {
     "information": "Ładowanie...",
     "informationMore": "Może to potrwać kilka sekund...",
+    "informationForm": "Ładowanie formularza...",
+    "informationGlobal": "Ładowanie danych, proszę czekać...",
     "stores": {
       "userData": "Trwa sprawdzanie automatycznego logowania...",
       "dictionary": "Trwa ładowanie słowników...",
@@ -68,20 +70,47 @@
       "project": "Projekty",
       "create_project": "Stwórz Projekt",
       "post": "Posty",
-      "create_post": "Stwórz Post"
+      "create_post": "Stwórz Post",
+      "user": "Użytkownik"
     },
     "autoGenerateForm": {
+      "label": {
+        "addTraining": "Dodaj trening"
+      },
+
+      "placeholder": {
+        "time": "01:10:59 - 1:05:05 - 00:30:30 - 00:10:59"
+      },
+
       "email": "E-Mail",
+      "userName": "Imie",
+      "lastName": "Nazwisko",
+      "nickName": "Ksywa",
+      "role": "Rola",
       "phoneNumber": "Numer Telefonu",
       "title": "Tytuł",
       "description": "Opis",
       "date": "Data",
       "files": "Zdjecia",
       "fileProject": "Zdjęcie projektu",
+      "fileFigure": "Zdjęcie sylwetki",
+      "fileWeight": "Zdjęcie wagi",
+      "fileKcal": "Zdjęcie kalorii",
+      "fileTraining": "Zdjęcie treningu",
+      "selectProject": "Wybierz projekt",
+      "day": "Dzień",
+      "weight": "Waga",
+      "kcal": "Kalorie",
+      "type": "Typ sportu",
+      "time": "Czas sesji",
 
       "button": {
         "addProject": "Dodaj projekt",
-        "changeProject": "Zaktualizuj projekt"
+        "addPost": "Dodaj Post",
+        "changeProject": "Zaktualizuj projekt",
+        "changePost": "Zaktualizuj post",
+        "changeUser": "Zaktualizuj użytkownika",
+        "addTraining": "Dodaj trening"
       },
 
       "messages": {
@@ -92,7 +121,11 @@
         "image": {
           "max": "Rozmiar :attribute nie może przekraczać :max kilobajtów."
         },
-        "custom": {}
+        "custom": {
+          "project": "Wybierz Projekt.",
+          "typeTraining": "Wybierz typ treningu.",
+          "typeTrainingTime": "Błąd w walidacji czasu."
+        }
       }
     },
     "projectPanel": {
@@ -100,10 +133,21 @@
         "title": "Tworzenie projektu",
         "description": "Jeśli chcesz stworzyć projekt w trzech językach musisz dodać projekt osobno za każdym razem. Czyli tworzysz go w wersji polskiej, później angielskiej i niemieckiej. Jeśli dodasz tylko w jednej wersji to po zmianie języka on nie pojawi się."
       },
+      "user": {
+        "title": "Wartości użytkownika",
+        "description": "Aby być wyświetlanym w sekcji projekty, musisz w pełni uzupełnić swoje dane. W przeciwnym razie nie pojawisz się w wyborze użytkownika w projektach."
+      },
       "cards": {
         "button": {
           "delete": "Usuń projekt",
           "change": "Edytuj projekt"
+        }
+      },
+      "lists": {
+        "posts": {
+          "button": {
+            "change": "Edytuj Post"
+          }
         }
       }
     }
@@ -116,6 +160,14 @@
           "changeProject": "Aktualizacja przebiegła poprawnie",
           "deleteProject": "Usunięto poprawnie projekt"
         },
+        "post": {
+          "addPost": "Dodano pomyślnie post",
+          "changePost": "Aktualizacja posta przebiegał sprawnie",
+          "deletePost": "Usunięto pomyslnie post"
+        },
+        "user": {
+          "change": "Aktualizacja użytkownika przebiegła poprawnie"
+        },
         "file": {
           "createFile": "Dodano zdjęcia poprawnie",
           "deleteAllFile": "Usunięto wszystkie zdjęcia",
@@ -124,9 +176,17 @@
       },
       "error": {
         "project": {
-          "addProject": "Nie dodano pomyslnie projektu!",
+          "addProject": "Nie dodano pomyslnie projektu",
           "changeProject": "Błąd podczas aktualizacji projektu",
           "deleteProject": "Błąd podczas usuwania projektu"
+        },
+        "post": {
+          "addPost": "Błąd podczas dodawania posta",
+          "changePost": "Błąd podczas aktualizacji posta",
+          "deletePost": "Błąd podczas usuwania posta"
+        },
+        "user": {
+          "change": "Aktualizacja użytkownika nie powiodła się"
         },
         "file": {
           "createFile": "Błąd podczas dodawania zdjęć",
@@ -134,7 +194,11 @@
           "deleteFile": "Błąd podczas usuwania zdjęcia"
         }
       },
-      "warning": {}
+      "warning": {
+        "post": {
+          "time": "Błąd podczas sprawdzania validacji 'sesji czasu'!"
+        }
+      }
     }
   },
   "tabs": {
@@ -151,21 +215,49 @@
       },
       "project": {
         "title": "Usuń projekt",
-        "text": "Czy jesteś pewny, że chcesz usunąć projekt o nazwie: {nameProject}?",
+        "text": "Czy jesteś pewny, że chcesz usunąć projekt o nazwie: {name}?",
         "deleteButton": "Usuń projekt",
         "openDialog": "Usuń projekt"
       },
       "post": {
         "title": "Usuń post",
-        "text": "Czy jesteś pewny, że chcesz usunąć post o nazwie: {namePost}?",
+        "text": "Czy jesteś pewny, że chcesz usunąć post o nazwie: {name}?",
         "deleteButton": "Usuń post",
         "openDialog": "Usuń post"
       }
     }
   },
   "selects": {
-    "selectUser": {
-      "select": "Wybierz użytkownika"
+    "select": {
+      "user": "Wybierz użytkownika",
+      "project": "Wybierz projekt"
+    },
+    "typeTraining": {
+      "bike": "Jazda na rowerze",
+      "run": "Bieganie",
+      "swim": "Pływanie",
+      "hike": "Wędrówki",
+      "gym": "Ćwiczenia na siłowni"
+    }
+  },
+  "lists": {
+    "profilePanel": {
+      "posts": {
+        "day": "Dzień - {day}",
+        "weight": "Waga - {weight}",
+        "kcal": "Kalorie - {kcal}",
+        "typeTraining": "Typ Treningu - {typeTraining}",
+        "timeTraining": "Czas Treningu - {timeTraining}",
+        "kcalTraining": "Kalorie spalone - {kcalTraining}",
+        "training": "Trening",
+        "days": "Dni"
+      }
+    },
+    "posts": {
+      "buttons": {
+        "seePost": "Zobacz dzień",
+        "posts": "Zobacz Dni"
+      }
     }
   }
 }

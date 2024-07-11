@@ -29,11 +29,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, watch } from "vue";
 
 // stores
 import { ProjectStore } from "./../../../storage/project/project";
 import { FileStore } from "./../../../storage/file/file";
+import { AuthStore } from "./../../../storage/auth/auth";
 
 // components
 import ProfileTab from "./../../../components/Tabs/ProfilePanel/Profile.vue";
@@ -50,13 +51,14 @@ export default defineComponent({
   setup() {
     const projectStore = ProjectStore();
     const fileStore = FileStore();
+    const authStore = AuthStore();
     const activeList = ref<boolean>(false);
 
     const changePage = async () => {
       await projectStore.loadPagePagination();
     };
 
-    const runActions = async () => {
+    const loadDatas = async () => {
       activeList.value = true;
 
       await projectStore.apiFetch();
@@ -66,11 +68,15 @@ export default defineComponent({
       activeList.value = false;
     };
 
-    setTimeout(async () => {
-      activeList.value = true;
+    const runActions = async () => {
+      await loadDatas();
+    };
+
+    runActions();
+
+    watch(authStore, async () => {
       await runActions();
-      activeList.value = false;
-    }, 1000);
+    });
 
     return { projectStore, fileStore, activeList, changePage };
   },

@@ -23,11 +23,11 @@ export interface UserData {
 }
 
 export interface UserParams {
-  id: string;
+  id?: string;
   userName: string;
   lastName: string;
   nickName: string;
   email: string;
   role: string;
-  sub: string;
+  sub?: string;
 }

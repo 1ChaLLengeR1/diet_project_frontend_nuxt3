@@ -1,16 +1,18 @@
 import { paths } from "./../../../utils/paths";
 import { SideBarMenu } from "./../../support/objectComponents/sideBar";
 import { DropDownLanguage } from "./../../support/objectComponents/dropDownLanguage";
+import { link } from "./../../support/e2e";
 
 const sideBarMenu = new SideBarMenu();
 const dropDownLanguage = new DropDownLanguage();
+const time: number = 2000;
 
 export function checkLanguageHomePage() {
-  cy.intercept("GET", "http://localhost:3001/api/dictionary/collection").as(
+  cy.intercept("GET", `${link}/api/dictionary/collection`).as(
     "collectionDictionary"
   );
   cy.wait("@collectionDictionary");
-  cy.wait(500);
+  cy.wait(time);
 
   const linkMainPage = "sidebar.siderbarMenu.home";
   const linlProject = "sidebar.siderbarMenu.projects";
@@ -19,7 +21,7 @@ export function checkLanguageHomePage() {
   cy.visit(
     `${paths.testPanel}?action=loadLangs&data={"lang":["${linkMainPage}", "${linlProject}", "${linkLogin}", "${dropDownTitle}"]}`
   );
-  cy.wait(500);
+  cy.wait(time);
 
   cy.window().then((win) => {
     const lang = win.localStorage.getItem("lang");

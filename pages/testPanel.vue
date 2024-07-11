@@ -8,6 +8,7 @@ import { useRoute } from "vue-router";
 
 // stores
 import { DictionaryStore } from "./../storage/dictionary/dictionary";
+import { createProject } from "./../api/project/post";
 
 export default defineComponent({
   setup() {
@@ -32,11 +33,31 @@ export default defineComponent({
       }
     };
 
+    const createProjectF = async (data: string) => {
+      let obj: { title: string; description: string } = {
+        title: "ProjektTestPanel",
+        description: "description test profile",
+      };
+      if (data !== undefined) {
+        const objectData = JSON.parse(data);
+        obj.title = objectData.title;
+        obj.description = objectData.description;
+      }
+
+      await createProject(obj);
+    };
+
     const runActions = async () => {
       switch (route.query.action) {
         case "loadLangs": {
           await loadLangs(route.query.data as string);
           break;
+        }
+
+        case "createProject": {
+          setTimeout(async () => {
+            await createProjectF(route.query.data as string);
+          }, 2000);
         }
       }
     };

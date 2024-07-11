@@ -148,6 +148,7 @@ export const AuthStore = defineStore("auth", () => {
 
   return {
     paramsAuth0,
+    userParams,
     singIn,
     populateDataUser,
     getTokenDataForApi,

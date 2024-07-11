@@ -1,11 +1,12 @@
 <template>
-  <div class="w-full flex flex-col gap-3 p-3">
+  <div class="w-full h-full flex flex-col gap-3 p-3">
     <SelectUsers @search-user-id="searchUser" />
-    <ul class="w-full flex justify-center flex-wrap gap-3">
+    <ul id="listProject" class="w-full flex justify-center flex-wrap gap-3">
       <CardProject
         v-for="(item, index) in projecPublictStore.collection"
         :key="index"
         :id="item.id"
+        :userId="item.userId"
         :title="item.title"
         :description="item.description"
         :img="fileStore.findImage(item.id)"

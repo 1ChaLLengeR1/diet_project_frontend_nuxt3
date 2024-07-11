@@ -1,15 +1,6 @@
 <template>
   <div class="w-full h-fit">
-    <Vueform
-      id="profileForm"
-      class="w-full"
-      :add-class="[
-        { 'custom-form-create-project': typeButton === 'create' },
-        { 'custom-form-change-project': typeButton === 'change' },
-      ]"
-      ref="form"
-      v-bind="schemaForm"
-    />
+    <Vueform id="profileForm" class="w-full" ref="form" v-bind="schemaForm" />
   </div>
 </template>
 
@@ -85,7 +76,9 @@ export default defineComponent({
             key === "label" ||
             key === "required" ||
             key === "max" ||
-            key === "min"
+            key === "min" ||
+            key === "placeholder" ||
+            key === "add-text"
           ) {
             return $i18n.t(value);
           }
@@ -107,7 +100,12 @@ export default defineComponent({
       );
       schemaForm.value = convertedJsonSchema;
     };
+
     generatorForm();
+
+    watch(props, () => {
+      generatorForm();
+    });
 
     watch(dictionaryStore, async () => {
       generatorForm();
@@ -117,27 +115,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss">
-.custom-form-create-project {
-  button {
-    background-color: var(--button-create);
-    color: white;
-    font-weight: bold;
-  }
-  button:hover {
-    transform: scale(1);
-  }
-}
-
-.custom-form-change-project {
-  button {
-    background-color: blue;
-    color: white;
-    font-weight: bold;
-  }
-  button:hover {
-    transform: scale(1);
-  }
-}
-</style>

@@ -8,7 +8,6 @@ import type {
 import type { CreateProject } from "./../../data/types/storage/project/types";
 
 export async function changeProeject(id: string, body: CreateProject) {
-  console.log(body);
   const urlPath: string = `/api/project/change/${id}`;
   const response: ResponseApiProject | undefined = await apiPost(
     urlPath,

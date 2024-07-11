@@ -11,7 +11,19 @@ export default defineConfig({
   experimentalMemoryManagement: true,
   video: false,
   e2e: {
-    setupNodeEvents(on, config) {},
+    setupNodeEvents(on, config) {
+      on("before:browser:launch", (browser, launchOptions) => {
+        if (["chrome", "edge"].includes(browser.name)) {
+          if (browser.isHeadless) {
+            launchOptions.args.push("--no-sandbox");
+            launchOptions.args.push("--disable-gl-drawing-for-tests");
+            launchOptions.args.push("--disable-gpu");
+          }
+          launchOptions.args.push("--js-flags=--max-old-space-size=3500");
+        }
+        return launchOptions;
+      });
+    },
     baseUrl: "http://localhost:3000",
     specPattern: [
       "__tests__/test/1.LoadInit/**/*.cy.{js,jsx,ts,tsx}",

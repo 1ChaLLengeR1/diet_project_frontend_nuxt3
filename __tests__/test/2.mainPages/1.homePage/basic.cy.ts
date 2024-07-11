@@ -3,10 +3,12 @@ import { Spinner } from "./../../../support/objectComponents/spinner";
 import { SideBarMenu } from "../../../support/objectComponents/sideBar";
 import { DropDownLanguage } from "./../../../support/objectComponents/dropDownLanguage";
 import { checkLanguageHomePage } from "./../../../helpers/homePage/dropDown";
+import { link } from "./../../../support/e2e";
 
 const spinner = new Spinner();
 const sideBarMenu = new SideBarMenu();
 const dropDownLanguage = new DropDownLanguage();
+const time: number = 2000;
 
 describe("Home Page Basic", () => {
   it("HP, check loadingSpinner info", () => {
@@ -18,7 +20,7 @@ describe("Home Page Basic", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${spinnerLangInformation}", "${spinnerLangInformationMore}", "${spinnerLangInformationStoreDictionary}"]}`
     );
-    cy.wait(500);
+    cy.wait(time);
 
     cy.visit(paths.home);
     cy.reload();
@@ -40,7 +42,7 @@ describe("Home Page Basic", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${linkMainPage}", "${linlProject}", "${linkLogin}"]}`
     );
-    cy.wait(500);
+    cy.wait(time);
     cy.visit(paths.home);
 
     cy.window().then((win) => {
@@ -65,7 +67,7 @@ describe("Home Page Basic", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${dropDownTitle}", "${polishDefaultLang}", "${englishDefaultLang}", "${germanDefaultLang}"]}`
     );
-    cy.wait(500);
+    cy.wait(time);
     cy.visit(paths.home);
 
     cy.window().then((win) => {
@@ -81,15 +83,15 @@ describe("Home Page Basic", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${language}"]}`
     );
-    cy.wait(500);
+    cy.wait(time);
 
     cy.visit(paths.home);
 
-    cy.intercept("GET", "http://localhost:3001/api/dictionary/collection").as(
+    cy.intercept("GET", `${link}/api/dictionary/collection`).as(
       "collectionDictionary"
     );
     cy.wait("@collectionDictionary");
-    cy.wait(500);
+    cy.wait(time);
 
     cy.window().then((win) => {
       const lang = win.localStorage.getItem("lang");
@@ -106,15 +108,15 @@ describe("Home Page Basic", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${language}"]}`
     );
-    cy.wait(500);
+    cy.wait(time);
 
     cy.visit(paths.home);
 
-    cy.intercept("GET", "http://localhost:3001/api/dictionary/collection").as(
+    cy.intercept("GET", `${link}/api/dictionary/collection`).as(
       "collectionDictionary"
     );
     cy.wait("@collectionDictionary");
-    cy.wait(500);
+    cy.wait(time);
 
     cy.window().then((win) => {
       const lang = win.localStorage.getItem("lang");

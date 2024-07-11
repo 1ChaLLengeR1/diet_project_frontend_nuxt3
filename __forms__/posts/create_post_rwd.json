@@ -1,0 +1,144 @@
+{
+  "schema": {
+    "day": {
+      "label": "profilePanel.autoGenerateForm.day",
+      "messages": {
+        "required": "profilePanel.autoGenerateForm.messages.required"
+      },
+      "rules": ["required"],
+      "type": "text",
+      "inputType": "number"
+    },
+    "weight": {
+      "label": "profilePanel.autoGenerateForm.weight",
+      "messages": {
+        "required": "profilePanel.autoGenerateForm.messages.required"
+      },
+      "rules": ["required"],
+      "type": "text",
+      "inputType": "number"
+    },
+    "kcal": {
+      "label": "profilePanel.autoGenerateForm.kcal",
+      "messages": {
+        "required": "profilePanel.autoGenerateForm.messages.required"
+      },
+      "rules": ["required"],
+      "type": "text",
+      "inputType": "number"
+    },
+    "selectProject": {
+      "label": "profilePanel.autoGenerateForm.selectProject",
+      "type": "customSelectProject",
+      "rules": ["projectRequired"]
+    },
+    "files": {
+      "type": "group",
+      "schema": {
+        "fileFigure": {
+          "name": "fileFigure",
+          "accept": ".jpg,.png,.gif,.jpeg",
+          "auto": false,
+          "drop": true,
+          "label": "profilePanel.autoGenerateForm.fileFigure",
+          "messages": {
+            "max": "profilePanel.autoGenerateForm.messages.image.max"
+          },
+          "rules": ["max:4096"],
+          "type": "file",
+          "view": "gallery"
+        },
+        "fileWeight": {
+          "name": "fileFigure",
+          "accept": ".jpg,.png,.gif,.jpeg",
+          "auto": false,
+          "drop": true,
+          "label": "profilePanel.autoGenerateForm.fileWeight",
+          "messages": {
+            "max": "profilePanel.autoGenerateForm.messages.image.max"
+          },
+          "rules": ["max:4096"],
+          "type": "file",
+          "view": "gallery"
+        },
+        "fileKcal": {
+          "name": "fileFigure",
+          "accept": ".jpg,.png,.gif,.jpeg",
+          "auto": false,
+          "drop": true,
+          "label": "profilePanel.autoGenerateForm.fileKcal",
+          "messages": {
+            "max": "profilePanel.autoGenerateForm.messages.image.max"
+          },
+          "rules": ["max:4096"],
+          "type": "file",
+          "view": "gallery"
+        },
+        "fileTraining": {
+          "name": "fileFigure",
+          "accept": ".jpg,.png,.gif,.jpeg",
+          "auto": false,
+          "drop": true,
+          "label": "profilePanel.autoGenerateForm.fileTraining",
+          "messages": {
+            "max": "profilePanel.autoGenerateForm.messages.image.max"
+          },
+          "rules": ["max:4096"],
+          "type": "file",
+          "view": "gallery"
+        }
+      }
+    },
+    "trainingCollection": {
+      "type": "list",
+      "initial": -1,
+      "label": "profilePanel.autoGenerateForm.label.addTraining",
+      "add-text": "profilePanel.autoGenerateForm.button.addTraining",
+      "addClasses": {
+        "ListElement": {
+          "listItem": "p-1 border-t border-gray-200"
+        },
+        "ElementLabel": {
+          "wrapper": "text-[20px] font-semibold mb-2"
+        }
+      },
+      "object": {
+        "schema": {
+          "type": {
+            "label": "profilePanel.autoGenerateForm.type",
+            "type": "customSelectTypeTraining",
+            "rules": ["typeTraining"]
+          },
+          "time": {
+            "label": "profilePanel.autoGenerateForm.time",
+            "messages": {
+              "required": "profilePanel.autoGenerateForm.messages.required"
+            },
+            "placeholder": "profilePanel.autoGenerateForm.placeholder.time",
+            "rules": ["required", "typeTrainingTime"],
+            "type": "text"
+          },
+          "kcal": {
+            "label": "profilePanel.autoGenerateForm.kcal",
+            "messages": {
+              "required": "profilePanel.autoGenerateForm.messages.required"
+            },
+            "rules": ["required"],
+            "type": "text",
+            "inputType": "number"
+          }
+        }
+      }
+    },
+    "button": {
+      "buttonLabel": "profilePanel.autoGenerateForm.button.addPost",
+      "addClass": {
+        "button": "bg-green"
+      },
+      "full": "full",
+      "onclick": "handlerButton()",
+      "size": "lg",
+      "type": "button"
+    }
+  }
+}

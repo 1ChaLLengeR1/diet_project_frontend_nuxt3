@@ -10,8 +10,16 @@ import type {
 
 // api
 import { collectionUsers } from "./../../api/users/fetch";
+import { changeUser } from "./../../api/users/change";
+
+// stores
+import { AlertStore } from "./../../storage/alert/alert";
+import { AuthStore } from "./../../storage/auth/auth";
 
 export const UsersStore = defineStore("users", () => {
+  const alertStore = AlertStore();
+  const authStore = AuthStore();
+  const { $i18n } = useNuxtApp();
   const collection = ref<ItemUser[]>([]);
 
   const apiFetch = async () => {
@@ -29,6 +37,22 @@ export const UsersStore = defineStore("users", () => {
     }
   };
 
+  const changeUserParams = async (body: ItemUser) => {
+    const response = await changeUser(body);
+    if (response !== null && response.collection) {
+      alertStore.addToCollection(
+        $i18n.t("alert.message.positive.user.change"),
+        "positive"
+      );
+      authStore.userParams = response.collection[0];
+      return;
+    }
+    alertStore.addToCollection(
+      $i18n.t("alert.message.error.user.change"),
+      "error"
+    );
+  };
+
   const filterSelect = (): ItemFilter[] => {
     return collection.value.map((user) => ({
       id: user.id,
@@ -36,5 +60,5 @@ export const UsersStore = defineStore("users", () => {
     }));
   };
 
-  return { collection, apiFetch, filterSelect };
+  return { collection, apiFetch, filterSelect, changeUserParams };
 });

@@ -23,6 +23,8 @@
   "loadingSpinner": {
     "information": "Loading...",
     "informationMore": "This may take a few seconds...",
+    "informationForm": "Loading forms...",
+    "informationGlobal": "Loading data, please wait...",
     "stores": {
       "userData": "Automatic login is being checked...",
       "dictionary": "Dictionaries are loading...",
@@ -68,20 +70,43 @@
       "project": "Projects",
       "create_project": "Create Project",
       "post": "Posts",
-      "create_post": "Create Post"
+      "create_post": "Create Post",
+      "user": "User"
     },
     "autoGenerateForm": {
+      "label": {
+        "addTraining": "Add Training"
+      },
+
       "email": "E-Mail",
+      "userName": "First Name",
+      "lastName": "Last Name",
+      "nickName": "Nickname",
+      "role": "Role",
       "phoneNumber": "Phone Number",
       "title": "Title",
       "description": "Description",
       "date": "Data",
       "files": "Files",
       "fileProject": "File Project",
+      "fileFigure": "File Figure",
+      "fileWeight": "File Weight",
+      "fileKcal": "File Kcal",
+      "fileTraining": "File Training",
+      "selectProject": "Select project",
+      "day": "Day",
+      "weight": "Weight",
+      "kcal": "Kcal",
+      "type": "Type of sport",
+      "time": "Session time",
 
       "button": {
         "addProject": "Add Project",
-        "changeProject": "Update the project"
+        "addPost": "Add Post",
+        "changeProject": "Update the project",
+        "changePost": "Update the post",
+        "changeUser": "Update user",
+        "addTraining": "Add training"
       },
 
       "messages": {
@@ -92,7 +117,11 @@
         "image": {
           "max": "The size of :attribute cannot exceed :max kilobytes."
         },
-        "custom": {}
+        "custom": {
+          "project": "Select Project.",
+          "typeTraining": "Select training type.",
+          "typeTrainingTime": "Error in time validation."
+        }
       }
     },
     "projectPanel": {
@@ -100,10 +129,21 @@
         "title": "Create Project",
         "description": "If you want to create a project in three languages, you need to add the project separately each time. So you create it in Polish, then English and German versions. If you add only one version, it will not appear after changing the language."
       },
+      "user": {
+        "title": "User Values",
+        "description": "To be displayed in the projects section, you need to fully complete your information. Otherwise, you will not appear in the user selection in projects."
+      },
       "cards": {
         "button": {
           "delete": "Delete project",
           "change": "Edit the project"
+        }
+      },
+      "lists": {
+        "posts": {
+          "button": {
+            "change": "Edit the Post"
+          }
         }
       }
     }
@@ -115,6 +155,14 @@
           "addProject": "Project added successfully",
           "changeProject": "The update went correctly",
           "deleteProject": "Project deleted correctly"
+        },
+        "post": {
+          "addPost": "Post added successfully",
+          "changePost": "The post update went smoothly",
+          "deletePost": "Post successfully deleted"
+        },
+        "user": {
+          "change": "User update was successful"
         },
         "file": {
           "createFile": "Photos added correctly",
@@ -128,13 +176,25 @@
           "changeProject": "Error while updating the project",
           "deleteProject": "Error deleting project"
         },
+        "post": {
+          "addPost": "Error adding a post",
+          "changeProject": "Error while updating the project",
+          "deletePost": "Error deleting post"
+        },
+        "user": {
+          "change": "User update failed"
+        },
         "file": {
           "createFile": "Error adding photos",
           "deleteAllFile": "All photos deleted",
           "deleteFile": "Error deleting photo"
         }
       },
-      "warning": {}
+      "warning": {
+        "post": {
+          "time": "Error checking 'time session' validation!"
+        }
+      }
     }
   },
   "tabs": {
@@ -151,21 +211,49 @@
       },
       "project": {
         "title": "Delete the project",
-        "text": "Are you sure you want to delete the project named: {nameProject}?",
+        "text": "Are you sure you want to delete the project named: {name}?",
         "deleteButton": "Delete the project",
         "openDialog": "Delete the project"
       },
       "post": {
         "title": "Delete post",
-        "text": "Are you sure you want to delete the post named: {namePost}?",
+        "text": "Are you sure you want to delete the post named: {name}?",
         "deleteButton": "Delete post",
         "openDialog": "Delete post"
       }
     }
   },
   "selects": {
-    "selectUser": {
-      "select": "Select user"
+    "select": {
+      "user": "Select user",
+      "project": "Select project"
+    },
+    "typeTraining": {
+      "bike": "Cycling",
+      "run": "Running",
+      "swim": "Swimming",
+      "hike": "Hiking",
+      "gym": "Gym Workout"
+    }
+  },
+  "lists": {
+    "profilePanel": {
+      "posts": {
+        "day": "Day - {day}",
+        "weight": "Weight - {weight}",
+        "kcal": "Kcal - {kcal}",
+        "typeTraining": "Training Type - {typeTraining}",
+        "timeTraining": "Training Time - {timeTraining}",
+        "kcalTraining": "Calories burned - {kcalTraining}",
+        "training": "Training",
+        "days": "Days"
+      }
+    },
+    "posts": {
+      "buttons": {
+        "seePost": "See the day",
+        "posts": "See Days"
+      }
     }
   }
 }

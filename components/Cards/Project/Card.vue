@@ -17,7 +17,7 @@
     </v-img>
 
     <v-card-subtitle class="pt-4 text-main">
-      <p class="font-bold">{{ title }}</p>
+      <p id="titleCard" class="font-bold">{{ title }}</p>
     </v-card-subtitle>
 
     <v-card-actions>
@@ -46,6 +46,7 @@
 
     <v-card-actions>
       <v-btn
+        id="linkPosts"
         :to="`${paths.posts}/${id}`"
         color="orange-lighten-2"
         :text="$t('tabs.confirmButton.default.buttons.posts')"
@@ -68,6 +69,10 @@ import { paths } from "./../../../utils/paths";
 export default defineComponent({
   props: {
     id: {
+      type: String,
+      required: true,
+    },
+    userId: {
       type: String,
       required: true,
     },

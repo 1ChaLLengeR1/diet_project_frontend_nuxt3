@@ -1,0 +1,170 @@
+{
+  "schema": {
+    "dayWeight": {
+      "type": "group",
+      "schema": {
+        "day": {
+          "label": "profilePanel.autoGenerateForm.day",
+          "messages": {
+            "required": "profilePanel.autoGenerateForm.messages.required"
+          },
+          "rules": ["required"],
+          "columns": 6,
+          "type": "text",
+          "inputType": "number"
+        },
+        "weight": {
+          "label": "profilePanel.autoGenerateForm.weight",
+          "messages": {
+            "required": "profilePanel.autoGenerateForm.messages.required"
+          },
+          "rules": ["required"],
+          "type": "text",
+          "columns": 6,
+          "inputType": "number"
+        }
+      }
+    },
+    "kcalSelectProject": {
+      "type": "group",
+      "schema": {
+        "kcal": {
+          "label": "profilePanel.autoGenerateForm.kcal",
+          "messages": {
+            "required": "profilePanel.autoGenerateForm.messages.required"
+          },
+          "rules": ["required"],
+          "type": "text",
+          "columns": 6,
+          "inputType": "number"
+        },
+        "selectProject": {
+          "label": "profilePanel.autoGenerateForm.selectProject",
+          "type": "customSelectProject",
+          "rules": ["projectRequired"],
+          "columns": 6
+        }
+      }
+    },
+    "files": {
+      "type": "group",
+      "schema": {
+        "fileFigure": {
+          "name": "fileFigure",
+          "accept": ".jpg,.png,.gif,.jpeg",
+          "auto": false,
+          "drop": true,
+          "label": "profilePanel.autoGenerateForm.fileFigure",
+          "messages": {
+            "max": "profilePanel.autoGenerateForm.messages.image.max"
+          },
+          "rules": ["max:4096"],
+          "type": "file",
+          "columns": 3,
+          "view": "gallery"
+        },
+        "fileWeight": {
+          "name": "fileFigure",
+          "accept": ".jpg,.png,.gif,.jpeg",
+          "auto": false,
+          "drop": true,
+          "label": "profilePanel.autoGenerateForm.fileWeight",
+          "messages": {
+            "max": "profilePanel.autoGenerateForm.messages.image.max"
+          },
+          "rules": ["max:4096"],
+          "type": "file",
+          "columns": 3,
+          "view": "gallery"
+        },
+        "fileKcal": {
+          "name": "fileFigure",
+          "accept": ".jpg,.png,.gif,.jpeg",
+          "auto": false,
+          "drop": true,
+          "label": "profilePanel.autoGenerateForm.fileKcal",
+          "messages": {
+            "max": "profilePanel.autoGenerateForm.messages.image.max"
+          },
+          "rules": ["max:4096"],
+          "type": "file",
+          "columns": 3,
+          "view": "gallery"
+        },
+        "fileTraining": {
+          "name": "fileFigure",
+          "accept": ".jpg,.png,.gif,.jpeg",
+          "auto": false,
+          "drop": true,
+          "label": "profilePanel.autoGenerateForm.fileTraining",
+          "messages": {
+            "max": "profilePanel.autoGenerateForm.messages.image.max"
+          },
+          "rules": ["max:4096"],
+          "type": "file",
+          "columns": 3,
+          "view": "gallery"
+        }
+      }
+    },
+    "collectionTraining": {
+      "type": "list",
+      "initial": -1,
+      "label": "profilePanel.autoGenerateForm.label.addTraining",
+      "addClasses": {
+        "ListElement": {
+          "listItem": "p-1 border-t border-gray-200"
+        },
+        "ElementLabel": {
+          "wrapper": "text-[20px] font-semibold mb-2"
+        }
+      },
+      "object": {
+        "schema": {
+          "type": {
+            "label": "profilePanel.autoGenerateForm.type",
+            "type": "customSelectTypeTraining",
+            "rules": ["typeTraining"],
+            "columns": 3
+          },
+          "time": {
+            "label": "profilePanel.autoGenerateForm.time",
+            "messages": {
+              "required": "profilePanel.autoGenerateForm.messages.required"
+            },
+            "rules": ["required", "typeTrainingTime"],
+            "placeholder": "profilePanel.autoGenerateForm.placeholder.time",
+            "columns": 3,
+            "type": "text"
+          },
+          "kcal": {
+            "label": "profilePanel.autoGenerateForm.kcal",
+            "messages": {
+              "required": "profilePanel.autoGenerateForm.messages.required"
+            },
+            "rules": ["required"],
+            "type": "text",
+            "columns": 3,
+            "inputType": "number"
+          },
+          "typeTraining": {
+            "label": "profilePanel.autoGenerateForm.type",
+            "type": "text",
+            "disabled": true,
+            "columns": 3
+          }
+        }
+      }
+    },
+    "button": {
+      "buttonLabel": "profilePanel.autoGenerateForm.button.addPost",
+      "addClass": {
+        "button": "bg-green"
+      },
+      "full": "full",
+      "onclick": "handlerButton()",
+      "size": "lg",
+      "type": "button"
+    }
+  }
+}

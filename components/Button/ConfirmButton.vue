@@ -1,16 +1,15 @@
 <template>
-  <div class="text-center pa-4">
+  <div class="text-center">
     <v-dialog v-model="dialog" max-width="400" persistent>
       <template v-slot:activator="{ props: activatorProps }">
         <v-btn color="red" v-bind="activatorProps">
           {{ $t(`${openDialog}`) }}
         </v-btn>
       </template>
-
       <v-card
         color="warning"
         prepend-icon="mdi-alert"
-        :text="$t(`${text}`, { nameProject: nameValue })"
+        :text="$t(`${text}`, { name: nameValue })"
         :title="$t(`${title}`)"
       >
         <template v-slot:actions>

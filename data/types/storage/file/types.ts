@@ -24,3 +24,9 @@ export interface DeleteAll {
 export interface CollectionIds {
   ids: string[];
 }
+
+export interface FilesAdd {
+  file?: File;
+  name?: string;
+  folder?: string;
+}

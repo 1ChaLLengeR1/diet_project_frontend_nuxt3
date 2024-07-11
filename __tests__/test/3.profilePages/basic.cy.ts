@@ -6,6 +6,7 @@ import { ProfileTabs } from "./../../support/objectComponents/profileTabs";
 
 const sideBarMenu = new SideBarMenu();
 const profileTabs = new ProfileTabs();
+const time: number = 2000;
 
 describe("Profile Page Panel Form", () => {
   it("HP, go to profilePage -> I see homePage", () => {
@@ -25,7 +26,7 @@ describe("Profile Page Panel Form", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${adminPanel}", "${projectTab}", "${postTab}", "${createProject}"]}`
     );
-    cy.wait(1000);
+    cy.wait(time);
 
     cy.window().then((win) => {
       const lang = win.localStorage.getItem("lang");
@@ -46,7 +47,7 @@ describe("Profile Page Panel Form", () => {
     cy.visit(
       `${paths.testPanel}?action=loadLangs&data={"lang":["${adminPanel}", "${projectTab}", "${postTab}", "${createPost}"]}`
     );
-    cy.wait(1000);
+    cy.wait(time);
 
     cy.window().then((win) => {
       const lang = win.localStorage.getItem("lang");

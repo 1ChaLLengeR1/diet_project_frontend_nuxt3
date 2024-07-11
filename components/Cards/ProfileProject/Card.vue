@@ -44,7 +44,7 @@
       </div>
     </v-expand-transition>
 
-    <v-card-actions>
+    <v-card-actions class="w-full flex justify-between">
       <v-btn id="changeProjectCard" @click="changeProject(id)" color="blue">
         {{ $t("profilePanel.projectPanel.cards.button.change") }}</v-btn
       >

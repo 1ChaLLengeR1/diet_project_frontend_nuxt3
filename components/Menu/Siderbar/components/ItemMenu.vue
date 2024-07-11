@@ -63,7 +63,7 @@ export default defineComponent({
       }
 
       if (name === "sidebar.siderbarMenu.adminPanel") {
-        profilePanelStore.saveTab("projects");
+        profilePanelStore.saveTab("user");
       }
 
       activeLink(name);

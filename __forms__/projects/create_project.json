@@ -32,6 +32,9 @@
     },
     "button": {
       "buttonLabel": "profilePanel.autoGenerateForm.button.addProject",
+      "addClass": {
+        "button": "bg-green"
+      },
       "full": "full",
       "onclick": "handlerButton()",
       "size": "lg",

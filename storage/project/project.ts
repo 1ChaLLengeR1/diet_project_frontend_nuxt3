@@ -18,7 +18,11 @@ import type {
 } from "./../../data/types/storage/file/types";
 
 // apis
-import { collectionProject, collectionOne } from "./../../api/project/fetch";
+import {
+  collectionProject,
+  collectionOne,
+  collectionProjectAll,
+} from "./../../api/project/fetch";
 import { createProject } from "./../../api/project/post";
 import { deleteProject } from "./../../api/project/delete";
 import { changeProeject } from "./../../api/project/change";
@@ -35,6 +39,7 @@ export const ProjectStore = defineStore("project", () => {
   const authStore = AuthStore();
 
   const collection = ref<Collection[]>([]);
+  const collectionAll = ref<Collection[]>([]);
   const pagination = ref<Pagination>({
     nextPage: 0,
     previousPage: 0,
@@ -58,6 +63,21 @@ export const ProjectStore = defineStore("project", () => {
     if (response !== null && response?.collection) {
       collection.value = response?.collection;
       pagination.value = response?.pagination!;
+    }
+  };
+
+  const apiFetchAll = async (reset: boolean = false) => {
+    if (reset === true) {
+      collectionAll.value = [];
+    }
+
+    if (collectionAll.value.length > 0) {
+      return;
+    }
+
+    const response = await collectionProjectAll();
+    if (response !== null && response?.collection) {
+      collectionAll.value = response?.collection;
     }
   };
 
@@ -87,7 +107,7 @@ export const ProjectStore = defineStore("project", () => {
 
       const objectFile: CreateFile = {
         projectId: response?.collection[0].id,
-        folder: response?.collection[0].title,
+        folder: `${response?.collection[0].title}_${Math.random().toFixed(4)}`,
         name: response?.collection[0].title,
         file: body.file,
       };
@@ -125,8 +145,6 @@ export const ProjectStore = defineStore("project", () => {
         $i18n.t("alert.message.positive.project.changeProject"),
         "positive"
       );
-
-      console.log(body.file instanceof File);
 
       if (body.file === null || body.file! instanceof File === false) {
         return;
@@ -214,7 +232,9 @@ export const ProjectStore = defineStore("project", () => {
   return {
     pagination,
     collection,
+    collectionAll,
     apiFetch,
+    apiFetchAll,
     createProjectF,
     deleteProjectF,
     refreschCollection,
