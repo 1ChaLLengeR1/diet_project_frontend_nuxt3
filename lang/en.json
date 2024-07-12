@@ -206,7 +206,8 @@
         "buttons": {
           "close": "Close",
           "description": "Description",
-          "posts": "See posts"
+          "posts": "See posts",
+          "statistics": "See statistics"
         }
       },
       "project": {
@@ -254,6 +255,18 @@
         "seePost": "See the day",
         "posts": "See Days"
       }
+    },
+    "statistics": {
+      "noStatistics": "No statistics",
+      "week": "Week: {week}",
+      "startWeight": "Start Weight: {startWeight} kg",
+      "endWeight": "End Weight: {endWeight} kg",
+      "downWeight": "Weight Down: {downWeight} kg",
+      "sumKg": "Total Kilograms: {sumKg} kg",
+      "avgKg": "Average Weight: {avgKg kg}",
+      "sumKcal": "Total kcal: {sumKcal}",
+      "training": "Training Type: {type}, Number of Trainings: {current}, Total Calories Burned: {sumKcal}, Duration of Training Sessions: {time}",
+      "sumTime": "Total Training Time: {sumTime}"
     }
   }
 }

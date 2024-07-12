@@ -44,12 +44,18 @@
       </div>
     </v-expand-transition>
 
-    <v-card-actions>
+    <v-card-actions class="flex justify-between">
       <v-btn
         id="linkPosts"
         :to="`${paths.posts}/${id}`"
         color="orange-lighten-2"
         :text="$t('tabs.confirmButton.default.buttons.posts')"
+      ></v-btn>
+      <v-btn
+        id="linkStatistics"
+        :to="`${paths.statistics}/${id}`"
+        color="green-lighten-2"
+        :text="$t('tabs.confirmButton.default.buttons.statistics')"
       ></v-btn>
     </v-card-actions>
   </v-card>
