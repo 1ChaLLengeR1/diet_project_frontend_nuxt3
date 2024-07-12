@@ -140,7 +140,8 @@
       "cards": {
         "button": {
           "delete": "Usuń projekt",
-          "change": "Edytuj projekt"
+          "change": "Edytuj projekt",
+          "downoload": "Pobierz projekt"
         }
       },
       "lists": {
@@ -171,7 +172,8 @@
         "file": {
           "createFile": "Dodano zdjęcia poprawnie",
           "deleteAllFile": "Usunięto wszystkie zdjęcia",
-          "deleteFile": "Usunięto zdjęcie"
+          "deleteFile": "Usunięto zdjęcie",
+          "download": "Pobrano poprawnie projekt"
         }
       },
       "error": {
@@ -191,7 +193,8 @@
         "file": {
           "createFile": "Błąd podczas dodawania zdjęć",
           "deleteAllFile": "Wystąpił błąd podczas usuwania wszystkich zdjęć",
-          "deleteFile": "Błąd podczas usuwania zdjęcia"
+          "deleteFile": "Błąd podczas usuwania zdjęcia",
+          "download": "Błąd podczas pobierania projektu"
         }
       },
       "warning": {

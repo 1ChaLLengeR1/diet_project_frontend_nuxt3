@@ -136,7 +136,8 @@
       "cards": {
         "button": {
           "delete": "Delete project",
-          "change": "Edit the project"
+          "change": "Edit the project",
+          "download": "Download project"
         }
       },
       "lists": {
@@ -167,7 +168,8 @@
         "file": {
           "createFile": "Photos added correctly",
           "deleteAllFile": "All photos deleted",
-          "deleteFile": "Photo removed"
+          "deleteFile": "Photo removed",
+          "download": "The project has been downloaded successfully"
         }
       },
       "error": {
@@ -187,7 +189,8 @@
         "file": {
           "createFile": "Error adding photos",
           "deleteAllFile": "All photos deleted",
-          "deleteFile": "Error deleting photo"
+          "deleteFile": "Error deleting photo",
+          "download": "Error downloading the project"
         }
       },
       "warning": {
