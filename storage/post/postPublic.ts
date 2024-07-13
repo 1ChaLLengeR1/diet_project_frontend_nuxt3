@@ -36,7 +36,8 @@ export const PostPublicStore = defineStore("postPublic", () => {
 
   const apiFetch = async (
     restart: boolean,
-    projectId: string,
+    projectId: string = "",
+    userId: string,
     page: string = "1"
   ) => {
     if (restart === true) {
@@ -48,7 +49,7 @@ export const PostPublicStore = defineStore("postPublic", () => {
     }
 
     const body: BodyCollectionPublicPost = {
-      id: authStore.userParams.id,
+      userId: userId!,
       projectId: projectId,
       idLanguage: dictionaryStore.getAppLanguage(),
       page: page,
@@ -77,8 +78,13 @@ export const PostPublicStore = defineStore("postPublic", () => {
     return null;
   };
 
-  const loadPagePagination = async (userId: string) => {
-    await apiFetch(true, userId, pagination.value.currentPage.toString());
+  const loadPagePagination = async (userId: string, projectId: string) => {
+    await apiFetch(
+      true,
+      projectId,
+      userId,
+      pagination.value.currentPage.toString()
+    );
   };
 
   return { collection, pagination, apiFetch, apiFetchOne, loadPagePagination };

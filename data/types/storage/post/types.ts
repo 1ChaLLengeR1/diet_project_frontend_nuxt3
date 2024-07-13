@@ -32,7 +32,7 @@ export interface ChnagePost {
 }
 
 export interface BodyCollectionPublicPost {
-  id: string;
+  userId: string;
   projectId: string;
   idLanguage: string;
   page: string;
