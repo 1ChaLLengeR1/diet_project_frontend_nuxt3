@@ -66,10 +66,8 @@ export async function downloadZip(projectId: string): Promise<boolean | null> {
     await apiDownload(urlPath, 0, {
       AppLanguage: false,
       Authorization: true,
-      UserData: false,
+      UserData: true,
     });
-
-  console.log(response);
 
   if (
     !response ||

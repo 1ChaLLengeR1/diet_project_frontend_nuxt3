@@ -197,7 +197,7 @@ export const PostStore = defineStore("post", () => {
 
     alertStore.addToCollection(
       $i18n.t("alert.message.error.file.deleteFile"),
-      "positive"
+      "error"
     );
   };
 

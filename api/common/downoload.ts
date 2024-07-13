@@ -63,7 +63,11 @@ export async function apiDownload(
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      return {
+        data: false,
+        status: response.status,
+        ok: response.ok,
+      };
     }
 
     const blob = await response.blob();
