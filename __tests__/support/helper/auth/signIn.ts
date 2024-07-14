@@ -4,6 +4,7 @@ import { SideBarMenu } from "../../objectComponents/sideBar";
 import { auth0Email, auth0Password } from "../../e2e";
 
 const time: number = 2000;
+const time2: number = 7000;
 
 export function loginAuth0Simple() {
   const auth0 = new Auth0();
@@ -23,6 +24,6 @@ export function loginAuth0Simple() {
     cy.log(parse[0]);
     siderBarMenu.clickLink(parse[0]);
     auth0.signIn(auth0Email, auth0Password);
-    cy.wait(3000);
+    cy.wait(time2);
   });
 }

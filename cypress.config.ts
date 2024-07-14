@@ -42,6 +42,7 @@ export default defineConfig({
 
     AUTH0_EMAIL: "artek.scibor@gmail.com",
     AUTH0_PASSWORD: "auth0@zaq1@WSXartek123",
+    LINK: "http://localhost:3001",
 
     browserPermissions: {
       notifications: "allow",
