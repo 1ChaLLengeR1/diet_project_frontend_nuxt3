@@ -11,31 +11,59 @@ export default defineNuxtConfig({
       auth0Password: process.env.AUTH0_PASSWORD,
     },
   },
+
+  devServer: {
+    port: 4000,
+  },
+
+  server: {
+    port: 4000,
+  },
+
+  apps: [
+    {
+      name: "ProjectDiet",
+      port: "4000",
+      exec_mode: "cluster",
+      instances: "max",
+      script: "./.output/server/index.mjs",
+    },
+  ],
+
   devtools: { enabled: true },
+
   css: [
     "./public/main.css",
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.min.css",
   ],
+
   build: {
     transpile: ["vuetify"],
   },
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   modules: ["@nuxtjs/i18n", "@pinia/nuxt", "@vueform/nuxt"],
+
   pinia: {
     autoImports: ["defineStore"],
   },
+
   i18n: {
     vueI18n: "./i18n.config.ts",
   },
+
   vite: {
     define: {
       "process.env.DEBUG": true,
     },
   },
+
+  compatibilityDate: "2024-07-14",
 });

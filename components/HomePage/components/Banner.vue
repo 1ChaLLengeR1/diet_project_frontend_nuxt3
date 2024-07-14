@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { throttle } from "lodash";
+import _ from "lodash";
 
 export default defineComponent({
   setup() {
@@ -59,7 +59,7 @@ export default defineComponent({
       "banner.list.backend.postgresql",
     ]);
 
-    const checkScreenWidth = throttle(() => {
+    const checkScreenWidth = _.throttle(() => {
       onOverFlow.value = window.innerWidth <= 1900 ? true : false;
     }, 200);
 

@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onBeforeUnmount, ref } from "vue";
-import { throttle } from "lodash";
+import _ from "lodash";
 
 // stores
 import { AuthStore } from "./../../storage/auth/auth";
@@ -82,11 +82,11 @@ export default defineComponent({
       spinnerStore.app.active = false;
     });
 
-    const checkScreenWidth = throttle(() => {
+    const checkScreenWidth = _.throttle(() => {
       mobile.value = window.innerWidth >= 768 ? true : false;
     }, 200);
 
-    const closeMobileMenu = throttle(() => {
+    const closeMobileMenu = _.throttle(() => {
       if (window.innerWidth >= 768) {
         menuMobileStore.openMenu = false;
       }
