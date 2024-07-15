@@ -12,24 +12,6 @@ export default defineNuxtConfig({
     },
   },
 
-  devServer: {
-    port: 4000,
-  },
-
-  server: {
-    port: 4000,
-  },
-
-  apps: [
-    {
-      name: "ProjectDiet",
-      port: "4000",
-      exec_mode: "cluster",
-      instances: "max",
-      script: "./.output/server/index.mjs",
-    },
-  ],
-
   devtools: { enabled: true },
 
   css: [
