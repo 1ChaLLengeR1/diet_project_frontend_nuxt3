@@ -30,6 +30,8 @@ import { changeProeject } from "./../../api/project/change";
 // stores
 import { AlertStore } from "./../alert/alert";
 import { FileStore } from "./../file/file";
+import { PostStore } from "./../post/post";
+import { PostPublicStore } from "./../post/postPublic";
 import { AuthStore } from "./../auth/auth";
 
 export const ProjectStore = defineStore("project", () => {
@@ -37,6 +39,8 @@ export const ProjectStore = defineStore("project", () => {
   const alertStore = AlertStore();
   const fileStore = FileStore();
   const authStore = AuthStore();
+  const postStore = PostStore();
+  const postPublicStore = PostPublicStore();
 
   const collection = ref<Collection[]>([]);
   const collectionAll = ref<Collection[]>([]);
@@ -210,6 +214,8 @@ export const ProjectStore = defineStore("project", () => {
         $i18n.t("alert.message.error.file.deleteAllFile"), "error";
       }
 
+      postStore.collection = [];
+      postPublicStore.collection = [];
       return;
     }
 

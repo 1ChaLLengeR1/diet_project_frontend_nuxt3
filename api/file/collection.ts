@@ -1,6 +1,7 @@
 // general
 import { apiPost } from "./../common/post";
 import { apiGet } from "./../common/fetch";
+import { apiDownload } from "./../common/downoload";
 
 // types
 import type { CollectionIds } from "./../../data/types/storage/file/types";
@@ -9,7 +10,9 @@ import type {
   ResponseFile,
 } from "./../../data/types/api/file/types";
 
-export async function collectionFileMultiple(body: CollectionIds) {
+export async function collectionFileMultiple(
+  body: CollectionIds
+): Promise<ResponseFile | null> {
   const urlPath: string = `/api/file/collectionMultiple`;
 
   const response: ResponseApiFile = await apiPost(urlPath, body, "POST", 0, {
@@ -34,7 +37,7 @@ export async function collectionFileMultiple(body: CollectionIds) {
   return responseData;
 }
 
-export async function collectionOne(id: string) {
+export async function collectionOne(id: string): Promise<ResponseFile | null> {
   const urlPath: string = `/api/file/collection/${id}`;
 
   const response: ResponseApiFile = await apiGet(urlPath, 0, {
@@ -55,4 +58,26 @@ export async function collectionOne(id: string) {
   };
 
   return responseData;
+}
+
+export async function downloadZip(projectId: string): Promise<boolean | null> {
+  const urlPath: string = `/api/file/downolad/zip/${projectId}`;
+  const response: { status: number; ok: boolean; data: boolean } =
+    await apiDownload(urlPath, 0, {
+      AppLanguage: false,
+      Authorization: true,
+      UserData: true,
+    });
+
+  if (
+    !response ||
+    response.ok !== true ||
+    response.data !== true ||
+    response.status >= 400
+  ) {
+    console.error("api response does not return the collection file one!");
+    return null;
+  }
+
+  return true;
 }

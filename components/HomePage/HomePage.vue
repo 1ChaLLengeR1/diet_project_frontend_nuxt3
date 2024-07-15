@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { throttle } from "lodash";
+import _ from "lodash";
 
 // components
 import CarouselHome from "./../../components/Carousel/CaroselHome.vue";
@@ -28,7 +28,7 @@ export default defineComponent({
     const images = ref<string[]>([]);
     images.value = [imageBike, imageRun, imageSwim];
 
-    const checkScreenWidth = throttle(() => {
+    const checkScreenWidth = _.throttle(() => {
       onCarousel.value = window.innerWidth >= 1700 ? true : false;
     }, 200);
 

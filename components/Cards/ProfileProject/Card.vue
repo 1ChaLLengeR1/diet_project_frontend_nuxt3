@@ -45,9 +45,19 @@
     </v-expand-transition>
 
     <v-card-actions class="w-full flex justify-between">
-      <v-btn id="changeProjectCard" @click="changeProject(id)" color="blue">
-        {{ $t("profilePanel.projectPanel.cards.button.change") }}</v-btn
-      >
+      <div class="flex flex-col gap-3">
+        <v-btn id="changeProjectCard" @click="changeProject(id)" color="blue">
+          {{ $t("profilePanel.projectPanel.cards.button.change") }}</v-btn
+        >
+        <v-btn
+          id="changeProjectCard"
+          @click="downloadProject(id)"
+          color="green"
+        >
+          {{ $t("profilePanel.projectPanel.cards.button.downoload") }}</v-btn
+        >
+      </div>
+
       <ConfirmButton
         id="confirmButtonProjectCard"
         text="tabs.confirmButton.project.text"
@@ -75,6 +85,7 @@ import { paths } from "./../../../utils/paths";
 
 // stores
 import { ProjectStore } from "./../../../storage/project/project";
+import { FileStore } from "./../../../storage/file/file";
 
 export default defineComponent({
   props: {
@@ -105,11 +116,17 @@ export default defineComponent({
   },
   setup() {
     const projectStore = ProjectStore();
+    const fileStore = FileStore();
+
     const show = ref<boolean>(false);
     const router = useRouter();
 
     const changeProject = async (id: string) => {
       router.push({ path: `${paths.profilePanelProjectChange}/${id}` });
+    };
+
+    const downloadProject = async (projectId: string) => {
+      await fileStore.downoladProject(projectId);
     };
 
     const deleteProject = async (confirmd: boolean, id: string) => {
@@ -118,7 +135,14 @@ export default defineComponent({
         await projectStore.apiFetch(true, 1);
       }
     };
-    return { noImage, changeProject, deleteProject, formatDateTime, show };
+    return {
+      noImage,
+      show,
+      changeProject,
+      deleteProject,
+      formatDateTime,
+      downloadProject,
+    };
   },
 });
 </script>

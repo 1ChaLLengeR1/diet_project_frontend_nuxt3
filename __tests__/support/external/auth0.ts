@@ -6,9 +6,10 @@ export class Auth0 {
       environment.DIET_AUTH0_ENDPOINT,
       { args: { userName, password } },
       ({ userName, password }) => {
-        cy.get('input[name="username"]').type(userName);
-        cy.get('input[name="password"]').type(password);
-        cy.get('button[name="action"]').click();
+        cy.once("uncaught:exception", () => false);
+        cy.get('[id="email"]').type(userName);
+        cy.get('[id="password"]').type(password);
+        cy.get('[id="btn-login"]').click();
       }
     );
   }

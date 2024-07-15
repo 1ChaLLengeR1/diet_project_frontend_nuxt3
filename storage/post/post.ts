@@ -17,6 +17,7 @@ import type { FilesAdd } from "./../../data/types/storage/file/types";
 // stores
 import { AlertStore } from "./../alert/alert";
 import { FileStore } from "./../file/file";
+import { StatisticsStore } from "./../statistics/statistics";
 
 // apis
 import { collectionPost, collectionOnePost } from "./../../api/post/fetch";
@@ -39,6 +40,7 @@ export const PostStore = defineStore("post", () => {
   const { $i18n } = useNuxtApp();
   const alertStore = AlertStore();
   const fileStore = FileStore();
+  const statisticsStore = StatisticsStore();
 
   const apiFetch = async (
     reset: boolean = false,
@@ -48,7 +50,6 @@ export const PostStore = defineStore("post", () => {
     if (reset === true) {
       collection.value = [];
     }
-
     if (collection.value.length > 0) {
       return;
     }
@@ -189,13 +190,14 @@ export const PostStore = defineStore("post", () => {
       await fileStore.deleteAllFileF({
         ids: [postId],
       });
-      await apiFetch(true, 1, response.collection[0].id);
+      await apiFetch(true, 1, response.collection[0].projectId);
+      statisticsStore.collection = [];
       return;
     }
 
     alertStore.addToCollection(
       $i18n.t("alert.message.error.file.deleteFile"),
-      "positive"
+      "error"
     );
   };
 

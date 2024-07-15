@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
-import { throttle } from "lodash";
+import _ from "lodash";
 
 // stores
 import { ColorsStore } from "./../../storage/colors/colors";
@@ -51,7 +51,7 @@ export default defineComponent({
     const refreshStore = RefreshStore();
     const smallLanguage = ref<string | null>("");
 
-    const checkScreenWidth = throttle(() => {
+    const checkScreenWidth = _.throttle(() => {
       smallLanguage.value = window.innerWidth >= 380 ? null : "font-size: 10px";
     }, 200);
 

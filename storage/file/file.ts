@@ -17,6 +17,7 @@ import { deleteAllFile, deleteImage } from "./../../api/file/delete";
 import {
   collectionFileMultiple,
   collectionOne,
+  downloadZip,
 } from "./../../api/file/collection";
 
 // stores
@@ -121,6 +122,21 @@ export const FileStore = defineStore("file", () => {
     return null;
   };
 
+  const downoladProject = async (projectId: string) => {
+    const response = await downloadZip(projectId);
+    if (response === true) {
+      alertStore.addToCollection(
+        $i18n.t("alert.message.positive.file.download"),
+        "positive"
+      );
+      return;
+    }
+    alertStore.addToCollection(
+      $i18n.t("alert.message.error.file.download"),
+      "error"
+    );
+  };
+
   return {
     collectionMultiple,
     findImage,
@@ -129,5 +145,6 @@ export const FileStore = defineStore("file", () => {
     apiGetMultiple,
     apiFetchOne,
     deleteImageF,
+    downoladProject,
   };
 });

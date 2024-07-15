@@ -136,7 +136,8 @@
       "cards": {
         "button": {
           "delete": "Löschen Sie das Projekt",
-          "change": "Bearbeiten Sie das Projekt"
+          "change": "Bearbeiten Sie das Projekt",
+          "download": "Projekt herunterladen"
         }
       },
       "lists": {
@@ -167,7 +168,8 @@
         "file": {
           "createFile": "Fotos korrekt hinzugefügt",
           "deleteAllFile": "Alle Fotos gelöscht",
-          "deleteFile": "Foto entfernen"
+          "deleteFile": "Foto entfernen",
+          "download": "Das Projekt wurde erfolgreich heruntergeladen"
         }
       },
       "error": {
@@ -187,7 +189,8 @@
         "file": {
           "createFile": "Fehler beim Hinzufügen von Fotos",
           "deleteAllFile": "Fehler beim Löschen der Fotos",
-          "deleteFile": "Fehler beim Löschen des Fotos"
+          "deleteFile": "Fehler beim Löschen des Fotos",
+          "download": "Fehler beim Herunterladen des Projekts"
         }
       },
       "warning": {
@@ -206,7 +209,8 @@
         "buttons": {
           "close": "Schließen",
           "description": "Beschreibung",
-          "posts": "Siehe Beiträge"
+          "posts": "Siehe Beiträge",
+          "statistics": "Statistiken anzeigen"
         }
       },
       "project": {
@@ -254,6 +258,18 @@
         "seePost": "Sehen Sie den Tag",
         "posts": "Siehe Tage"
       }
+    },
+    "statistics": {
+      "noStatistics": "keine Statistik",
+      "week": "Woche: {week} kg",
+      "startWeight": "Startgewicht: {startWeight} kg",
+      "endWeight": "Endgewicht: {endWeight} kg",
+      "downWeight": "Gewicht verloren: {downWeight} kg",
+      "sumKg": "Summe der Kilogramm: {sumKg} kg",
+      "avgKg": "Durchschnittliches Gewicht: {avgKg} kg",
+      "sumKcal": "Gesamtkalorien: {sumKcal}",
+      "training": "Trainingstyp: {type}, Anzahl der Trainings: {current}, Gesamte verbrannte Kalorien: {sumKcal}, Dauer der Trainingseinheiten: {time}",
+      "sumTime": "Gesamte Trainingszeit: {sumTime}"
     }
   }
 }

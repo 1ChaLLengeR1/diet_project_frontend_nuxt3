@@ -3,6 +3,7 @@ export const paths = {
   projects: "/projects",
   posts: "/posts",
   logOut: "/logout",
+  statistics: "/projects/statistics",
   testPanel: "/testPanel",
   profilePanel: "/profilePanel",
   profilePanelUser: "/profilePanel/user",

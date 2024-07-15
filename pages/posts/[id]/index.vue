@@ -16,9 +16,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { paths } from "./../../../utils/paths";
+import { defineComponent, onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
 
 // stores
 import { PostPublicStore } from "./../../../storage/post/postPublic";
@@ -32,16 +31,21 @@ export default defineComponent({
   setup() {
     const postPublicStore = PostPublicStore();
     const route = useRoute();
+    const projectId = ref<string>(route.params.id as string);
+    const userId = ref<string>(route.query.userId as string);
 
     const loadDataPost = async () => {
-      await postPublicStore.apiFetch(false, route.params.id as string);
+      await postPublicStore.apiFetch(false, projectId.value, userId.value);
     };
 
     onMounted(async () => {
       await loadDataPost();
     });
 
-    const changePage = async () => {};
+    const changePage = async () => {
+      console.log(userId.value);
+      postPublicStore.loadPagePagination(userId.value, projectId.value);
+    };
 
     return { postPublicStore, changePage };
   },

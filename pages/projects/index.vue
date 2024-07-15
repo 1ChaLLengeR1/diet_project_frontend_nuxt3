@@ -33,8 +33,7 @@ import { defineComponent, ref } from "vue";
 // stores
 import { ProjecPublictStore } from "./../../storage/project/projectPublic";
 import { FileStore } from "./../../storage/file/file";
-
-// types
+import { StatisticsStore } from "./../../storage/statistics/statistics";
 
 // components
 import SelectUsers from "./../../components/Selects/SelectUsers.vue";
@@ -51,10 +50,12 @@ export default defineComponent({
   setup() {
     const projecPublictStore = ProjecPublictStore();
     const fileStore = FileStore();
+    const statisticsStore = StatisticsStore();
 
     const loadProjects = async (userId: string, page: string) => {
       projecPublictStore.userId = userId;
-      await projecPublictStore.apiFetch(false, userId, page);
+      statisticsStore.collection = [];
+      await projecPublictStore.apiFetch(true, userId, page);
       const collectionIds: string[] = findIds(projecPublictStore.collection);
       await fileStore.apiGetMultiple({ ids: collectionIds });
     };

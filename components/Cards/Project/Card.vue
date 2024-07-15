@@ -44,12 +44,18 @@
       </div>
     </v-expand-transition>
 
-    <v-card-actions>
+    <v-card-actions class="flex justify-between">
       <v-btn
         id="linkPosts"
-        :to="`${paths.posts}/${id}`"
+        @click="goTo(id, userId)"
         color="orange-lighten-2"
         :text="$t('tabs.confirmButton.default.buttons.posts')"
+      ></v-btn>
+      <v-btn
+        id="linkStatistics"
+        :to="`${paths.statistics}/${id}`"
+        color="green-lighten-2"
+        :text="$t('tabs.confirmButton.default.buttons.statistics')"
       ></v-btn>
     </v-card-actions>
   </v-card>
@@ -57,6 +63,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import noImage from "./../../../public/images/noImage.png";
 
 // components
@@ -98,8 +105,17 @@ export default defineComponent({
     ConfirmButton,
   },
   setup() {
+    const router = useRouter();
     const show = ref<boolean>(false);
-    return { noImage, formatDateTime, show, paths };
+
+    const goTo = (projectId: string, userId: string) => {
+      router.push({
+        path: `${paths.posts}/${projectId}`,
+        query: { userId: userId },
+      });
+    };
+
+    return { noImage, show, paths, goTo, formatDateTime };
   },
 });
 </script>

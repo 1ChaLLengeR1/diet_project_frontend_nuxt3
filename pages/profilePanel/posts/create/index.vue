@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { throttle } from "lodash";
+import _ from "lodash";
 import { useRouter } from "vue-router";
 import { paths } from "./../../../../utils/paths";
 
@@ -37,7 +37,7 @@ export default defineComponent({
     const router = useRouter();
     const createForm = ref<any>(create_post);
 
-    const checkScreenWidth = throttle(() => {
+    const checkScreenWidth = _.throttle(() => {
       createForm.value =
         window.innerWidth >= 768 ? create_post : create_post_rwd;
     }, 200);

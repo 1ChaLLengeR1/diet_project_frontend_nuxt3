@@ -174,7 +174,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, toRefs, onMounted } from "vue";
-import { throttle } from "lodash";
+import _ from "lodash";
 
 // components
 import CustomSelectProjectElement from "./../../customs/CustomSelectProjectElement.vue";
@@ -256,7 +256,7 @@ export default defineComponent({
       }
     }, 500);
 
-    const checkScreenWidth = throttle(() => {
+    const checkScreenWidth = _.throttle(() => {
       mobile.value =
         window.innerWidth >= 1280
           ? mobile.value

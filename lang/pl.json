@@ -140,7 +140,8 @@
       "cards": {
         "button": {
           "delete": "Usuń projekt",
-          "change": "Edytuj projekt"
+          "change": "Edytuj projekt",
+          "downoload": "Pobierz projekt"
         }
       },
       "lists": {
@@ -171,7 +172,8 @@
         "file": {
           "createFile": "Dodano zdjęcia poprawnie",
           "deleteAllFile": "Usunięto wszystkie zdjęcia",
-          "deleteFile": "Usunięto zdjęcie"
+          "deleteFile": "Usunięto zdjęcie",
+          "download": "Pobrano poprawnie projekt"
         }
       },
       "error": {
@@ -191,7 +193,8 @@
         "file": {
           "createFile": "Błąd podczas dodawania zdjęć",
           "deleteAllFile": "Wystąpił błąd podczas usuwania wszystkich zdjęć",
-          "deleteFile": "Błąd podczas usuwania zdjęcia"
+          "deleteFile": "Błąd podczas usuwania zdjęcia",
+          "download": "Błąd podczas pobierania projektu"
         }
       },
       "warning": {
@@ -210,7 +213,8 @@
         "buttons": {
           "close": "Zamknij",
           "description": "Opis",
-          "posts": "Zobacz posty"
+          "posts": "Zobacz posty",
+          "statistics": "Zobacz statystyki"
         }
       },
       "project": {
@@ -258,6 +262,18 @@
         "seePost": "Zobacz dzień",
         "posts": "Zobacz Dni"
       }
+    },
+    "statistics": {
+      "noStatistics": "Brak statystyk",
+      "week": "Tydzień: {week}",
+      "startWeight": "Startowa Waga: {startWeight} kg",
+      "endWeight": "Waga końcowa: {endWeight} kg",
+      "downWeight": "Waga w doł: {downWeight} kg",
+      "sumKg": "Suma kilogramów: {sumKg} kg",
+      "avgKg": "Średnia waga: {avgKg}",
+      "sumKcal": "Suma kcal: {sumKcal}",
+      "training": "Typ treningu: {type}, liczba treningów: {currecnt}, suma spalonych kalorii: {sumKcal}, czas trwania sekcji treningów: {time}",
+      "sumTime": "Suma czasu treningów: {sumTime}"
     }
   }
 }
