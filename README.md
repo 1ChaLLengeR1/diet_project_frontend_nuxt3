@@ -5,7 +5,7 @@
 ### Project Diet
 <img align="left" alt="photo" src="https://github.com/1ChaLLengeR1/1ChaLLengeR1/blob/main/images/diet.png" /> 
 
-- link to the page: 
+- link to the page: https://projektdieta.strona.arturscibor.pl/
 - similar information: https://arturscibor.pl/projects/project/f0faa618-7e9a-446a-849f-374c976d9524
 
 # Project idea:
@@ -83,7 +83,7 @@
 ### Projekt Dieta
 <img align="left" alt="photo" src="https://github.com/1ChaLLengeR1/1ChaLLengeR1/blob/main/images/diet.png" /> 
 
-- link do strony: 
+- link do strony: https://projektdieta.strona.arturscibor.pl/
 - podobne informacje: https://arturscibor.pl/projects/project/f0faa618-7e9a-446a-849f-374c976d9524
 
 # Pomysł na projekt:
