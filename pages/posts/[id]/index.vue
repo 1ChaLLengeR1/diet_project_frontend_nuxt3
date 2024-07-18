@@ -35,7 +35,7 @@ export default defineComponent({
     const userId = ref<string>(route.query.userId as string);
 
     const loadDataPost = async () => {
-      await postPublicStore.apiFetch(false, projectId.value, userId.value);
+      await postPublicStore.apiFetch(true, projectId.value, userId.value);
     };
 
     onMounted(async () => {
@@ -43,7 +43,6 @@ export default defineComponent({
     });
 
     const changePage = async () => {
-      console.log(userId.value);
       postPublicStore.loadPagePagination(userId.value, projectId.value);
     };
 
