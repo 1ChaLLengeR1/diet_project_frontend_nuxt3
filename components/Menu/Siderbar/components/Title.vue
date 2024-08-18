@@ -1,7 +1,9 @@
 <template>
-  <div class="w-fit flex flex-col gap-3 items-center justify-center p-1 ml-3">
+  <div class="w-full flex flex-col gap-3 items-center justify-center p-1">
     <img :src="logo" alt="logo" class="w-52" />
-    <h1 class="text-4xl font-titleSidebar">{{ $t("sidebar.projectTitle") }}</h1>
+    <h1 class="w-52 text-2xl font-titleSidebar">
+      {{ $t("sidebar.projectTitle") }}
+    </h1>
   </div>
 </template>
 

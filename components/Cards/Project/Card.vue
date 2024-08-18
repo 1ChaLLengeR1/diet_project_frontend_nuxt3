@@ -111,7 +111,7 @@ export default defineComponent({
     const goTo = (projectId: string, userId: string) => {
       router.push({
         path: `${paths.posts}/${projectId}`,
-        query: { userId: userId },
+        query: { userId: userId, page: "1" },
       });
     };
 
