@@ -244,12 +244,14 @@
     "profilePanel": {
       "posts": {
         "day": "Tag - {day}",
-        "weight": "Gewicht - {weight}",
-        "kcal": "Kcal - {kcal}",
+        "weight": "Gewicht - {weight} kg",
+        "kcal": "Kcal - {kcal} kcal",
         "typeTraining": "Trainingsart - {typeTraining}",
         "timeTraining": "Trainings zeit - {timeTraining}",
         "kcalTraining": "Kalorien verbrannt - {kcalTraining}",
         "training": "Ausbildung",
+        "informationDay": "Informationen des Tages",
+        "images": "Bilder",
         "days": "Tags"
       }
     },

@@ -29,7 +29,15 @@ export const UsersStore = defineStore("users", () => {
 
     const response = await collectionUsers();
     if (response !== null && response.collection) {
-      response.collection.forEach((item) => {
+      let filteredCollection = response.collection;
+
+      if (filteredCollection.length > 1) {
+        filteredCollection = filteredCollection.filter(
+          (user) => user.nickName !== "guest123@"
+        );
+      }
+
+      filteredCollection.forEach((item) => {
         if (item.userName !== "" && item.userName !== null) {
           collection.value.push(item);
         }

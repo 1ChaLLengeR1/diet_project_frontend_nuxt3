@@ -29,6 +29,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 // stores
 import { ProjecPublictStore } from "./../../storage/project/projectPublic";
@@ -52,8 +53,18 @@ export default defineComponent({
     const fileStore = FileStore();
     const statisticsStore = StatisticsStore();
 
+    const route = useRoute();
+    const router = useRouter();
+
+    const page = ref<string>((route.query.page as string) || "1");
+
     const loadProjects = async (userId: string, page: string) => {
       projecPublictStore.userId = userId;
+      router.replace({
+        query: {
+          page: page,
+        },
+      });
       statisticsStore.collection = [];
       await projecPublictStore.apiFetch(true, userId, page);
       const collectionIds: string[] = findIds(projecPublictStore.collection);
@@ -61,17 +72,25 @@ export default defineComponent({
     };
 
     const changePage = async () => {
+      router.replace({
+        query: {
+          page: projecPublictStore.pagination.currentPage,
+        },
+      });
       await projecPublictStore.loadPagePagination(projecPublictStore.userId);
     };
 
     const searchUser = async (id: string | undefined) => {
       if (id === undefined) {
         projecPublictStore.collection = [];
+        router.replace({
+          query: undefined,
+        });
         return;
       }
 
       if (id !== undefined && id !== "") {
-        await loadProjects(id, "1");
+        await loadProjects(id, page.value);
       }
     };
 

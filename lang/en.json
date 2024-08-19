@@ -244,12 +244,14 @@
     "profilePanel": {
       "posts": {
         "day": "Day - {day}",
-        "weight": "Weight - {weight}",
-        "kcal": "Kcal - {kcal}",
+        "weight": "Weight - {weight} kg",
+        "kcal": "Kcal - {kcal} kcal",
         "typeTraining": "Training Type - {typeTraining}",
         "timeTraining": "Training Time - {timeTraining}",
         "kcalTraining": "Calories burned - {kcalTraining}",
         "training": "Training",
+        "informationDay": "Information of the Day",
+        "images": "Images",
         "days": "Days"
       }
     },
