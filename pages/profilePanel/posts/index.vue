@@ -25,6 +25,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 // components
 import ProfileTab from "./../../../components/Tabs/ProfilePanel/Profile.vue";
@@ -41,19 +42,30 @@ export default defineComponent({
     SelectProject,
   },
   setup() {
+    const route = useRoute();
+    const router = useRouter();
     const postStore = PostStore();
     const projectId = ref<string>("");
+    const page = ref<string>((route.query.page as string) || "1");
 
     const searchProjectId = async (id: string) => {
       if (id !== undefined) {
         projectId.value = id;
-        await postStore.apiFetch(true, 1, id);
+        router.replace({ query: { page: page.value } });
+        await postStore.apiFetch(true, parseInt(page.value), id);
       } else {
+        page.value = "1";
+        router.replace({ query: undefined });
         postStore.collection = [];
       }
     };
 
     const changePage = async () => {
+      router.replace({
+        query: {
+          page: postStore.pagination.currentPage,
+        },
+      });
       await postStore.loadPagePagination(projectId.value);
     };
 

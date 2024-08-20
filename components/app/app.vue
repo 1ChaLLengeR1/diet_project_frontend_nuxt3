@@ -7,7 +7,7 @@
     <Alert />
     <MenuHeader v-if="!mobile" />
     <MobileSiderbar v-if="menuMobileStore.openMenu" />
-    <div class="w-full flex">
+    <div class="w-full min-h-[900px] flex">
       <MenuSidebar v-if="mobile" />
       <main class="sticky w-full">
         <NuxtPage />

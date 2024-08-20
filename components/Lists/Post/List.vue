@@ -34,7 +34,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import { paths } from "./../../../utils/paths";
 
 // types
 import type { CollectionPost } from "./../../../data/types/storage/post/types";

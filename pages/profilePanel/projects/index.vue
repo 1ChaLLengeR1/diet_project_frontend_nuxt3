@@ -30,6 +30,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 // stores
 import { ProjectStore } from "./../../../storage/project/project";
@@ -49,17 +50,33 @@ export default defineComponent({
     CardProject,
   },
   setup() {
+    const route = useRoute();
+    const router = useRouter();
+
     const projectStore = ProjectStore();
     const fileStore = FileStore();
     const authStore = AuthStore();
+
     const activeList = ref<boolean>(false);
+    const page = ref<string>((route.query.page as string) || "1");
 
     const changePage = async () => {
+      router.replace({
+        query: {
+          page: projectStore.pagination.currentPage,
+        },
+      });
       await projectStore.loadPagePagination();
     };
 
     const loadDatas = async () => {
       activeList.value = true;
+
+      router.replace({
+        query: {
+          page: page.value,
+        },
+      });
 
       await projectStore.apiFetch();
       const collectionIds: string[] = findIds(projectStore.collection);
