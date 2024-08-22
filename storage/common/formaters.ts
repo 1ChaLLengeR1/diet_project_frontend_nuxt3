@@ -38,3 +38,11 @@ export function formatTime(time: string) {
 
   return `${hours}:${minutes}:${seconds}`;
 }
+
+export function formatWeight(weight: number): number | string {
+  if (weight <= 0) {
+    return weight;
+  } else {
+    return `+ ${weight}`;
+  }
+}

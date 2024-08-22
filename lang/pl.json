@@ -271,6 +271,7 @@
       "startWeight": "Startowa Waga: {startWeight} kg",
       "endWeight": "Waga końcowa: {endWeight} kg",
       "downWeight": "Waga w doł: {downWeight} kg",
+      "upWeight": "Waga w góre: {upWeight} kg",
       "sumKg": "Suma kilogramów: {sumKg} kg",
       "avgKg": "Średnia waga: {avgKg}",
       "sumKcal": "Suma kcal: {sumKcal}",

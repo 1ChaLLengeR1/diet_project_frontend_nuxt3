@@ -11,17 +11,28 @@
       <v-card-subtitle>
         {{ $t("lists.statistics.endWeight", { endWeight: endWeight }) }}
       </v-card-subtitle>
-      <v-card-subtitle>
-        {{ $t("lists.statistics.downWeight", { downWeight: downWeight }) }}
+      <v-card-subtitle v-if="downWeight <= 0">
+        {{
+          $t("lists.statistics.downWeight", {
+            downWeight: formatWeight(downWeight),
+          })
+        }}
+      </v-card-subtitle>
+      <v-card-subtitle v-else>
+        {{
+          $t("lists.statistics.upWeight", {
+            upWeight: formatWeight(downWeight),
+          })
+        }}
       </v-card-subtitle>
       <v-card-subtitle>
         {{ $t("lists.statistics.sumKg", { sumKg: sumKg }) }}
+      </v-card-subtitle>
+      <v-card-subtitle>
+        {{ $t("lists.statistics.avgKg", { avgKg: avgKg }) }}
       </v-card-subtitle>
       <v-card-subtitle>
         {{ $t("lists.statistics.sumKcal", { sumKcal: sumKcal }) }}
-      </v-card-subtitle>
-      <v-card-subtitle>
-        {{ $t("lists.statistics.sumKg", { sumKg: sumKg }) }}
       </v-card-subtitle>
     </v-card-item>
 
@@ -60,6 +71,7 @@ import { defineComponent } from "vue";
 
 // helpers
 import { findTypeTraining } from "./../../../storage/common/finds";
+import { formatWeight } from "./../../../storage/common/formaters";
 
 export default defineComponent({
   props: {
@@ -108,7 +120,7 @@ export default defineComponent({
     },
   },
   setup() {
-    return { findTypeTraining };
+    return { findTypeTraining, formatWeight };
   },
 });
 </script>

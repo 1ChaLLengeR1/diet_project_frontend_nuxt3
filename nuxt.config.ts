@@ -14,6 +14,10 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
+  generate: {
+    fallback: true,
+  },
+
   css: [
     "./public/main.css",
     "vuetify/lib/styles/main.sass",

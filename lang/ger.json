@@ -267,6 +267,7 @@
       "startWeight": "Startgewicht: {startWeight} kg",
       "endWeight": "Endgewicht: {endWeight} kg",
       "downWeight": "Gewicht verloren: {downWeight} kg",
+      "upWeight": "Gewicht erhöhen: {upWeight} kg",
       "sumKg": "Summe der Kilogramm: {sumKg} kg",
       "avgKg": "Durchschnittliches Gewicht: {avgKg} kg",
       "sumKcal": "Gesamtkalorien: {sumKcal}",
