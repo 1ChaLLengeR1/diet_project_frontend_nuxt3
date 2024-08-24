@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  nuxt-docker-example:
+    container_name: nuxt-docker-dietProject
+    build:
+      context: .
+      dockerfile: DockerFile
+    ports:
+      - "3000:3000"

@@ -22,20 +22,20 @@ import { defineComponent, onMounted, onBeforeUnmount, ref } from "vue";
 import _ from "lodash";
 
 // stores
-import { AuthStore } from "./../../storage/auth/auth";
-import { DictionaryStore } from "./../../storage/dictionary/dictionary";
-import { SpinnerStore } from "./../../storage/spinners/spinners";
-import { MenuMobileStore } from "./../../storage/siderbarMenu/menuMobile";
-import { ProjectStore } from "./../../storage/project/project";
-import { UsersStore } from "./../../storage/user/user";
+import { AuthStore } from "../../storage/auth/auth";
+import { DictionaryStore } from "../../storage/dictionary/dictionary";
+import { SpinnerStore } from "../../storage/spinners/spinners";
+import { MenuMobileStore } from "../../storage/siderbarMenu/menuMobile";
+import { ProjectStore } from "../../storage/project/project";
+import { UsersStore } from "../../storage/user/user";
 
 // components
-import MenuSidebar from "./../Menu/Siderbar/Sidebar.vue";
-import MenuHeader from "./../Menu/Header/Header.vue";
-import LoadingSpinner from "./../Spinners/spinner.vue";
-import MobileSiderbar from "./../Menu/MobileSiderbar/MobileSiderbar.vue";
+import MenuSidebar from "../Menu/Siderbar/Sidebar.vue";
+import MenuHeader from "../Menu/Header/Header.vue";
+import LoadingSpinner from "../Spinners/spinner.vue";
+import MobileSiderbar from "../Menu/MobileSiderbar/MobileSiderbar.vue";
 import FooterMain from "../Footer/FooterMain.vue";
-import Alert from "./../Alert/Alert.vue";
+import Alert from "../Alert/Alert.vue";
 
 export default defineComponent({
   components: {
