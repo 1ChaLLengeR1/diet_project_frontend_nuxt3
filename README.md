@@ -6,7 +6,7 @@
 <img align="left" alt="photo" src="https://github.com/1ChaLLengeR1/1ChaLLengeR1/blob/main/images/diet.png" /> 
 
 - link to the page: https://projektdieta.strona.arturscibor.pl/
-- similar information: https://arturscibor.pl/projects/project/f0faa618-7e9a-446a-849f-374c976d9524
+- similar information: https://arturscibor.pl/projects/project/702853f2-1f00-4b2f-bbe3-6d5c642936b2
 
 # Project idea:
 ###### The idea for this project emerged right after completing my unpaid internship. I realized that aside from the knowledge and experience I gained, I had nothing tangible to showcase beyond a LinkedIn post. To address this, I decided to build a comprehensive application based on a previous project that helped me manage my diet. Over three months, I developed a minimalist app that records daily diet statistics and photos, providing weekly summaries and progress tracking. This project serves as a demonstration of my practical skills and experience gained during my internship, highlighting my ability to apply what I've learned in a meaningful way.
@@ -53,6 +53,10 @@ There is no registration method available because it is disabled for security re
     yarn dev
 ```
 ### If there is a problem with startup, remove yarn.lock and repeat the startup methods again.
+### Alternative run
+```
+docker compose up --build -d   
+```
 
 # Run Tests
 ``` bash 
